@@ -9,9 +9,10 @@ function mutate(genome){
 
 function crossover(genome1, genome2){
     var middle = Math.floor(genome1.length / 2) - 1;
+    length = genome1.length;
 
-    var offspring1 = genome1.slice(0, middle).concat(genome2.slice(middle, length - 1));
-    var offspring2 = genome2.slice(0, middle).concat(genome1.slice(middle, length - 1));
+    var offspring1 = genome1.slice(0, middle).concat(genome2.slice(middle, length));
+    var offspring2 = genome2.slice(0, middle).concat(genome1.slice(middle, length));
 
     return [offspring1, offspring2];
 }
@@ -35,7 +36,7 @@ function KnapsackProblem( maxWeight, objectList){
         else
             return score;
     };
-    this.randomGenome = function(){
+    function randomGenome(){
         var length = objectList.length;
         var i;
         var genome = [];
@@ -43,12 +44,12 @@ function KnapsackProblem( maxWeight, objectList){
             genome.push(Math.random() >= 0.5 ? 1 : 0);
         }
         return genome;
-    };
+    }
     this.generatePopulation = function(size){
         var i;
         population = [];
         for(i = 0; i < size; i++){
-            population.push(this.randomGenome());
+            population.push(randomGenome());
         }
         return population;
     };

@@ -14,12 +14,12 @@ var problem = new knapsack.KnapsackProblem( 13, list);
 
 var pop = new population.Population(100,
     problem.generatePopulation, problem.mutateFunction, problem.crossoverFunction,
-    problem.fitnessFunction, 0.05, 0.2);
+    problem.fitnessFunction, 0.2, 0.2);
 
 var i;
 
 for(i = 0; i < 1000; i++){
-    pop.iterate(true);
+    pop.iterate(false);
 }
 
 console.log("ACABOU");

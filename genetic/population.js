@@ -18,8 +18,8 @@ function Population( populationSize, populationGenerationFunction, mutationFunct
         var i;
 
         var mates = this.individuals.slice(1, 1 + numberOfCrossovers);
-
-        var offsprings = _.flatMap(mates, function(mate){ return (this.individuals[0]).crossover(mate); });
+        var bestGuy = this.individuals[0];
+        var offsprings = _.flatMap(mates, function(mate){ return bestGuy.crossover(mate); });
 
         this.individuals.splice(this.individuals.length - numberOfDeadGuys, numberOfDeadGuys);
         this.individuals = this.individuals.concat(offsprings);
@@ -47,10 +47,10 @@ function Population( populationSize, populationGenerationFunction, mutationFunct
         this.sortByFitness();
 
         // compara com melhor solucao anterior
-        if( (this.individuals[0]).fitness > this.bestSolution.fitness)
-            this.bestSolution = this.individuals[0];
+        if( (this.individuals[0]).fitness > (this.bestSolution != null ? this.bestSolution.fitness : -Math.min() ))
+            this.bestSolution = _.clone(this.individuals[0]);
         if(displayBest)
-            displayFunction(this.bestSolution.fitness);
+            console.log(this.bestSolution.fitness);
     };
 }
 
