@@ -1,0 +1,8 @@
+baixar
+
+npm install para baixar dependencias
+
+por enquanto somente lodash.
+
+para rodar:
+node index.js
