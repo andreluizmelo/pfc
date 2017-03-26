@@ -52,9 +52,6 @@ function KnapsackProblem( maxWeight, objectList){
         }
         return population;
     };
-    this.display = function(genome){
-        console.log(genome);
-    };
 }
 
 module.exports = {

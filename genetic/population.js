@@ -1,7 +1,7 @@
 var _ = require('lodash');
 var individual = require('./individual.js');
 
-function Population( populationSize, populationGenerationFunction, mutationFunction, crossoverFunction, fitnessFunction, displayFunction, mutationProbability, crossoverProbability){
+function Population( populationSize, populationGenerationFunction, mutationFunction, crossoverFunction, fitnessFunction, mutationProbability, crossoverProbability){
     this.individuals = _.map(populationGenerationFunction(populationSize), function(elem){ 
         return new individual.Individual(elem, fitnessFunction,mutationFunction, crossoverFunction);
     });
@@ -50,7 +50,7 @@ function Population( populationSize, populationGenerationFunction, mutationFunct
         if( (this.individuals[0]).fitness > this.bestSolution.fitness)
             this.bestSolution = this.individuals[0];
         if(displayBest)
-            displayFunction(this.bestSolution);
+            displayFunction(this.bestSolution.fitness);
     };
 }
 
