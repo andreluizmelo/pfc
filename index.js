@@ -1,6 +1,6 @@
 var knapsack = require('./problems/knapsack.js');
 var population = require('./genetic/population');
-
+var typing = require('./problems/typingmonkeys.js');
 
 // capacidade 13 maximo 29
 var list = [
@@ -43,9 +43,15 @@ var list2 = [
 
 var problem = new knapsack.KnapsackProblem( 6404180, list2);
 
+var problem2 = new typing.TypingMonkeys('hello world');
+
 var pop = new population.Population(100,
     problem.generatePopulation, problem.mutateFunction, problem.crossoverFunction,
     problem.fitnessFunction, 0.3, 0.5);
+
+var pop2 = new population.Population(100,
+    problem2.generatePopulation, problem2.mutateFunction, problem2.crossoverFunction,
+    problem2.fitnessFunction, 0.3, 0.5);
 
 var i;
 
@@ -53,6 +59,15 @@ for(i = 0; i < 1000; i++){
     pop.iterate(false);
 }
 
-console.log("ACABOU");
+console.log("problema 1");
 console.log(pop.bestSolution.genome);
 console.log(pop.bestSolution.fitness);
+
+for(i = 0; i < 50; i++){
+    pop2.iterate(false);
+}
+
+console.log(" ");
+console.log("problema 2");
+console.log(pop2.bestSolution.genome);
+console.log(pop2.bestSolution.fitness);
