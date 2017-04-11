@@ -1,7 +1,8 @@
-var knapsack = require('./problems/knapsack.js');
-var population = require('./genetic/population');
-var typing = require('./problems/typingmonkeys.js');
-
+var knapsack = require('./problems/knapsack');
+var geneticPopulation = require('./genetic/population');
+var typing = require('./problems/typingmonkeys');
+var menorDistancia = require('./problems/menorSomaDistancia');
+var psoPopulation = require('./pso/population');
 // capacidade 13 maximo 29
 var list = [
     { weight: 5, value: 10},
@@ -41,18 +42,37 @@ var list2 = [
     { weight: 169684, value: 369261},
 ];
 
+var pointList = [
+    {
+        x: 40,
+        y: 40
+    },
+    {
+        x: 60,
+        y: 80
+    },
+    {
+        x: 50,
+        y: 60
+    }
+];
+
 var problem = new knapsack.KnapsackProblem( 6404180, list2);
 
 var problem2 = new typing.TypingMonkeys('hello world');
 
-var pop = new population.Population(100,
+
+var problem3 = new menorDistancia.DistanciaProblem(100,100,pointList);
+
+var pop = new geneticPopulation.Population(100,
     problem.generatePopulation, problem.mutateFunction, problem.crossoverFunction,
     problem.fitnessFunction, 0.3, 0.5);
 
-var pop2 = new population.Population(100,
+var pop2 = new geneticPopulation.Population(100,
     problem2.generatePopulation, problem2.mutateFunction, problem2.crossoverFunction,
     problem2.fitnessFunction, 0.3, 0.5);
 
+var pop3 = new psoPopulation.Population(100, problem3.generatePopulation, problem3.walkFunction, problem3.fitnessFunction, 0.6);
 var i;
 
 for(i = 0; i < 1000; i++){
@@ -71,3 +91,13 @@ console.log(" ");
 console.log("problema 2");
 console.log(pop2.bestSolution.genome);
 console.log(pop2.bestSolution.fitness);
+
+//console.log(pop3.individuals);
+for(i = 0; i < 50; i++){
+    pop3.iterate(false);
+}
+
+console.log(" ");
+console.log("problema 3");
+console.log(pop3.bestSolution.genome);
+console.log(pop3.bestSolution.fitness);

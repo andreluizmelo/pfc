@@ -39,12 +39,17 @@ function DistanciaProblem(width, height, pointList){ //dimensoes da area e lista
         return newGenome;
     };
     this.fitnessFunction = function(genome){ // retorna 1 / (1 + soma das distancias ate os pontos)
-        return 1 / ( 1 + _.reduce(pointList, function(elem, res){ return res + distancia(elem, genome);}, 0));
+        var total = 0;
+         _.each(pointList, function(elem){
+             total += distancia(elem, genome);
+         });
+         
+         return 1 / ( 1 + total);
     };
     function randomGenome(){
         return {
             x: Math.random() * width,
-            y: Math.random * height
+            y: Math.random() * height
         };
     }
     this.generatePopulation = function(size){

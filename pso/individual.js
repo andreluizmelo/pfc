@@ -11,6 +11,7 @@ function Individual(genome, fitnessFunction, walkFunction){
 
 Individual.prototype.walk = function(bestGlobalPosition, bestGlobalWeight){
     this.genome = this.walkFunction(this.genome, this.bestLocalPosition, bestGlobalPosition, bestGlobalWeight); 
+    this.fitness = this.fitnessFunction(this.genome);
     if(this.fitnessFunction(this.genome) > this.bestLocalFitness){
         this.bestLocalFitness = this.fitnessFunction(this.genome);
         this.bestLocalPosition = _.clone(this.genome);

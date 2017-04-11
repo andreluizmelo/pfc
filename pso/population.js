@@ -14,10 +14,10 @@ function Population( populationSize, populationGenerationFunction, walkFunction,
 
     this.sortByFitness();
     this.bestSolution = this.individuals[0];
-
     this.iterate = function(displayBest){
+        var best = this.bestSolution;
         _.each(this.individuals, function(elem){
-            elem.walk(this.bestSolution.genome, globalPositionWeight);
+            elem.walk(best.genome, globalPositionWeight);
         });      
         this.sortByFitness();
 
@@ -25,7 +25,7 @@ function Population( populationSize, populationGenerationFunction, walkFunction,
         if( (this.individuals[0]).fitness > (this.bestSolution != null ? this.bestSolution.fitness : -Math.min() ))
             this.bestSolution = _.clone(this.individuals[0]);
         if(displayBest)
-            console.log(this.bestSolution.fitness);
+            console.log(this.bestSolution);
     };
 }
 
