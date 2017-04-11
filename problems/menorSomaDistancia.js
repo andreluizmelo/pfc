@@ -18,7 +18,7 @@ function crossover(genome1, genome2){
 function walk(currentPosition, bestLocalPosition, bestGlobalPosition, bestGlobalPositionWeight){
     return {
         x: currentPosition.x + ( bestLocalPosition.x - currentPosition.x) * (1 - bestGlobalPositionWeight) + ( bestGlobalPosition.x - currentPosition.x) * bestGlobalPositionWeight,
-        y: 0
+        y: currentPosition.y + ( bestLocalPosition.y - currentPosition.y) * (1 - bestGlobalPositionWeight) + ( bestGlobalPosition.y - currentPosition.y) * bestGlobalPositionWeight
     }
 }
 
