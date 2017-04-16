@@ -9,8 +9,8 @@ function Individual(genome, fitnessFunction, walkFunction){
     this.fitness = fitnessFunction(genome);
 }
 
-Individual.prototype.walk = function(bestGlobalPosition, bestGlobalWeight){
-    this.genome = this.walkFunction(this.genome, this.bestLocalPosition, bestGlobalPosition, bestGlobalWeight); 
+Individual.prototype.walk = function(bestGlobalPosition, bestLocalWeight, bestGlobalWeight){
+    this.genome = this.walkFunction(this.genome, this.bestLocalPosition, bestGlobalPosition, bestLocalWeight, bestGlobalWeight); 
     this.fitness = this.fitnessFunction(this.genome);
     if(this.fitnessFunction(this.genome) > this.bestLocalFitness){
         this.bestLocalFitness = this.fitnessFunction(this.genome);

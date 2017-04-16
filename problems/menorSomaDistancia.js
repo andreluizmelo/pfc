@@ -15,10 +15,12 @@ function crossover(genome1, genome2){
     ];
 }
 
-function walk(currentPosition, bestLocalPosition, bestGlobalPosition, bestGlobalPositionWeight){
+function walk(currentPosition, bestLocalPosition, bestGlobalPosition, bestLocalPositionWeight, bestGlobalPositionWeight){
+    var localRandomWeight = Math.random();
+    var globalRandomWeight = Math.random();
     return {
-        x: currentPosition.x + ( bestLocalPosition.x - currentPosition.x) * (1 - bestGlobalPositionWeight) + ( bestGlobalPosition.x - currentPosition.x) * bestGlobalPositionWeight,
-        y: currentPosition.y + ( bestLocalPosition.y - currentPosition.y) * (1 - bestGlobalPositionWeight) + ( bestGlobalPosition.y - currentPosition.y) * bestGlobalPositionWeight
+        x: currentPosition.x + ( bestLocalPosition.x - currentPosition.x) * bestLocalPositionWeight * localRandomWeight + ( bestGlobalPosition.x - currentPosition.x) * bestGlobalPositionWeight * globalRandomWeight,
+        y: currentPosition.y + ( bestLocalPosition.y - currentPosition.y) * bestLocalPositionWeight * localRandomWeight + ( bestGlobalPosition.y - currentPosition.y) * bestGlobalPositionWeight * globalRandomWeight
     }
 }
 
