@@ -3,6 +3,7 @@ var geneticPopulation = require('./genetic/population');
 var typing = require('./problems/typingmonkeys');
 var menorDistancia = require('./problems/menorSomaDistancia');
 var psoPopulation = require('./pso/population');
+var geneticProblem = require('./genetic/geneticAlgorithmProblem');
 // capacidade 13 maximo 29
 var list = [
     { weight: 5, value: 10},
@@ -57,40 +58,32 @@ var pointList = [
     }
 ];
 
-var problem = new knapsack.KnapsackProblem( 6404180, list2);
+var problem = new knapsack.KnapsackProblem(13, list);
+var problemBigger = new knapsack.KnapsackProblem( 6404180, list2);
+var problemMonkeys = new typing.TypingMonkeys('hello world');
 
-var problem2 = new typing.TypingMonkeys('hello world');
+var gp1 = new geneticProblem.GeneticAlgorithmProblem(problem, 100, 0.3, 0.5);
+var gp2 = new geneticProblem.GeneticAlgorithmProblem(problemBigger, 100, 0.6, 0.7);
+var gp3 = new geneticProblem.GeneticAlgorithmProblem(problemMonkeys, 100, 0.3, 0.5);
 
 
 var problem3 = new menorDistancia.DistanciaProblem(100,100,pointList);
 
-var pop = new geneticPopulation.Population(100,
-    problem.generatePopulation, problem.mutateFunction, problem.crossoverFunction,
-    problem.fitnessFunction, 0.3, 0.5);
 
-var pop2 = new geneticPopulation.Population(100,
-    problem2.generatePopulation, problem2.mutateFunction, problem2.crossoverFunction,
-    problem2.fitnessFunction, 0.3, 0.5);
 
 var pop3 = new psoPopulation.Population(100, problem3.generatePopulation, problem3.walkFunction, problem3.fitnessFunction, 0.6);
 var i;
 
-for(i = 0; i < 1000; i++){
-    pop.iterate(false);
-}
-
 console.log("problema 1");
-console.log(pop.bestSolution.genome);
-console.log(pop.bestSolution.fitness);
-
-for(i = 0; i < 50; i++){
-    pop2.iterate(false);
-}
+gp1.solveByNumberOfIterations(1000, false);
 
 console.log(" ");
 console.log("problema 2");
-console.log(pop2.bestSolution.genome);
-console.log(pop2.bestSolution.fitness);
+gp2.solve(100);
+
+console.log(" ");
+console.log("problema macacos digitadores");
+gp3.solve();
 
 //console.log(pop3.individuals);
 for(i = 0; i < 50; i++){

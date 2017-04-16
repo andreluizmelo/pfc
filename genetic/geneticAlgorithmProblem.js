@@ -2,7 +2,7 @@ var _ = require('lodash');
 var Population = require('./population.js');
 
 const defaultNumberOfSameResultToStop = 10;
-const maxNumberOfGeneratios = 10e6; 
+const maxNumberOfGenerations = 1000000; 
 
 function CheckProblem(problem){
     if( problem.generatePopulation == null || problem.generatePopulation == undefined)
@@ -18,7 +18,7 @@ function CheckProblem(problem){
 function GeneticAlgorithmProblem(problem, populationSize, mutationProbability, crossoverProbability){
     CheckProblem(problem);
 
-    this.population = Population.Population(populationSize,
+    this.population = new Population.Population(populationSize,
     problem.generatePopulation, problem.mutateFunction, problem.crossoverFunction,
     problem.fitnessFunction, mutationProbability, crossoverProbability);
 }
@@ -41,14 +41,16 @@ GeneticAlgorithmProblem.prototype.solve = function( numberOfSameResultToStop){
     var generation = 0;
     var numberOfRepetitions = 0;
     var bestFitness = null;
-    while( generation < maxNumberOfGeneratios && numberOfRepetitions < 10){
+    while( generation < maxNumberOfGenerations && numberOfRepetitions < minimumRepetition){
         generation++;
         this.population.iterate(false);
-        if(this.population.bestFitness == bestFitness){
+        
+        if(this.population.bestSolution.fitness == bestFitness){
             numberOfRepetitions++;
         }else{
             numberOfRepetitions = 0;
         }
+        bestFitness = this.population.bestSolution.fitness;
     }
     console.log("geração: " + generation);
     this.displayCurrentSolution();
