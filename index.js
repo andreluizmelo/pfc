@@ -71,7 +71,7 @@ var problem3 = new menorDistancia.DistanciaProblem(100,100,pointList);
 
 
 
-var pop3 = new psoPopulation.Population(100, problem3.generatePopulation, problem3.walkFunction, problem3.fitnessFunction, 0.6, 0.6);
+var pop3 = new psoPopulation.Population(100, problem3.generatePopulation, problem3.walkFunction, problem3.fitnessFunction, 1.0, 0.6, 0.6);
 var i;
 
 console.log("problema 1");

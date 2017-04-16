@@ -1,7 +1,7 @@
 var _ = require('lodash');
 var individual = require('./individual.js');
 
-function Population( populationSize, populationGenerationFunction, walkFunction, fitnessFunction, localPositionWeight, globalPositionWeight){
+function Population( populationSize, populationGenerationFunction, walkFunction, fitnessFunction, inertiaWeight, localPositionWeight, globalPositionWeight){
     this.individuals = _.map(populationGenerationFunction(populationSize), function(elem){ 
         return new individual.Individual(elem, fitnessFunction, walkFunction);
     });
@@ -17,7 +17,7 @@ function Population( populationSize, populationGenerationFunction, walkFunction,
     this.iterate = function(displayBest){
         var best = this.bestSolution;
         _.each(this.individuals, function(elem){
-            elem.walk(best.genome, localPositionWeight, globalPositionWeight);
+            elem.walk(best.genome, inertiaWeight, localPositionWeight, globalPositionWeight);
         });      
         this.sortByFitness();
 
