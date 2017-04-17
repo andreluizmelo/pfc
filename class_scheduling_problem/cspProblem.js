@@ -52,7 +52,7 @@ function cspProblem(teachers, subjects, groups){
     function teacherAvailabilityPenalty(genome){
         var numberOfProblematicClasses = 0;
         _.each(genome, function(aula){
-            if( isTeacherAvailable(aula.teacherId, aula.day, aula.time))
+            if( !isTeacherAvailable(aula.teacherId, aula.day, aula.time))
                 numberOfProblematicClasses++;
         });
         return constants.teacherNotAvailableWeight * numberOfProblematicClasses;
@@ -61,7 +61,7 @@ function cspProblem(teachers, subjects, groups){
     function OverlapPenalty(genome){
         var numberOfOverlaps = 0;
         _.each(genome, function(aula){
-            numberOfOverlaps += _.filter(genome, c => c.day == aula.day && c.time == aula.time).length;
+            numberOfOverlaps += _.filter(genome, c => c.day == aula.day && c.time == aula.time && (c.groupId == aula.groupId || c.teacherId == aula.teacherId)).length;
         });
         return constants.overlapWeight * (numberOfOverlaps / 2); // divide por 2 pois cada sobreposição é contada duas vezes
     }
@@ -71,7 +71,7 @@ function cspProblem(teachers, subjects, groups){
 
         _.each(genome, function(aula){
             
-            if( isGroupAvailable(aula.groupId, aula.day, aula.time))
+            if( !isGroupAvailable(aula.groupId, aula.day, aula.time))
                 numberOfProblematicClasses++;
         });
         return constants.groupNotAvailableWeight * numberOfProblematicClasses;
