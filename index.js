@@ -4,13 +4,14 @@ var typing = require('./problems/typingmonkeys');
 var menorDistancia = require('./problems/menorSomaDistancia');
 var psoPopulation = require('./pso/population');
 var geneticProblem = require('./genetic/geneticAlgorithmProblem');
+var psoProblem = require('./pso/psoProblem');
 var Professor = require('./class_scheduling_problem/professor').Professor;
 var Group = require('./class_scheduling_problem/group').Group;
 var Subject = require('./class_scheduling_problem/subject').Subject;
 var CSP = require('./class_scheduling_problem/cspProblem').CSProblem;
 var Aula = require('./class_scheduling_problem/class').Class;
 
-/*
+
 // capacidade 13 maximo 29
 var list = [
     { weight: 5, value: 10},
@@ -75,11 +76,7 @@ var gp3 = new geneticProblem.GeneticAlgorithmProblem(problemMonkeys, 100, 0.3, 0
 
 
 var problem3 = new menorDistancia.DistanciaProblem(100,100,pointList);
-
-
-
-var pop3 = new psoPopulation.Population(100, problem3.generatePopulation, problem3.walkFunction, problem3.fitnessFunction, 1.0, 0.6, 0.6);
-var i;
+var pso1 = new psoProblem.PsoProblem(problem3, 100, 1.0, 0.6, 0.6);
 
 console.log("problema 1");
 gp1.solveByNumberOfIterations(1000, false);
@@ -92,16 +89,11 @@ console.log(" ");
 console.log("problema macacos digitadores");
 gp3.solve();
 
-//console.log(pop3.individuals);
-for(i = 0; i < 50; i++){
-    pop3.iterate(false);
-}
-
 console.log(" ");
-console.log("problema 3");
-console.log(pop3.bestSolution.genome);
-console.log(pop3.bestSolution.fitness);
-*/
+console.log("problema soma de distancias");
+pso1.solveByNumberOfIterations(100);
+
+
 
 var andre = new Professor(1, 'André', [
     [0,1,1,1],//,0,0,0,0,0,0],
@@ -140,5 +132,5 @@ var problemaCS = new CSP(teachers, materias, grupos);
 var gaCSP = new geneticProblem.GeneticAlgorithmProblem(problemaCS, 100, 0.4, 0.3);
 
 console.log("problema csp");
-gaCSP.solveByNumberOfIterations(100, true);
+gaCSP.solveByNumberOfIterations(100);
 //gaCSP.solve(100,true);

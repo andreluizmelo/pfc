@@ -23,7 +23,7 @@ function Population( populationSize, populationGenerationFunction, walkFunction,
 
         // compara com melhor solucao anterior
         if( (this.individuals[0]).fitness > (this.bestSolution != null ? this.bestSolution.fitness : -Math.min() ))
-            this.bestSolution = _.clone(this.individuals[0]);
+            this.bestSolution = _.cloneDeep(this.individuals[0]);
         if(displayBest)
             console.log(this.bestSolution);
     };
