@@ -49,24 +49,30 @@ function cspProblem(teachers, subjects, groups){
     }
 
 
-    function teacherAvailabilityPenalty(genome){
+    function teacherAvailabilityPenalty(genome, debug){
         var numberOfProblematicClasses = 0;
         _.each(genome, function(aula){
             if( !isTeacherAvailable(aula.teacherId, aula.day, aula.time))
                 numberOfProblematicClasses++;
         });
+        if(debug)
+            console.log('teacher: ' + numberOfProblematicClasses);
         return constants.teacherNotAvailableWeight * numberOfProblematicClasses;
     }
 
-    function OverlapPenalty(genome){
+    function OverlapPenalty(genome, debug){
         var numberOfOverlaps = 0;
         _.each(genome, function(aula){
-            numberOfOverlaps += _.filter(genome, c => c.day == aula.day && c.time == aula.time && (c.groupId == aula.groupId || c.teacherId == aula.teacherId)).length;
+             var eita = _.filter(genome, c => c.day == aula.day && c.time == aula.time && (c.groupId == aula.groupId || c.teacherId == aula.teacherId));
+             //console.log(eita);
+             numberOfOverlaps += eita.length - 1;
         });
+        if(debug)
+            console.log('overlaps: ' + (numberOfOverlaps / 2));
         return constants.overlapWeight * (numberOfOverlaps / 2); // divide por 2 pois cada sobreposição é contada duas vezes
     }
 
-    function GroupAvailabilityPenalty(genome){
+    function GroupAvailabilityPenalty(genome, debug){
         var numberOfProblematicClasses = 0;
 
         _.each(genome, function(aula){
@@ -74,32 +80,36 @@ function cspProblem(teachers, subjects, groups){
             if( !isGroupAvailable(aula.groupId, aula.day, aula.time))
                 numberOfProblematicClasses++;
         });
+        if(debug)
+            console.log('grupo: ' + numberOfProblematicClasses);
         return constants.groupNotAvailableWeight * numberOfProblematicClasses;
     }
 
-    function TotalPenalty(genome){
-        return teacherAvailabilityPenalty(genome) +
-            OverlapPenalty(genome) +
-            GroupAvailabilityPenalty(genome);
+    function TotalPenalty(genome, debug){
+        return teacherAvailabilityPenalty(genome, debug) +
+            OverlapPenalty(genome, debug) +
+            GroupAvailabilityPenalty(genome, debug);
     }
 
-    this.fitnessFunction = function fitness(genome){
-        return 1 / (1 + TotalPenalty(genome));
+    this.fitnessFunction = function fitness(genome, debug){
+        return 1 / (1 + TotalPenalty(genome, debug));
     };
 
     this.mutateFunction = function mutate(genome){
-        var newGenome = _.clone(genome);
+        var newGenome = _.cloneDeep(genome);
         var index = Math.floor(Math.random() * newGenome.length);
         if( Math.random() >= 0.5){ // mudar dia
-            newGenome[index].day = (newGenome[index].day + (Math.random() >= 0.5 ? 1 : -1));
-            if(newGenome[index].day < 0)
-                newGenome[index].day += constants.maxDay;
-            newGenome[index].day = newGenome[index].day % constants.maxDay;
+            // newGenome[index].day = (newGenome[index].day + (Math.random() >= 0.5 ? 1 : -1));
+            // if(newGenome[index].day < 0)
+            //     newGenome[index].day += constants.maxDay;
+            // newGenome[index].day = newGenome[index].day % constants.maxDay;
+            newGenome[index].day = helper.randomDay();
         }else{ // mudar horario
-            newGenome[index].time = (newGenome[index].time + (Math.random() >= 0.5 ? 1 : -1));
-            if(newGenome[index].time < 0)
-                newGenome[index].time += constants.maxDay;
-            newGenome[index].time = newGenome[index].time % constants.maxTime;
+            // newGenome[index].time = (newGenome[index].time + (Math.random() >= 0.5 ? 1 : -1));
+            // if(newGenome[index].time < 0)
+            //     newGenome[index].time += constants.maxDay;
+            // newGenome[index].time = newGenome[index].time % constants.maxTime;
+            newGenome[index].time = helper.randomTime();
         }
         return newGenome;
     };

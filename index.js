@@ -8,7 +8,7 @@ var Professor = require('./class_scheduling_problem/professor').Professor;
 var Group = require('./class_scheduling_problem/group').Group;
 var Subject = require('./class_scheduling_problem/subject').Subject;
 var CSP = require('./class_scheduling_problem/cspProblem').CSProblem;
-
+var Aula = require('./class_scheduling_problem/class').Class;
 
 /*
 // capacidade 13 maximo 29
@@ -104,27 +104,27 @@ console.log(pop3.bestSolution.fitness);
 */
 
 var andre = new Professor(1, 'André', [
-    [0,1,1,1,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0]
+    [0,1,1,1],//,0,0,0,0,0,0],
+    [0,0,0,0],//0,0,0,0,0,0],
+    [0,0,0,0]//,0,0,0,0,0,0]
 ]);
 var thomas = new Professor(2, 'Thomas', [
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,1,1,1,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0]
+    [0,0,0,0],//0,0,0,0,0,0],
+    [0,1,1,1],//0,0,0,0,0,0],
+    [0,0,0,0]//,0,0,0,0,0,0]
 ] );
 var estolano = new Professor(3, 'Estolano', [
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,1,1,1,0,0,0,0,0,0]
+    [0,0,0,0],//0,0,0,0,0,0],
+    [0,0,0,0],//0,0,0,0,0,0],
+    [0,1,1,1]//,0,0,0,0,0,0]
 ] );
 
 var teachers = [andre, thomas, estolano];
 
 var ano5 = new Group( 1, '5 ano', [
-    [0,1,1,1,0,0,0,0,0,0],
-    [0,1,1,1,0,0,0,0,0,0],
-    [0,1,1,1,0,0,0,0,0,0]
+    [0,1,1,1],//,0,0,0,0,0,0],
+    [0,1,1,1],//,0,0,0,0,0,0],
+    [0,1,1,1]//,0,0,0,0,0,0]
 ]);
 
 var grupos = [ano5];
@@ -137,7 +137,34 @@ var materias = [calculo, algoritmos, sistInfo];
 
 var problemaCS = new CSP(teachers, materias, grupos);
 
-var gaCSP = new geneticProblem.GeneticAlgorithmProblem(problemaCS, 500, 0.3, 0.5);
+var gaCSP = new geneticProblem.GeneticAlgorithmProblem(problemaCS, 100, 0.4, 0.3);
 
 console.log("problema csp");
 gaCSP.solveByNumberOfIterations(1000, true);
+//gaCSP.solve(100,true);
+//console.log(problemaCS.fitnessFunction(gaCSP.population.bestSolution.genome, true));
+// testes
+// console.log(problemaCS.fitnessFunction([
+//     new Aula(1,1,1,0,1),
+//     new Aula(1,1,1,0,2),
+//     new Aula(1,1,1,0,3),
+//     new Aula(2,2,1,1,1),
+//     new Aula(2,2,1,1,2),
+//     new Aula(2,2,1,1,3),
+//     new Aula(3,3,1,2,1),
+//     new Aula(3,3,1,2,2),
+//     new Aula(3,3,1,2,3),
+// ]));
+
+//testes
+// console.log(problemaCS.fitnessFunction([
+//     new Aula(1,1,1,0,0),
+//     new Aula(1,1,1,1,3),
+//     new Aula(1,1,1,0,0),
+//     new Aula(2,2,1,1,0),
+//     new Aula(2,2,1,0,2),
+//     new Aula(2,2,1,0,0),
+//     new Aula(3,3,1,1,0),
+//     new Aula(3,3,1,0,1),
+//     new Aula(3,3,1,0,2),
+// ], true));

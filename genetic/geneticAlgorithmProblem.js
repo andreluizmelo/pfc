@@ -19,24 +19,25 @@ function GeneticAlgorithmProblem(problem, populationSize, mutationProbability, c
     CheckProblem(problem);
 
     this.population = new Population.Population(populationSize,
-    problem.generatePopulation, problem.mutateFunction, problem.crossoverFunction,
-    problem.fitnessFunction, mutationProbability, crossoverProbability);
-}
+        problem.generatePopulation, problem.mutateFunction, problem.crossoverFunction,
+        problem.fitnessFunction, mutationProbability, crossoverProbability);
 
-GeneticAlgorithmProblem.prototype.displayCurrentSolution = function(){
-    console.log('fitness: ' + this.population.bestSolution.fitness);
-    console.log('solução: ' + JSON.stringify(this.population.bestSolution.genome,null, 4));
-};
+    this.displayCurrentSolution = function(){
+        console.log('fitness: ' + this.population.bestSolution.fitness);
+        console.log('solução: ' + JSON.stringify(this.population.bestSolution, null, 4));
+    };
+}
 
 GeneticAlgorithmProblem.prototype.solveByNumberOfIterations = function(numberOfIterations, displayCurrentBest){
     var i;
+    
     for(i = 0; i < numberOfIterations; i++){
         this.population.iterate(displayCurrentBest);
     }
     this.displayCurrentSolution();
 };
 
-GeneticAlgorithmProblem.prototype.solve = function( numberOfSameResultToStop){
+GeneticAlgorithmProblem.prototype.solve = function( numberOfSameResultToStop, displayCurrentBest){
     var minimumRepetition = numberOfSameResultToStop || defaultNumberOfSameResultToStop;
     var generation = 0;
     var numberOfRepetitions = 0;
@@ -51,6 +52,8 @@ GeneticAlgorithmProblem.prototype.solve = function( numberOfSameResultToStop){
             numberOfRepetitions = 0;
         }
         bestFitness = this.population.bestSolution.fitness;
+        if(displayCurrentBest)
+            this.displayCurrentSolution();
     }
     console.log("geração: " + generation);
     this.displayCurrentSolution();

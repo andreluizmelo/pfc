@@ -3,7 +3,7 @@ var _ = require('lodash');
 function Professor(id, nome, disponibilidade){
     this.id = id;
     this.nome = nome;
-    this.disponibilidade = _.clone(disponibilidade);
+    this.disponibilidade = _.cloneDeep(disponibilidade);
 }
 
 Professor.prototype.isAvailable = function( day, time){
