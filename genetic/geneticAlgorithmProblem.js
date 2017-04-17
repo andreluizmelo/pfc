@@ -25,7 +25,7 @@ function GeneticAlgorithmProblem(problem, populationSize, mutationProbability, c
 
 GeneticAlgorithmProblem.prototype.displayCurrentSolution = function(){
     console.log('fitness: ' + this.population.bestSolution.fitness);
-    console.log('solução: ' + this.population.bestSolution.genome);
+    console.log('solução: ' + JSON.stringify(this.population.bestSolution.genome,null, 4));
 };
 
 GeneticAlgorithmProblem.prototype.solveByNumberOfIterations = function(numberOfIterations, displayCurrentBest){
