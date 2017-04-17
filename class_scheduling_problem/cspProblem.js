@@ -41,7 +41,7 @@ function cspProblem(teachers, subjects, groups){
 
         for( i = 0; i < subjects.length; i++){
             for( j = 0; j < subjects[i].numClasses; j++){
-                genome.push( new Class(subjects[i].idProfessor, subjects[i].id, subjects[i].idGroup,helper.randomDay(), helper.randomTime()));
+                genome.push( new Class(subjects[i].id, subjects[i].idProfessor, subjects[i].idGroup,helper.randomDay(), helper.randomTime()));
             }
         }
 
