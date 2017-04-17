@@ -4,6 +4,13 @@ var typing = require('./problems/typingmonkeys');
 var menorDistancia = require('./problems/menorSomaDistancia');
 var psoPopulation = require('./pso/population');
 var geneticProblem = require('./genetic/geneticAlgorithmProblem');
+var Professor = require('./class_scheduling_problem/professor').Professor;
+var Group = require('./class_scheduling_problem/group').Group;
+var Subject = require('./class_scheduling_problem/subject').Subject;
+var CSP = require('./class_scheduling_problem/cspProblem').CSProblem;
+
+
+/*
 // capacidade 13 maximo 29
 var list = [
     { weight: 5, value: 10},
@@ -94,3 +101,51 @@ console.log(" ");
 console.log("problema 3");
 console.log(pop3.bestSolution.genome);
 console.log(pop3.bestSolution.fitness);
+*/
+
+var andre = new Professor(1, 'André', [
+    [0,1,1,1,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0]
+]);
+var thomas = new Professor(2, 'Thomas', [
+    [0,0,0,0,0,0,0,0,0,0],
+    [0,1,1,1,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0]
+] );
+var estolano = new Professor(3, 'Estolano', [
+    [0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0],
+    [0,1,1,1,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0]
+] );
+
+var teachers = [andre, thomas, estolano];
+
+var ano5 = new Group( 1, '5 ano', [
+    [0,1,1,1,0,0,0,0,0,0],
+    [0,1,1,1,0,0,0,0,0,0],
+    [0,1,1,1,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0]
+]);
+
+var grupos = [ano5];
+
+var calculo = new Subject(1, 'Calculo', 3, 1, 1);
+var algoritmos = new Subject(2, 'Algoritmos', 3, 1, 2);
+var sistInfo = new Subject(3, 'Sistemas Info', 3, 1, 3);
+
+var materias = [calculo, algoritmos, sistInfo];
+
+var problemaCS = new CSP(teachers, materias, grupos);
+
+var gaCSP = new geneticProblem.GeneticAlgorithmProblem(problemaCS, 500, 0.3, 0.5);
+
+console.log("problema csp");
+gaCSP.solveByNumberOfIterations(10000);
