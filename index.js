@@ -148,4 +148,4 @@ var problemaCS = new CSP(teachers, materias, grupos);
 var gaCSP = new geneticProblem.GeneticAlgorithmProblem(problemaCS, 500, 0.3, 0.5);
 
 console.log("problema csp");
-gaCSP.solveByNumberOfIterations(10000);
+gaCSP.solveByNumberOfIterations(1000);

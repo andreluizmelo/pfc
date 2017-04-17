@@ -91,9 +91,15 @@ function cspProblem(teachers, subjects, groups){
         var newGenome = _.clone(genome);
         var index = Math.floor(Math.random() * newGenome.length);
         if( Math.random() >= 0.5){ // mudar dia
-            newGenome[index].day = (newGenome[index].day + (Math.random() >= 0.5 ? 1 : -1)) % constants.maxDay;
+            newGenome[index].day = (newGenome[index].day + (Math.random() >= 0.5 ? 1 : -1));
+            if(newGenome[index].day < 0)
+                newGenome[index].day += constants.maxDay;
+            newGenome[index].day = newGenome[index].day % constants.maxDay;
         }else{ // mudar horario
-            newGenome[index].time = (newGenome[index].time + (Math.random() >= 0.5 ? 1 : -1)) % constants.maxTime;
+            newGenome[index].time = (newGenome[index].time + (Math.random() >= 0.5 ? 1 : -1));
+            if(newGenome[index].time < 0)
+                newGenome[index].time += constants.maxDay;
+            newGenome[index].time = newGenome[index].time % constants.maxTime;
         }
         return newGenome;
     };

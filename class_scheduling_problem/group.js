@@ -4,7 +4,7 @@ function Group( id, nome, disponibilidade){
     this.disponibilidade = disponibilidade;
 }
 
-Group.prototype.IsAvailable = function(day, time){
+Group.prototype.isAvailable = function(day, time){
     if( this.disponibilidade[day] === null || this.disponibilidade[day] === undefined)
         throw new Error('dia inválido');
     if( this.disponibilidade[day][time] === null || this.disponibilidade[day][time] === undefined)
