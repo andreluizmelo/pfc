@@ -125,7 +125,32 @@ function cspProblem(teachers, subjects, groups){
     };
 
     this.walkFunction = function walk(currentPosition, bestLocalPosition, bestGlobalPosition, inertiaWeight, bestLocalPositionWeight, bestGlobalPositionWeight){
-        throw new Error('not implemented yet');
+         var classes = [];
+        _.each(currentPosition, function(elem, index){ // iterates through classes
+            var current = elem;
+            var local = bestLocalPosition[index];
+            var global = bestGlobalPosition[index];
+            
+            // apply diffs
+            local = helper.timeDiff(local.day, local.time, current.day, current.time);
+            global = helper.timeDiff(global.day, global.time, current.day, current.time);
+
+            // apply weights
+            current = helper.timeMultiply(current.day, current.time, inertiaWeight);
+            local = helper.timeMultiply(local.day, local.time, bestLocalPositionWeight);
+            global = helper.timeMultiply(global.day, global.time, bestGlobalPositionWeight);
+            // apply random weights
+            local = helper.timeMultiply(local.day, local.time, Math.random());
+            global = helper.timeMultiply(global.day, global.time, Math.random());
+
+            // sum weighted to get results
+            var result = helper.timeSum(current.day, current.time, local.day, local.time);
+            result = helper.timeSum(result.day, result.time, global.day, global.time);
+            
+            // push into array of classes
+            classes.push(new Class(elem.subjectId,elem.teacherId,elem.groupId, result.day, result.time));
+        });
+        return classes;
     };
 
     this.generatePopulation = function(size){

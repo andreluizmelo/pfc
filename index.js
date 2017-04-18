@@ -130,7 +130,9 @@ var materias = [calculo, algoritmos, sistInfo];
 var problemaCS = new CSP(teachers, materias, grupos);
 
 var gaCSP = new geneticProblem.GeneticAlgorithmProblem(problemaCS, 100, 0.4, 0.3);
+var psoCSP = new psoProblem.PsoProblem(problemaCS, 100, 1.0, 0.6, 0.6 );
 
 console.log("problema csp");
-gaCSP.solveByNumberOfIterations(100);
+//gaCSP.solveByNumberOfIterations(100);
+psoCSP.solveByNumberOfIterations(100);
 //gaCSP.solve(100,true);
