@@ -15,30 +15,39 @@
     <script type="text/javascript" src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="./interface/styles/csp.css">
+
+    <script type="text/javascript" src="./interface/scripts/events.js"></script>
   </head>
   <body>
-    <div class="header">
-        <h1>Class Scheduling Problem</h1>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-        <h3><span class="glyphicon glyphicon-plus">A new Class Scheduler</span></h3>
-        <p>Ipsum Lorem</p>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-        <h3><span class="glyphicon glyphicon-hourglass">Save Time</span></h3>
-        <p>Ipsum Lorem</p>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-        <h3><span class="glyphicon glyphicon-education">Go IME</span></h3>
-        <p>Ipsum Lorem</p>
-    </div>
-    <hr/>
-    <div class="jumbotron">
-        We are using node <script>document.write(process.versions.node)</script>,
-        Chrome <script>document.write(process.versions.chrome)</script>,
-        and Electron <script>document.write(process.versions.electron)</script>.
-    </div>
-    
+    <section id="welcome">
+        <div class="header">
+            <h1>Class Scheduling Problem</h1>
+        </div>
+        <div class="col-xs-12">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <h3><span class="glyphicon glyphicon-plus">A new Class Scheduler</span></h3>
+                <p>Ipsum Lorem</p>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <h3><span class="glyphicon glyphicon-hourglass">Save Time</span></h3>
+                <p>Ipsum Lorem</p>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <h3><span class="glyphicon glyphicon-education">Go IME</span></h3>
+                <p>Ipsum Lorem</p>
+            </div>
+        </div>
+        <hr/>
+        <div class="jumbotron">
+            We are using node <script>document.write(process.versions.node)</script>,
+            Chrome <script>document.write(process.versions.chrome)</script>,
+            and Electron <script>document.write(process.versions.electron)</script>.
+        </div>
+        <button class="btn btn-lg btn-primary" id="welcome-btn"><span class="glyphicon glyphicon-play">Começar</span></button>
+    </section>
+    <section id="content" style="display: none;">
+        <p>Things will happen here!</p>
+    </section>
     <!--<img href="./interface/images/answer.jpg"/>-->
   </body>
 </html>
