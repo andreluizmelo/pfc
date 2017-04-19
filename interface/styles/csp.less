@@ -1,5 +1,24 @@
+@primary-color: #ccc;
+@secondary-color: #444;
+
+.simple-border{
+    color: @secondary-color;
+    background-color: @primary-color;
+    border-radius: 5px;
+}
+
 body {
     font-family: 'Fira Sans', Arial, Helvetica, sans-serif;
-    color: #ccc;
-    background-color: #444;
+    color: @primary-color;
+    background-color: @secondary-color;
+    div{
+        display: inline-block;
+    }
+    section{
+        width: 100%;
+    }
+}
+
+#info {
+    .simple-border;
 }

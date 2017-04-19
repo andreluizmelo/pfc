@@ -1,5 +1,21 @@
+.simple-border {
+  color: #444;
+  background-color: #ccc;
+  border-radius: 5px;
+}
 body {
   font-family: 'Fira Sans', Arial, Helvetica, sans-serif;
   color: #ccc;
   background-color: #444;
+}
+body div {
+  display: inline-block;
+}
+body section {
+  width: 100%;
+}
+#info {
+  color: #444;
+  background-color: #ccc;
+  border-radius: 5px;
 }
