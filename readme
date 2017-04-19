@@ -4,5 +4,10 @@ npm install para baixar dependencias
 
 por enquanto somente lodash.
 
-para rodar:
+para rodar na linha de comando:
 node index.js
+
+para rodar a interface em electron ( em construção):
+instalar o electron:
+    npm install --global electron
+rodar na pasta do projeto: npm start
