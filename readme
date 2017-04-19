@@ -2,7 +2,7 @@ baixar
 
 npm install para baixar dependencias
 
-por enquanto somente lodash.
+por enquanto somente lodash e electron (para interface).
 
 para rodar na linha de comando:
 node index.js
