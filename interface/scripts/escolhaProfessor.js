@@ -35,6 +35,10 @@ var escolhaProfessor = (function(){
         var id = GetNextIndex();
         var nome = $("#nome-professor-input").val();
         var disponibilidade = helpers.EmptyDisponibility();
+        if(nome == undefined || nome == null || nome == ""){
+            toastr.warning("nome não pode ser vazio");
+            return;
+        }
         teachers.push({
             id: id,
             nome: nome,

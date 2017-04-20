@@ -1,0 +1,42 @@
+@import 'base';
+
+body {
+    font-family: 'Fira Sans', Arial, Helvetica, sans-serif;
+    color: @primary-color;
+    background-color: @secondary-color;
+    div{
+        display: inline-block;
+    }
+}
+
+.btn{
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px @shadow;
+    color: @alt-background;
+    background-color: @primary-color;
+    //height: 35px;
+    &.btn-lg{
+        box-shadow: 2px 2px 5px @shadow;
+    }
+    &.btn-sm{
+        box-shadow: 0.5px 0.5px 2px @shadow;
+    }
+    &.btn-primary{
+        color: @primary-color;
+        background-color: @blue;
+    }
+}
+
+input[type="text"] {
+    height: 35px;
+    color: @secondary-color;
+    border-radius: 10px;
+    padding: 10px;
+    border: solid 1px #fff;
+    box-shadow: inset 1px 1px 2px 0 #707070;
+    transition: box-shadow 0.3s;//, border 0.1s;
+    &:focus, &.focus{
+        outline: none;
+        box-shadow: inset 1px 1px 2px 0 #c9c9c9;
+    }
+}

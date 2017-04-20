@@ -1,0 +1,38 @@
+body {
+  font-family: 'Fira Sans', Arial, Helvetica, sans-serif;
+  color: #ccc;
+  background-color: #444;
+}
+body div {
+  display: inline-block;
+}
+.btn {
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px #888;
+  color: #999;
+  background-color: #ccc;
+}
+.btn.btn-lg {
+  box-shadow: 2px 2px 5px #888;
+}
+.btn.btn-sm {
+  box-shadow: 0.5px 0.5px 2px #888;
+}
+.btn.btn-primary {
+  color: #ccc;
+  background-color: #33a;
+}
+input[type="text"] {
+  height: 35px;
+  color: #444;
+  border-radius: 10px;
+  padding: 10px;
+  border: solid 1px #fff;
+  box-shadow: inset 1px 1px 2px 0 #707070;
+  transition: box-shadow 0.3s;
+}
+input[type="text"]:focus,
+input[type="text"].focus {
+  outline: none;
+  box-shadow: inset 1px 1px 2px 0 #c9c9c9;
+}

@@ -34,6 +34,10 @@ var escolhaGrupo = (function(){
     self.AddGroup = function AddGroup(){
         var id = GetNextIndex();
         var nome = $("#nome-grupo-input").val();
+        if(nome == undefined || nome == null || nome == ""){
+            toastr.warning("nome não pode ser vazio");
+            return;
+        }
         var disponibilidade = helpers.EmptyDisponibility();
         groups.push({
             id: id,
