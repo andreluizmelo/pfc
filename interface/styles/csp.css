@@ -26,7 +26,8 @@ body section .content-footer {
   background-color: #ccc;
   border-radius: 5px;
 }
-#escolha-professor-div .lista-professores {
+.escolha-disponibilidade-div .lista-professores,
+.escolha-disponibilidade-div .lista-grupos {
   float: left;
   width: 300px;
   vertical-align: top;
@@ -34,26 +35,32 @@ body section .content-footer {
   padding-right: 10px;
   padding-top: 20px;
 }
-#escolha-professor-div .lista-professores .btn-escolha-professor {
+.escolha-disponibilidade-div .lista-professores .btn-escolha-professor,
+.escolha-disponibilidade-div .lista-grupos .btn-escolha-professor,
+.escolha-disponibilidade-div .lista-professores .btn-escolha-grupo,
+.escolha-disponibilidade-div .lista-grupos .btn-escolha-grupo {
   color: #ccc;
   background-color: #33a;
   display: block;
   margin-bottom: 5px;
 }
-#escolha-professor-div .lista-professores .btn-escolha-professor.active {
+.escolha-disponibilidade-div .lista-professores .btn-escolha-professor.active,
+.escolha-disponibilidade-div .lista-grupos .btn-escolha-professor.active,
+.escolha-disponibilidade-div .lista-professores .btn-escolha-grupo.active,
+.escolha-disponibilidade-div .lista-grupos .btn-escolha-grupo.active {
   background-color: #3a3;
 }
-.grade-horarios-professores {
+.grade-horarios {
   border-left: solid #ccc 1px;
   padding-left: 20px;
 }
-.grade-horarios-professores .tabela-horarios {
+.grade-horarios .tabela-horarios {
   background-color: #999;
   color: #444;
   border-radius: 15px;
   padding: 12px;
 }
-.grade-horarios-professores .tabela-horarios .dia-semana {
+.grade-horarios .tabela-horarios .dia-semana {
   border-radius: 5px;
   padding: 5px;
   color: #ccc;
@@ -61,13 +68,13 @@ body section .content-footer {
   font-size: 1.15em;
   margin-bottom: 10px;
 }
-.grade-horarios-professores .tabela-horarios .btn-escolha-professor-disponibilidade {
+.grade-horarios .tabela-horarios .btn-escolha-disponibilidade {
   color: #ccc;
   background-color: #a33;
   display: block;
   border-radius: 5px;
   margin-bottom: 5px;
 }
-.grade-horarios-professores .tabela-horarios .btn-escolha-professor-disponibilidade.available {
+.grade-horarios .tabela-horarios .btn-escolha-disponibilidade.available {
   background-color: #3a3;
 }

@@ -1,12 +1,12 @@
 <h2>Escolha de Professores</h2>
 
-<div id="escolha-professor-div">
+<div id="escolha-professor-div" class="escolha-disponibilidade-div">
       <div class="lista-professores" id="lista-professores">
             {{#each professores}}
             <button id="teacher-escolhe-{{id}}" class="btn btn-sm btn-escolha-professor" onclick="escolhaProfessor.ActivateTeacher({{id}});">{{nome}}</button>
             {{/each}}
       </div>
-      <div class="grade-horarios-professores" id="grade-horario-escolha-professores">
+      <div class="grade-horarios" id="grade-horario-escolha-professores">
             <div>Escolha um dos professores</div>
       </div>
 </div>
@@ -17,6 +17,7 @@
             <button class="btn btn-primary" onclick="escolhaProfessor.AddTeacher();"><span class="glyphicon glyphicon-plus">Adicionar Professor</span></button>
       </div>
       <div class="pull-right">
-            <button class="btn btn-primary"><span class="glyphicon glyphicon-play">Proximo</span></button>
+            <button class="btn btn-primary" onclick="escolhaGrupo.LoadInterface();"><span class="glyphicon glyphicon-chevron-left">Anterior</span></button>
+            <button class="btn btn-primary" onclick="escolhaGrupo.LoadInterface();"><span class="glyphicon glyphicon-chevron-right">Proximo</span></button>
       </div>
 </div>

@@ -1,0 +1,22 @@
+<h2>Escolha de Grupos</h2>
+
+<div id="escolha-grupo-div" class="escolha-disponibilidade-div">
+      <div class="lista-grupos" id="lista-grupos">
+            {{#each grupos}}
+            <button id="grupo-escolhe-{{id}}" class="btn btn-sm btn-escolha-grupo" onclick="escolhaGrupo.ActivateGroup({{id}});">{{nome}}</button>
+            {{/each}}
+      </div>
+      <div class="grade-horarios" id="grade-horario-escolha-grupos">
+            <div>Escolha um dos grupos</div>
+      </div>
+</div>
+<hr/>
+<div class="content-footer">
+      <div class="pull-left">
+            <input type="text" maxlength="30" id="nome-grupo-input" />
+            <button class="btn btn-primary" onclick="escolhaGrupo.AddGroup();"><span class="glyphicon glyphicon-plus">Adicionar Grupo</span></button>
+      </div>
+      <div class="pull-right">
+            <button class="btn btn-primary" onclick="escolhaProfessor.LoadInterface()"><span class="glyphicon glyphicon-chevron-right">Proximo</span></button>
+      </div>
+</div>

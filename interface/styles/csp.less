@@ -29,16 +29,16 @@ body {
     .simple-border;
 }
 
-#escolha-professor-div{
+.escolha-disponibilidade-div{
     //overflow-y: scroll;
-    .lista-professores{
+    .lista-professores, .lista-grupos{
         float: left;
         width: 300px;
         vertical-align: top;
         padding-left: 10px;
         padding-right: 10px;
         padding-top: 20px;
-        .btn-escolha-professor{
+        .btn-escolha-professor, .btn-escolha-grupo{
             color: @primary-color;
             background-color: @blue;
             display: block;
@@ -49,7 +49,7 @@ body {
         }
     }
 }
-.grade-horarios-professores{
+.grade-horarios{
     border-left: solid @primary-color 1px;
     padding-left: 20px;
     .tabela-horarios{
@@ -66,7 +66,7 @@ body {
             margin-bottom: 10px;
         }
 
-        .btn-escolha-professor-disponibilidade{
+        .btn-escolha-disponibilidade{
             color: @primary-color;
             background-color: @red;
             display: block;

@@ -7,7 +7,7 @@ $(document).ready(function(){
     
     $("#welcome-btn").click(function(event){
         $("#welcome").hide();
-        escolhaProfessor.LoadInterface();
+        escolhaGrupo.LoadInterface();
         $("#content").show();
     });
 });
