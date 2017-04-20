@@ -7,17 +7,7 @@ $(document).ready(function(){
     
     $("#welcome-btn").click(function(event){
         $("#welcome").hide();
+        escolhaProfessor.LoadInterface();
         $("#content").show();
     });
-
-    TemplateHelper.Display("#content", 'teacher', { professores: [
-        {
-            id: 1,
-            nome: 'andre'
-        },
-        {
-            id: 2,
-            nome: 'thomas'
-        }
-    ]});
 });

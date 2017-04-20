@@ -10,11 +10,17 @@ var TemplateHelper = (function(handlebars, $){
     }
 
     function Display( selector, templateName, data){
-        GetCompiledTemplate(templateName).then(function(template){
-            console.log(data);
-            var content = template(data);
-            console.log(content);
-            $(selector).html(content);
+        return GetCompiledTemplate(templateName).then(function(template){
+            try{
+                //console.log(data);
+                var content = template(data);
+                //console.log(content);
+                $(selector).html(content);
+                return Promise.resolve(true);
+            }catch(err){
+                console.log(err);
+                return Promise.resolve(false);
+            }
         });
     }
 

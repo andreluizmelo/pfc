@@ -9,6 +9,12 @@
         window.$ = require('jquery');
         window.jQuery = window.$;
         window.handlebars = require('handlebars');
+        window._ = require('lodash');
+        window.constants = require('./class_scheduling_problem/constantes');
+        window.helpers = require('./class_scheduling_problem/helpers');
+
+        
+        var diasDaSemana= ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'];
     </script>
 
     <!-- Bootstrap -->
@@ -19,6 +25,7 @@
 
     <script type="text/javascript" src="./interface/scripts/events.js"></script>
     <script type="text/javascript" src="./interface/scripts/template.js"></script>
+    <script type="text/javascript" src="./interface/scripts/escolhaProfessor.js"></script>
   </head>
   <body>
     <section id="welcome">

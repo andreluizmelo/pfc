@@ -15,9 +15,66 @@ body {
     }
     section{
         width: 100%;
+        h2{
+            margin-left: 15%;
+        }
+        .content-footer{
+            width: 100%;
+            padding: 10px;
+        }
     }
 }
 
 #info {
     .simple-border;
+}
+
+#escolha-professor-div{
+    //overflow-y: scroll;
+    .lista-professores{
+        float: left;
+        width: 300px;
+        vertical-align: top;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 20px;
+        .btn-escolha-professor{
+            color: @primary-color;
+            background-color: @blue;
+            display: block;
+            margin-bottom: 5px;
+            &.active{
+                background-color: @green;
+            }
+        }
+    }
+}
+.grade-horarios-professores{
+    border-left: solid @primary-color 1px;
+    padding-left: 20px;
+    .tabela-horarios{
+        background-color: @alt-background;
+        color: @secondary-color;
+        border-radius: 15px;
+        padding: 12px;
+        .dia-semana{
+            border-radius: 5px;
+            padding: 5px;
+            color: @primary-color;
+            background-color: @green;
+            font-size: 1.15em;
+            margin-bottom: 10px;
+        }
+
+        .btn-escolha-professor-disponibilidade{
+            color: @primary-color;
+            background-color: @red;
+            display: block;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            &.available{
+                background-color: @green;
+            }
+        }
+    }
 }

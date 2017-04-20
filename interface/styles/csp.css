@@ -14,8 +14,60 @@ body div {
 body section {
   width: 100%;
 }
+body section h2 {
+  margin-left: 15%;
+}
+body section .content-footer {
+  width: 100%;
+  padding: 10px;
+}
 #info {
   color: #444;
   background-color: #ccc;
   border-radius: 5px;
+}
+#escolha-professor-div .lista-professores {
+  float: left;
+  width: 300px;
+  vertical-align: top;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 20px;
+}
+#escolha-professor-div .lista-professores .btn-escolha-professor {
+  color: #ccc;
+  background-color: #33a;
+  display: block;
+  margin-bottom: 5px;
+}
+#escolha-professor-div .lista-professores .btn-escolha-professor.active {
+  background-color: #3a3;
+}
+.grade-horarios-professores {
+  border-left: solid #ccc 1px;
+  padding-left: 20px;
+}
+.grade-horarios-professores .tabela-horarios {
+  background-color: #999;
+  color: #444;
+  border-radius: 15px;
+  padding: 12px;
+}
+.grade-horarios-professores .tabela-horarios .dia-semana {
+  border-radius: 5px;
+  padding: 5px;
+  color: #ccc;
+  background-color: #3a3;
+  font-size: 1.15em;
+  margin-bottom: 10px;
+}
+.grade-horarios-professores .tabela-horarios .btn-escolha-professor-disponibilidade {
+  color: #ccc;
+  background-color: #a33;
+  display: block;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+.grade-horarios-professores .tabela-horarios .btn-escolha-professor-disponibilidade.available {
+  background-color: #3a3;
 }

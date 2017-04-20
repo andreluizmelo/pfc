@@ -50,6 +50,14 @@ function timeSum( day1, time1, day2, time2){
     return intToDayAndTime(sum);
 }
 
+function EmptyDisponibility(){
+    var disp = [];
+    var i;
+    for(i = 0; i < cspConsts.maxDay + 1; i++)
+        disp.push( (new Array(cspConsts.maxTime+1)).fill(0));
+    return disp;
+}
+
 module.exports = {
     randomDay: randomDay,
     randomTime: randomTime,
@@ -57,5 +65,6 @@ module.exports = {
     intToDayAndTime: intToDayAndTime ,
     timeMultiply: timeMultiply,
     timeDiff: timeDiff,
-    timeSum: timeSum
+    timeSum: timeSum,
+    EmptyDisponibility: EmptyDisponibility
 };
