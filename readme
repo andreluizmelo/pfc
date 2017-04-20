@@ -1,13 +1,12 @@
 baixar
 
-npm install para baixar dependencias
-
-por enquanto somente lodash e electron (para interface).
+npm install para baixar dependencias:
+    lodash, bootstrap, jquery, etc.
 
 para rodar na linha de comando:
 node index.js
 
-para rodar a interface em electron ( em construção):
-instalar o electron:
+para rodar a interface em electron ( em construção ainda):
+instalar o electron na primeira vez:
     npm install --global electron
 rodar na pasta do projeto: npm start
