@@ -5,7 +5,8 @@ const url = require('url');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const Menu = electron.Menu;
-
+const Tray = electron.Tray;
+const ipc = electron.ipcMain;
 let win;
 
 
@@ -26,11 +27,18 @@ function createWindow () {
     {
       label: name,
       submenu: [{
-        label: 'About ${name}',
+        label: 'About ' + name,
         click: () =>{
           console.log('TODO about page');
         },
-        role: 'about'
+        role: 'about',
+        accelerator: 'CommandOrControl+A'
+      },{
+        label: 'Developer Tools',
+        click: () => {
+          win.webContents.openDevTools();
+        },
+         accelerator: 'CommandOrControl+Shift+I'
       },{
         type: 'separator'
       },{
@@ -40,14 +48,45 @@ function createWindow () {
         },
         accelerator: 'CommandOrControl+Q'
       }]
+    },{
+      label: 'Ações',
+      submenu: [{
+          label: 'Grupos',
+          click: () => {
+            win.webContents.send('groups', null);
+          },
+          accelerator: 'CommandOrControl+G'
+        },{
+          label: 'Professores',
+          click: () => {
+            win.webContents.send('teachers', null);
+          },
+          accelerator: 'CommandOrControl+P'
+        },{
+          label: 'Matérias',
+          click: () => {
+            win.webContents.send('subjects', null);
+          },
+          accelerator: 'CommandOrControl+M'
+        },{
+          type: 'separator'
+        },{
+          label: 'Limpar',
+          click: () => {
+            win.webContents.send('reset', null);
+          },
+          accelerator: 'CommandOrControl+L'
+        }
+      ]
     }
   ];
 
   const menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
-  // Open the DevTools.
-  // not needed now :P, maybe yes 
-  //win.webContents.openDevTools();
+  
+  // sem uso :(
+  // const tray = new Tray('./interface/images/csps2.png');
+  // tray.setContextMenu(menu);
 
   // Emitted when the window is closed.
   win.on('closed', () => {
