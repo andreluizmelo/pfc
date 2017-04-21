@@ -65,5 +65,16 @@ var escolhaGrupo = (function(){
         disp[day][time] = 1 - disp[day][time];
         grupo.disponibilidade = disp;
     };
+    self.MakeDayAvailable = function MakeDayAvailable(id, day){
+        var grupo = self.GetGroup(id);
+        var disp = _.cloneDeep(grupo.disponibilidade);
+        var i;
+        for(i = 0; i < disp[day].length; i++){
+            $("#escolha-grupo-tempo-" + day + '-' + i).addClass("available");
+            disp[day][i] = 1;
+        }
+        grupo.disponibilidade = disp;
+    };
+    
     return self;
 })();

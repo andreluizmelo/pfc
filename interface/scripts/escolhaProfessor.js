@@ -57,13 +57,22 @@ var escolhaProfessor = (function(){
         $("#nome-professor-input").val(''); // esvazia
     };
     self.ChangeDisponibility = function ChangeDisponibility(id, day, time){
-        console.log(id + '-' + day + '-' + time);
         $("#escolha-professor-tempo-" + day + '-' + time).toggleClass("available");
-        //console.log(self.GetTeacher(id));
         var prof = self.GetTeacher(id);
         var disp = _.cloneDeep(prof.disponibilidade);
         disp[day][time] = 1 - disp[day][time];
         prof.disponibilidade = disp;
     };
+    self.MakeDayAvailable = function MakeDayAvailable(id, day){
+        var prof = self.GetTeacher(id);
+        var disp = _.cloneDeep(prof.disponibilidade);
+        var i;
+        for(i = 0; i < disp[day].length; i++){
+            $("#escolha-professor-tempo-" + day + '-' + i).addClass("available");
+            disp[day][i] = 1;
+        }
+        prof.disponibilidade = disp;
+    };
+
     return self;
 })();

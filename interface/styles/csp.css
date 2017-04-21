@@ -42,7 +42,7 @@ body section .content-footer {
 .escolha-disponibilidade-div .lista-grupos .btn-escolha-professor.active,
 .escolha-disponibilidade-div .lista-professores .btn-escolha-grupo.active,
 .escolha-disponibilidade-div .lista-grupos .btn-escolha-grupo.active {
-  background-color: #3a3;
+  background-color: #191;
 }
 .grade-horarios {
   border-left: solid #ccc 1px;
@@ -59,9 +59,10 @@ body section .content-footer {
   border-radius: 5px;
   padding: 5px;
   color: #ccc;
-  background-color: #3a3;
+  background-color: #191;
   font-size: 1.15em;
   margin-bottom: 10px;
+  width: 90px;
 }
 .grade-horarios .tabela-horarios .btn-escolha-disponibilidade {
   color: #ccc;
@@ -69,7 +70,8 @@ body section .content-footer {
   display: block;
   border-radius: 5px;
   margin-bottom: 5px;
+  width: 90px;
 }
 .grade-horarios .tabela-horarios .btn-escolha-disponibilidade.available {
-  background-color: #3a3;
+  background-color: #191;
 }
