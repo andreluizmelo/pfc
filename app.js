@@ -40,6 +40,12 @@ function createWindow () {
         },
          accelerator: 'CommandOrControl+Shift+I'
       },{
+        label: 'Recarregar Página',
+        click: () => {
+          win.reload();
+        },
+         accelerator: 'CommandOrControl+R'
+      },{
         type: 'separator'
       },{
         label: 'Quit',
