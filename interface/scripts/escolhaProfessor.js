@@ -26,9 +26,12 @@ var escolhaProfessor = (function(){
     };
     self.LoadGradeDisponibilidade = function(id){
         TemplateHelper.Display("#grade-horario-escolha-professores", 
-            'grade-disponibilidade-professores', {
+            'grade-disponibilidade', {
                 diasDaSemana: diasDaSemana,
-                professor: self.GetTeacher(id)
+                elem: self.GetTeacher(id),
+                type: 'professor',
+                typeCapitalized: 'Professor',
+                'type-plural': 'professores'
             });
     };
     self.AddTeacher = function AddTeacher(){

@@ -26,9 +26,12 @@ var escolhaGrupo = (function(){
     };
     self.LoadGradeDisponibilidade = function(id){
         TemplateHelper.Display("#grade-horario-escolha-grupos", 
-            'grade-disponibilidade-grupos', {
+            'grade-disponibilidade', {
                 diasDaSemana: diasDaSemana,
-                grupo: self.GetGroup(id)
+                elem: self.GetGroup(id),
+                type: 'grupo',
+                typeCapitalized: 'Grupo',
+                'type-plural': 'grupos'
             });
     };
     self.AddGroup = function AddGroup(){
