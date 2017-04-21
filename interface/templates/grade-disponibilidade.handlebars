@@ -4,7 +4,7 @@
     <div id="escolha-{{../type}}-dia-{{@index}}">
         <div class="dia-semana">{{#with (lookup ../diasDaSemana @index)}} {{this}} {{/with}}</div>
         {{#each this}}
-            <button class="btn btn-sm btn-escolha-disponibilidade {{#if this}}available{{/if}}" id="escolha-{{../../type}}-tempo-{{@../index}}-{{@index}}" onclick="escolha{{../../typeCapitalized}}.ChangeDisponibility({{../../elem.id}}, {{@../index}}, {{@index}});">{{@index}} - {{this}}</button>
+            <button class="btn btn-sm btn-escolha-disponibilidade {{#if this}}available{{/if}}" id="escolha-{{../../type}}-tempo-{{@../index}}-{{@index}}" onclick="escolha{{../../typeCapitalized}}.ChangeDisponibility({{../../elem.id}}, {{@../index}}, {{@index}});">{{lookup ../../horarios @index}}</button>
         {{/each}}
     </div>
     {{/each}}

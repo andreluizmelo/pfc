@@ -28,6 +28,7 @@ var escolhaGrupo = (function(){
         TemplateHelper.Display("#grade-horario-escolha-grupos", 
             'grade-disponibilidade', {
                 diasDaSemana: diasDaSemana,
+                horarios: horarios,
                 elem: self.GetGroup(id),
                 type: 'grupo',
                 typeCapitalized: 'Grupo',

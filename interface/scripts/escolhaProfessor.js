@@ -28,6 +28,7 @@ var escolhaProfessor = (function(){
         TemplateHelper.Display("#grade-horario-escolha-professores", 
             'grade-disponibilidade', {
                 diasDaSemana: diasDaSemana,
+                horarios: horarios,
                 elem: self.GetTeacher(id),
                 type: 'professor',
                 typeCapitalized: 'Professor',
