@@ -22,6 +22,7 @@ body section .content-footer {
 .escolha-disponibilidade-div .lista-grupos {
   float: left;
   width: 300px;
+  min-height: 300px;
   vertical-align: top;
   padding-left: 10px;
   padding-right: 10px;
@@ -35,6 +36,7 @@ body section .content-footer {
   background-color: #33a;
   display: block;
   margin-bottom: 5px;
+  min-width: 125px;
 }
 .escolha-disponibilidade-div .lista-professores .btn-escolha-professor.active,
 .escolha-disponibilidade-div .lista-grupos .btn-escolha-professor.active,
@@ -45,6 +47,7 @@ body section .content-footer {
 .grade-horarios {
   border-left: solid #ccc 1px;
   padding-left: 20px;
+  min-height: 300px;
 }
 .grade-horarios .tabela-horarios {
   background-color: #999;

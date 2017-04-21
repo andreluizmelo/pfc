@@ -28,6 +28,7 @@ body{
     .lista-professores, .lista-grupos{
         float: left;
         width: 300px;
+        min-height: 300px;
         vertical-align: top;
         padding-left: 10px;
         padding-right: 10px;
@@ -37,6 +38,7 @@ body{
             background-color: @blue;
             display: block;
             margin-bottom: 5px;
+            min-width: 125px;
             &.active{
                 background-color: @green;
             }
@@ -46,6 +48,7 @@ body{
 .grade-horarios{
     border-left: solid @primary-color 1px;
     padding-left: 20px;
+    min-height: 300px;
     .tabela-horarios{
         background-color: @alt-background;
         color: @secondary-color;

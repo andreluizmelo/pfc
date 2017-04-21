@@ -12,6 +12,9 @@ body div {
   color: #999;
   background-color: #ccc;
 }
+.btn:focus {
+  outline: none!important;
+}
 .btn.btn-lg {
   box-shadow: 2px 2px 5px #888;
 }
