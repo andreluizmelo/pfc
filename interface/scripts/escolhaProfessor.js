@@ -74,5 +74,9 @@ var escolhaProfessor = (function(){
         prof.disponibilidade = disp;
     };
 
+    self.reset = function reset(){
+        this.teachers = [];
+    };
+
     return self;
 })();

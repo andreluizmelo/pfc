@@ -76,5 +76,9 @@ var escolhaGrupo = (function(){
         grupo.disponibilidade = disp;
     };
     
+    self.reset = function reset(){
+        groups = [];
+    };
+
     return self;
 })();

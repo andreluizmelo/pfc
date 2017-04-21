@@ -30,6 +30,11 @@ $(document).ready(function(){
         console.log('TODO materias');
     });
     ipc.on('reset', function(event, arg){
-        console.log('TODO reset');
+        window.home = true;
+        $("#content").hide();
+        $("#welcome").show();
+
+        escolhaGrupo.reset();
+        escolhaProfessor.reset();
     });
 });
