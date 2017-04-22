@@ -30,7 +30,21 @@ body {
     }
 }
 
-input[type="text"] {
+.csp-form{
+    div{
+        display: block;
+        padding: 3px;
+        margin-bottom: 10px;
+        
+        label{
+            display: block;
+            font-size: 1.15em;
+            //margin-bottom: 4px;
+        }
+    }
+}
+
+input[type="text"], input[type="number"] {
     height: 35px;
     color: @secondary-color;
     border-radius: 10px;
@@ -38,8 +52,55 @@ input[type="text"] {
     border: solid 1px #fff;
     box-shadow: inset 1px 1px 2px 0 #707070;
     transition: box-shadow 0.3s;//, border 0.1s;
+    text-shadow:0 1px 0 rgba(0,0,0,0.4);
     &:focus, &.focus{
         outline: none;
         box-shadow: inset 1px 1px 2px 0 #c9c9c9;
     }
+}
+.loading-div{
+    width: 100%;
+    text-align: center;
+    .loading{
+        border: 5px @primary-color;
+        box-shadow: inset 2px 2px 3px 0 darken(@primary-color, 10);
+        outline: none;
+        height: 250px;
+        width: 250px;
+        border-radius: 125px;
+        border-bottom: none;
+        display: inline-block;
+        animation: loading 3s ease infinite;
+    }
+}
+
+select{
+    height: 35px;
+    border: none;
+    border-radius: 10px;
+    background-color: white;
+    color: @secondary-color;
+    text-shadow:0 1px 0 rgba(0,0,0,0.4);
+    &:focus, &.focus{
+        outline: none;
+        box-shadow: inset 1px 1px 2px 0 #c9c9c9;
+    }
+    option {
+        background-color: @primary-color;
+        color: @secondary-color; // not working :(
+        text-shadow:0 1px 0 rgba(0,0,0,0.4);
+        
+        &:checked, &:hover, &:focus, &:active{
+            color: @primary-color; // is working :)
+            background-color: @secondary-color;
+            font-weight: 700;
+        }
+        
+
+    }
+}
+
+@keyframes loading {
+    from { transform: rotate(360deg); }
+    to   { transform: rotate(0deg); }
 }

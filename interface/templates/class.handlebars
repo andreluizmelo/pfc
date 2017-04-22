@@ -1,1 +1,45 @@
-<h4>Class template</h4>
+<h2>Escolha de Matérias</h2>
+
+<div id="escolha-materia-div" class="escolha-materia-div col-xs-12">
+      <div class="loading-div">
+            <div class="loading">
+            </div>
+      </div>
+</div>
+<hr/>
+<div class="content-footer col-xs-12">
+      <div class="pull-left col-xs-12 csp-form">
+            <div class="col-xs-12 col-sm-10 col-md-6 col-lg-4">
+                  <label>Nome:</label>
+                  <input type="text" maxlength="30" id="nome-materia-input" />
+            </div>
+            <div class="col-xs-12 col-sm-10 col-md-6 col-lg-4">
+                  <label>Quantidade de aulas por semana:</label>
+                  <input type="number" min="1" id="aula-materia-input" />      
+            </div>
+            <div class="col-xs-12 col-sm-10 col-md-6 col-lg-4">
+                  <label>Grupo:</label>
+                  <select id="materia-grupo-input">
+                        <option value="">Selecione um Grupo</option>
+                        {{#each grupos}}
+                              <option value="{{id}}">{{nome}}</option>
+                        {{/each}}
+                  </select>
+            </div>
+            <div class="col-xs-12 col-sm-10 col-md-6 col-lg-4">
+                  <label>Professor:</label>
+                  <select id="materia-professor-input">
+                        <option value="">Selecione um Professor</option>
+                        {{#each professores}}  
+                              <option value="{{id}}">{{nome}}</option>
+                        {{/each}}
+                  </select>
+            </div>     
+               
+            <button class="btn btn-primary" onclick="escolhaMateria.AddMateria();"><span class="glyphicon glyphicon-plus"></span>Adicionar Matéria</button>
+      </div>
+      <div class="pull-right">
+            <button class="btn btn-primary" onclick="escolhaProfessor.LoadInterface()"><span class="glyphicon glyphicon-chevron-right"></span>Anterior</button>
+            <button class="btn btn-primary" onclick="escolhaGrupo.LoadInterface()">Próximo<span class="glyphicon glyphicon-chevron-right"></span></button>
+      </div>
+</div>

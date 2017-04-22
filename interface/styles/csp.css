@@ -75,3 +75,7 @@ body section .content-footer {
 .grade-horarios .tabela-horarios .btn-escolha-disponibilidade.available {
   background-color: #191;
 }
+.escolha-materia-div {
+  text-align: center;
+  width: 100%;
+}
