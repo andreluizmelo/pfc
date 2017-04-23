@@ -2,6 +2,7 @@
   color: #444;
   background-color: #ccc;
   border-radius: 5px;
+  border: 1px solid #ccc;
 }
 body section {
   width: 100%;
@@ -17,6 +18,23 @@ body section .content-form {
   color: #444;
   background-color: #ccc;
   border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 30%;
+  margin-left: 35%;
+  padding: 10px;
+  padding-left: 15px;
+  font-size: 0.9em;
+  vertical-align: middle;
+  text-align: center;
+  margin-top: 10px;
+}
+.start-div {
+  margin-top: 25px;
+  text-align: center;
+  vertical-align: middle;
+}
+.start-div button {
+  display: inline-block;
 }
 .escolha-disponibilidade-div .lista-professores,
 .escolha-disponibilidade-div .lista-grupos {
