@@ -7,17 +7,17 @@
       </div>
 </div>
 <hr/>
-<div class="content-footer col-xs-12">
+<div class="content-form col-xs-12">
       <div class="pull-left col-xs-12 csp-form">
-            <div class="col-xs-12 col-sm-10 col-md-6 col-lg-4">
+            <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
                   <label>Nome:</label>
                   <input type="text" maxlength="30" id="nome-materia-input" />
             </div>
-            <div class="col-xs-12 col-sm-10 col-md-6 col-lg-4">
-                  <label>Quantidade de aulas por semana:</label>
+            <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+                  <label>Aulas por semana:</label>
                   <input type="number" min="1" id="aula-materia-input" />      
             </div>
-            <div class="col-xs-12 col-sm-10 col-md-6 col-lg-4">
+            <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
                   <label>Grupo:</label>
                   <select id="materia-grupo-input">
                         <option value="">Selecione um Grupo</option>
@@ -26,7 +26,7 @@
                         {{/each}}
                   </select>
             </div>
-            <div class="col-xs-12 col-sm-10 col-md-6 col-lg-4">
+            <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
                   <label>Professor:</label>
                   <select id="materia-professor-input">
                         <option value="">Selecione um Professor</option>
@@ -36,10 +36,18 @@
                   </select>
             </div>     
                
-            <button class="btn btn-primary" onclick="escolhaMateria.AddMateria();"><span class="glyphicon glyphicon-plus"></span>Adicionar Matéria</button>
       </div>
-      <div class="pull-right">
-            <button class="btn btn-primary" onclick="escolhaProfessor.LoadInterface()"><span class="glyphicon glyphicon-chevron-right"></span>Anterior</button>
-            <button class="btn btn-primary" onclick="escolhaGrupo.LoadInterface()">Próximo<span class="glyphicon glyphicon-chevron-right"></span></button>
-      </div>
+      <div class="col-xs-12">
+            <div class="pull-right">
+                  <button class="btn" onclick="escolhaMateria.LimparMaterias();"><span class="glyphicon glyphicon-remove"></span>Limpar Matérias</button>
+                  <button class="btn btn-primary" onclick="escolhaMateria.AddMateria();"><span class="glyphicon glyphicon-plus"></span>Adicionar Matéria</button>
+            </div>
+      
+      <div>
+      
 </div>
+<div class="content-footer col-xs-12">      
+      <button class="btn btn-primary pull-left" onclick="escolhaProfessor.LoadInterface()"><span class="glyphicon glyphicon-chevron-left"></span>Anterior</button>
+      <button class="btn btn-primary pull-right" onclick="escolhaGrupo.LoadInterface()">Próximo<span class="glyphicon glyphicon-chevron-right"></span></button>
+</div>
+      

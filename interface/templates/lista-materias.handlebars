@@ -1,0 +1,24 @@
+<div id="lista-materias">
+<table class="csp-table lista-materia-table">
+    <thead>
+        <tr>
+            <th>Matéria</th>
+            <th>Aulas por Semana</th>
+            <th>Grupo</th>
+            <th>Professor</th>
+            <th>Remover</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each materias as |materia|}}
+        <tr>
+            <td>{{materia.nome}}</td>
+            <td>{{materia.numClasses}}</td>
+            <td>{{#with (lookupById ../grupos materia.grupo) as |grupo|}}{{grupo.nome}}{{/with}}</td>
+            <td>{{#with (lookupById ../professores materia.professor) as |professor|}}{{professor.nome}}{{/with}}</td>
+            <td><span class="glyphicon glyphicon-remove" onclick="escolhaMateria.RemoveMateria({{materia.id}});"></span></td>
+        {{/each}}
+        </tr>
+    </tbody>
+</table>
+</div>

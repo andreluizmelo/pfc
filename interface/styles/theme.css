@@ -1,10 +1,43 @@
+.scrollbar::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+.scrollbar::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F5F5F5;
+}
+.scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #555;
+}
 body {
   font-family: 'Fira Sans', Arial, Helvetica, sans-serif;
   color: #ccc;
   background-color: #444;
+  overflow-y: auto;
 }
 body div {
   display: inline-block;
+}
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+body::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F5F5F5;
+}
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #555;
 }
 .btn {
   border-radius: 10px;
@@ -24,6 +57,42 @@ body div {
 .btn.btn-primary {
   color: #ccc;
   background-color: #33a;
+}
+.csp-table {
+  max-height: 400px;
+  overflow-y: auto;
+}
+.csp-table::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+.csp-table::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F5F5F5;
+}
+.csp-table::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #555;
+}
+.csp-table thead th {
+  min-width: 100px;
+  background-color: #ccc;
+  color: #444;
+  font-size: 1.15em;
+  border-radius: 0;
+  text-align: center;
+  vertical-align: middle;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+.csp-table td {
+  border: none;
+  text-align: center;
+  vertical-align: middle;
 }
 .csp-form div {
   display: block;
@@ -100,4 +169,16 @@ select option:active {
   to {
     transform: rotate(0deg);
   }
+}
+.glyphicon-remove {
+  color: red;
+}
+.glyphicon-remove:hover {
+  cursor: pointer;
+}
+.content-footer {
+  padding: 10px;
+  border: none;
+  margin-top: 15px;
+  border-top: 1px solid #ccc;
 }

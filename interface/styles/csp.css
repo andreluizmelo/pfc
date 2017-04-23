@@ -9,7 +9,7 @@ body section {
 body section h2 {
   margin-left: 15%;
 }
-body section .content-footer {
+body section .content-form {
   width: 100%;
   padding: 10px;
 }
@@ -47,7 +47,7 @@ body section .content-footer {
 .grade-horarios {
   border-left: solid #ccc 1px;
   padding-left: 20px;
-  min-height: 300px;
+  min-height: 505px;
 }
 .grade-horarios .tabela-horarios {
   background-color: #999;
@@ -77,5 +77,9 @@ body section .content-footer {
 }
 .escolha-materia-div {
   text-align: center;
+  width: 100%;
+  min-height: 400px;
+}
+.escolha-materia-div #lista-materias {
   width: 100%;
 }
