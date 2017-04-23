@@ -1,0 +1,71 @@
+<h2>Confirmação</h2>
+
+<div id="confirmacao-div" class="confirmacao-div col-xs-12">
+      <ul class="nav nav-tabs" role="tablist" id="confirmacao-tabs">
+        <li role="presentation" class="active">
+            <a href="#confirmacao-grupos" aria-controls="confirmacao-grupos" role="tab" data-toggle="tab">
+                Grupos
+            </a>
+        </li>
+        <li role="presentation" class="active">
+            <a href="#confirmacao-professores" aria-controls="confirmacao-professores" role="tab" data-toggle="tab">
+                Professores
+            </a>
+        </li>
+        <li role="presentation" class="active">
+            <a href="#confirmacao-materias" aria-controls="confirmacao-materias" role="tab" data-toggle="tab">
+                Matérias
+            </a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade in active" id="confirmacao-grupos">
+            <div class="lista-grupos" id="lista-grupos">
+                {{#each grupos}}
+                <button id="grupo-escolhe-{{id}}" class="btn btn-sm btn-escolha-grupo" onclick="escolhaGrupo.ActivateGroup({{id}}, true);">{{nome}}</button>
+                {{/each}}
+            </div>
+            <div class="grade-horarios" id="grade-horario-escolha-grupos">
+                    <div>Escolha um dos grupos</div>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="confirmacao-professores">
+            <div class="lista-professores" id="lista-professores">
+                {{#each professores}}
+                <button id="teacher-escolhe-{{id}}" class="btn btn-sm btn-escolha-professor" onclick="escolhaProfessor.ActivateTeacher({{id}}, true);">{{nome}}</button>
+                {{/each}}
+            </div>
+            <div class="grade-horarios" id="grade-horario-escolha-professores">
+                    <div>Escolha um dos professores</div>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="confirmacao-materias">
+            <table class="csp-table lista-materia-table">
+                <thead>
+                    <tr>
+                        <th>Matéria</th>
+                        <th>Aulas por Semana</th>
+                        <th>Grupo</th>
+                        <th>Professor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each materias as |materia|}}
+                    <tr>
+                        <td>{{materia.nome}}</td>
+                        <td>{{materia.numClasses}}</td>
+                        <td>{{#with (lookupById ../grupos materia.grupo) as |grupo|}}{{grupo.nome}}{{/with}}</td>
+                        <td>{{#with (lookupById ../professores materia.professor) as |professor|}}{{professor.nome}}{{/with}}</td>
+                    {{/each}}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="content-footer col-xs-12">
+      <button class="btn btn-primary pull-left" onclick="escolhaMateria.LoadInterface();">Cancelar</button>
+      <button class="btn btn-primary pull-right" onclick="confirmacao.confirm();"><span class="glyphicon glyphicon-ok"></span>Confirmar</button>
+</div>

@@ -19,12 +19,15 @@ var escolhaProfessor = (function(){
         TemplateHelper.Display("#content", 'teacher', { professores: teachers});
     };
 
-    self.ActivateTeacher = function(id){
+    self.ActivateTeacher = function(id, lock){
         $("#lista-professores button").removeClass("active");
         $("#teacher-escolhe-" + id).addClass("active");
-        self.LoadGradeDisponibilidade(id);
+        self.LoadGradeDisponibilidade(id, lock);
     };
-    self.LoadGradeDisponibilidade = function(id){
+    self.LoadGradeDisponibilidade = function(id, lock){
+        var editable = true;
+        if(lock == true)
+            editable = false;
         TemplateHelper.Display("#grade-horario-escolha-professores", 
             'grade-disponibilidade', {
                 diasDaSemana: diasDaSemana,
@@ -32,7 +35,8 @@ var escolhaProfessor = (function(){
                 elem: self.GetTeacher(id),
                 type: 'professor',
                 typeCapitalized: 'Professor',
-                'type-plural': 'professores'
+                'type-plural': 'professores',
+                editable: editable
             });
     };
     self.AddTeacher = function AddTeacher(){

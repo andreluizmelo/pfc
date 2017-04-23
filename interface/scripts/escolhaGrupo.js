@@ -19,12 +19,17 @@ var escolhaGrupo = (function(){
         TemplateHelper.Display("#content", 'group', { grupos: groups});
     };
 
-    self.ActivateGroup = function(id){
+    self.ActivateGroup = function(id, lock){
         $("#lista-grupos button").removeClass("active");
         $("#grupo-escolhe-" + id).addClass("active");
-        self.LoadGradeDisponibilidade(id);
+        self.LoadGradeDisponibilidade(id, lock);
     };
-    self.LoadGradeDisponibilidade = function(id){
+    self.LoadGradeDisponibilidade = function(id, lock){
+        var editable = true;
+        if(lock == true)
+            editable = false;
+            console.log(lock);
+            console.log(editable);
         TemplateHelper.Display("#grade-horario-escolha-grupos", 
             'grade-disponibilidade', {
                 diasDaSemana: diasDaSemana,
@@ -32,7 +37,8 @@ var escolhaGrupo = (function(){
                 elem: self.GetGroup(id),
                 type: 'grupo',
                 typeCapitalized: 'Grupo',
-                'type-plural': 'grupos'
+                'type-plural': 'grupos',
+                editable: editable
             });
     };
     self.AddGroup = function AddGroup(){

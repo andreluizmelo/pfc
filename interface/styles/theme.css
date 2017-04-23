@@ -58,6 +58,9 @@ body::-webkit-scrollbar-thumb {
   color: #ccc;
   background-color: #33a;
 }
+.btn.locked {
+  cursor: default!important;
+}
 .csp-table {
   max-height: 400px;
   overflow-y: auto;

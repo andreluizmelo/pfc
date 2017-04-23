@@ -37,7 +37,9 @@ body section .content-form {
   display: inline-block;
 }
 .escolha-disponibilidade-div .lista-professores,
-.escolha-disponibilidade-div .lista-grupos {
+.confirmacao-div .lista-professores,
+.escolha-disponibilidade-div .lista-grupos,
+.confirmacao-div .lista-grupos {
   float: left;
   width: 300px;
   min-height: 300px;
@@ -47,9 +49,13 @@ body section .content-form {
   padding-top: 20px;
 }
 .escolha-disponibilidade-div .lista-professores .btn-escolha-professor,
+.confirmacao-div .lista-professores .btn-escolha-professor,
 .escolha-disponibilidade-div .lista-grupos .btn-escolha-professor,
+.confirmacao-div .lista-grupos .btn-escolha-professor,
 .escolha-disponibilidade-div .lista-professores .btn-escolha-grupo,
-.escolha-disponibilidade-div .lista-grupos .btn-escolha-grupo {
+.confirmacao-div .lista-professores .btn-escolha-grupo,
+.escolha-disponibilidade-div .lista-grupos .btn-escolha-grupo,
+.confirmacao-div .lista-grupos .btn-escolha-grupo {
   color: #ccc;
   background-color: #33a;
   display: block;
@@ -57,9 +63,13 @@ body section .content-form {
   min-width: 125px;
 }
 .escolha-disponibilidade-div .lista-professores .btn-escolha-professor.active,
+.confirmacao-div .lista-professores .btn-escolha-professor.active,
 .escolha-disponibilidade-div .lista-grupos .btn-escolha-professor.active,
+.confirmacao-div .lista-grupos .btn-escolha-professor.active,
 .escolha-disponibilidade-div .lista-professores .btn-escolha-grupo.active,
-.escolha-disponibilidade-div .lista-grupos .btn-escolha-grupo.active {
+.confirmacao-div .lista-professores .btn-escolha-grupo.active,
+.escolha-disponibilidade-div .lista-grupos .btn-escolha-grupo.active,
+.confirmacao-div .lista-grupos .btn-escolha-grupo.active {
   background-color: #191;
 }
 .grade-horarios {

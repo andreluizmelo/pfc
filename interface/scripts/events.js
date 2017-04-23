@@ -6,6 +6,11 @@ $(document).ready(function(){
     //     $(elem).load('./interface/templates/' + $(elem).data('path') + '.handlebars');
     // });
     
+    $('#confirmacao-tabs a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+    });
+
     function showContent(){
         $("#welcome").hide();
         $("#content").show();
