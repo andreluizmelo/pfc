@@ -9,6 +9,12 @@ var confirmacao = (function(){
             grupos: groups,
             materias: materias,
             professores: professores
+        }).then(function(response){
+            console.log($("#confirmacao-tabs").length);
+            $("#confirmacao-tabs a").on("click", function(e){
+                e.preventDefault();
+                $(this).tab('show');
+            });
         });
     };
 

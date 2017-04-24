@@ -1,32 +1,32 @@
 <h2>Confirmação</h2>
 
 <div id="confirmacao-div" class="confirmacao-div col-xs-12">
-
+{{!--
     <button class="tablinks active" onclick="openTab(event, 'Groups')">Grupos</button>
     <button class="tablinks" onclick="openTab(event, 'Professors')">Professores</button>
     <button class="tablinks" onclick="openTab(event, 'Subjects')">Matérias</button>
 
-</div>
+</div>--}}
     
-    <!-- <ul class="nav nav-tabs" role="tablist" id="confirmacao-tabs">
-        <li role="presentation" class="active">
+    <ul class="nav nav-tabs" role="tablist" id="confirmacao-tabs">
+        <li  class="active">
             <a href="#confirmacao-grupos" aria-controls="confirmacao-grupos" role="tab" data-toggle="tab">
                 Grupos
             </a>
         </li>
-        <li role="presentation" class="active">
+        <li  class="">
             <a href="#confirmacao-professores" aria-controls="confirmacao-professores" role="tab" data-toggle="tab">
                 Professores
             </a>
         </li>
-        <li role="presentation" class="active">
+        <li  class="">
             <a href="#confirmacao-materias" aria-controls="confirmacao-materias" role="tab" data-toggle="tab">
                 Matérias
             </a>
         </li>
-    </ul> -->
+    </ul>
 
-    <div id="Groups" class="tab-content">
+    <!--<div id="Groups" class="tab-content">
         <div class="lista-grupos" id="lista-grupos">
             {{#each grupos}}
             <button id="grupo-escolhe-{{id}}" class="btn btn-sm btn-escolha-grupo" 
@@ -71,9 +71,9 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+    </div> -->
 
-    <!-- <div class="tab-content">
+    <div class="tab-content">
         <div role="tabpanel" class="tab-pane fade in active" id="confirmacao-grupos">
             <div class="lista-grupos" id="lista-grupos">
                 {{#each grupos}}
@@ -84,7 +84,7 @@
                     <div>Escolha um dos grupos</div>
             </div>
         </div>
-        <div role="tabpanel" class="tab-pane" id="confirmacao-professores">
+        <div role="tabpanel" class="tab-pane fade" id="confirmacao-professores">
             <div class="lista-professores" id="lista-professores">
                 {{#each professores}}
                 <button id="teacher-escolhe-{{id}}" class="btn btn-sm btn-escolha-professor" onclick="escolhaProfessor.ActivateTeacher({{id}}, true);">{{nome}}</button>
@@ -94,7 +94,7 @@
                     <div>Escolha um dos professores</div>
             </div>
         </div>
-        <div role="tabpanel" class="tab-pane" id="confirmacao-materias">
+        <div role="tabpanel" class="tab-pane fade" id="confirmacao-materias">
             <table class="csp-table lista-materia-table">
                 <thead>
                     <tr>
@@ -117,7 +117,7 @@
             </table>
         </div>
     </div>
-</div> -->
+</div>
 
 <div class="content-footer col-xs-12">
       <button class="btn btn-primary pull-left" onclick="escolhaMateria.LoadInterface();">Cancelar</button>

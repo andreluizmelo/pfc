@@ -111,11 +111,9 @@ body section .content-form {
 .escolha-materia-div #lista-materias {
   width: 100%;
 }
-
 div.confirmacao-div button.active {
-    background-color: #000;
+  background-color: #000;
 }
-
 /*div.confirmacao-div {
   overflow: hidden;
   border: 1px solid #ccc;
