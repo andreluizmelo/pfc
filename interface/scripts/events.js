@@ -46,6 +46,6 @@ $(document).ready(function(){
     });
     ipc.on('reset', reset);
     ipc.on('resultado',function(evt, arg){
-        console.log(arg);
+        resultado.ShowSolution(arg.id, arg.geracao, arg.solucao);
     });
 });

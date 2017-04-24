@@ -82,7 +82,7 @@ body{
             width: 90px;
         }
 
-        .btn-escolha-disponibilidade{
+        .btn-escolha-disponibilidade, .btn-resultado {
             color: @primary-color;
             background-color: @red;
             display: block;
@@ -91,6 +91,14 @@ body{
             width: 90px;
             &.available{
                 background-color: @green;
+            }
+        }
+
+        .btn-resultado {
+            height: 75px;
+            &.no-class{
+                background-color: @alt-background;
+                color: @secondary-color;
             }
         }
     }

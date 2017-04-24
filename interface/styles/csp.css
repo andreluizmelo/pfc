@@ -92,7 +92,8 @@ body section .content-form {
   margin-bottom: 10px;
   width: 90px;
 }
-.grade-horarios .tabela-horarios .btn-escolha-disponibilidade {
+.grade-horarios .tabela-horarios .btn-escolha-disponibilidade,
+.grade-horarios .tabela-horarios .btn-resultado {
   color: #ccc;
   background-color: #a33;
   display: block;
@@ -100,8 +101,16 @@ body section .content-form {
   margin-bottom: 5px;
   width: 90px;
 }
-.grade-horarios .tabela-horarios .btn-escolha-disponibilidade.available {
+.grade-horarios .tabela-horarios .btn-escolha-disponibilidade.available,
+.grade-horarios .tabela-horarios .btn-resultado.available {
   background-color: #191;
+}
+.grade-horarios .tabela-horarios .btn-resultado {
+  height: 75px;
+}
+.grade-horarios .tabela-horarios .btn-resultado.no-class {
+  background-color: #999;
+  color: #444;
 }
 .escolha-materia-div {
   text-align: center;

@@ -1,0 +1,41 @@
+<div id="resultado-div" class="resultado-div col-xs-12">
+    
+    <ul class="nav nav-tabs" role="tablist" id="confirmacao-tabs">
+        {{#each gruposSolucao}}
+            <li  class="{{#unless @index}}active{{/unless}}">
+                <a href="#resultado-grupo-{{id}}" aria-controls="resultado-grupo-{{id}}" role="tab" data-toggle="tab">
+                    {{#with (lookupById ../grupos id) as |grupo|}}{{grupo.nome}}{{/with}}
+                </a>
+            </li>
+        {{/each}}
+    </ul>
+    <div class="tab-content">
+        {{#each gruposSolucao}}
+            <div role="tabpanel" class="tab-pane {{#unless @index}}in active{{/unless}} fade " id="resultado-grupo-{{id}}">
+                <div class="grade-horarios"><div class="tabela-horarios">
+                    {{#each ../diasDaSemana as |dia|}}
+                    <div>
+                        <button class="btn btn-sm dia-semana locked">
+                            {{#with (lookup ../../diasDaSemana @index)}} {{this}} {{/with}}
+                        </button>
+                        {{#with (lookup ../aulasPordia @index) as |aulasDia|}}
+                            {{#each aulasDia}}
+                            <button class="btn btn-sm btn-resultado  locked {{#if this}}available{{else}}no-class{{/if}}" >
+                                {{lookup ../../../../horarios @index}}<br>
+                                {{#with (lookupById ../../../../professores teacherId)}}{{nome}}{{/with}}<br>
+                                {{#with (lookupById ../../../../materias subjectId)}}{{nome}}{{/with}}
+                            </button>
+                            {{/each}}
+                        {{/with}}
+                    </div>
+                    {{/each}}
+                </div></div>
+            </div>
+        {{/each}}
+    </div>
+</div>
+
+<div class="content-footer col-xs-12">
+      <button class="btn btn-primary pull-left" onclick="escolhaMateria.LoadInterface();">Cancelar</button>
+      <button class="btn btn-primary pull-right" onclick="confirmacao.confirm();"><span class="glyphicon glyphicon-ok"></span>Confirmar</button>
+</div>
