@@ -173,3 +173,30 @@ select{
     margin-top: 15px;
     border-top: 1px solid @primary-color;
 }
+
+.tab-content{
+    padding: 15px;
+}
+
+.nav-tabs{
+    li{
+        a{
+            color: @primary-color;
+            &:hover{
+                
+                color: @tab-blue;
+            }
+            
+        }
+        &.active a{
+            color: @primary-color!important;
+            background-color: @secondary-color!important;
+            border: 1px solid #ddd!important; 
+            border-bottom: 1px solid @secondary-color!important;
+            &:hover{
+                color: @primary-color;
+                background-color: @secondary-color;
+            }
+        }
+    }
+}

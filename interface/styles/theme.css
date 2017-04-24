@@ -185,3 +185,22 @@ select option:active {
   margin-top: 15px;
   border-top: 1px solid #ccc;
 }
+.tab-content {
+  padding: 15px;
+}
+.nav-tabs li a {
+  color: #ccc;
+}
+.nav-tabs li a:hover {
+  color: #337ab7;
+}
+.nav-tabs li.active a {
+  color: #ccc !important;
+  background-color: #444 !important;
+  border: 1px solid #ddd!important;
+  border-bottom: 1px solid #444 !important;
+}
+.nav-tabs li.active a:hover {
+  color: #ccc;
+  background-color: #444;
+}
