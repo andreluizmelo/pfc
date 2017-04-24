@@ -28,8 +28,6 @@ var escolhaGrupo = (function(){
         var editable = true;
         if(lock == true)
             editable = false;
-            console.log(lock);
-            console.log(editable);
         TemplateHelper.Display("#grade-horario-escolha-grupos", 
             'grade-disponibilidade', {
                 diasDaSemana: diasDaSemana,
@@ -63,7 +61,6 @@ var escolhaGrupo = (function(){
         $("#nome-grupo-input").val(''); // esvazia
     };
     self.ChangeDisponibility = function ChangeDisponibility(id, day, time){
-        console.log(id + '-' + day + '-' + time);
         $("#escolha-grupo-tempo-" + day + '-' + time).toggleClass("available");
         //console.log(self.GetTeacher(id));
         var grupo = self.GetGroup(id);

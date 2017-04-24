@@ -2,6 +2,13 @@ const electron = require('electron');
 const path = require('path');
 const url = require('url');
 
+const _ = require('lodash');
+const Grupo = require('./class_scheduling_problem/group').Group;
+const Materia = require('./class_scheduling_problem/subject').Subject;
+const Professor = require('./class_scheduling_problem/professor').Professor;
+const cspProblem = require('./class_scheduling_problem/cspProblem').CSProblem;
+const gaProblem = require('./genetic/geneticAlgorithmProblem').GeneticAlgorithmProblem;
+
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const Menu = electron.Menu;
@@ -121,4 +128,24 @@ app.on('activate', () => {
   if (win === null) {
     createWindow();
   }
+});
+
+
+ipc.on('envio-params', (event, arg) =>{
+  var grupos = _.map(arg.grupos, (g) => new Grupo(g.id, g.nome, g.disponibilidade));
+  var professores = _.map(arg.professores, (t) => new Professor(t.id, t.nome, t.disponibilidade));
+  var materias = _.map( arg.materias, (m) => new Materia(m.id, m.nome, m.numClasses, m.grupo, m.professor));
+  var id = arg.id;
+  var prob = new cspProblem(professores, materias, grupos);
+  var gaProb = new gaProblem(prob, 100,0.4,0.3);
+  console.log("starting...");
+  gaProb.solveByNumberOfIterations(1000).then((solution) =>{
+    console.log("should be wrapping up...");
+    console.log(JSON.stringify(solution.bestSolution, null, 4));
+    win.webContents.send('resultado', {
+      id: id,
+      solucao: solution.bestSolution,
+      geracao: solution.iteration
+    });  
+  });
 });

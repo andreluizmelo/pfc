@@ -1,3 +1,13 @@
+function reset(event, arg){
+    window.home = true;
+    $("#content").hide();
+    $("#welcome").show();
+
+    escolhaGrupo.reset();
+    escolhaProfessor.reset();
+    escolhaMateria.reset();
+}
+
 
 $(document).ready(function(){
     
@@ -34,12 +44,8 @@ $(document).ready(function(){
     ipc.on('subjects', function(event, arg){
         console.log('TODO materias');
     });
-    ipc.on('reset', function(event, arg){
-        window.home = true;
-        $("#content").hide();
-        $("#welcome").show();
-
-        escolhaGrupo.reset();
-        escolhaProfessor.reset();
+    ipc.on('reset', reset);
+    ipc.on('resultado',function(evt, arg){
+        console.log(arg);
     });
 });

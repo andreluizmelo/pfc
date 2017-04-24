@@ -19,7 +19,7 @@ var confirmacao = (function(){
     };
 
     self.confirm = function(){
-        // TODO
+        resultado.Start();
     };
     return self;
 })();

@@ -32,7 +32,6 @@ var escolhaMateria = (function(){
     self.LoadListaMaterias = function(){
         var groups = escolhaGrupo.GetGroups();
         var professores = escolhaProfessor.GetTeachers();
-        console.log(materias);
         TemplateHelper.Display("#escolha-materia-div", 'lista-materias', 
             { 
                 grupos: groups,

@@ -28,16 +28,20 @@ function GeneticAlgorithmProblem(problem, populationSize, mutationProbability, c
     };
 }
 
-GeneticAlgorithmProblem.prototype.solveByNumberOfIterations = function(numberOfIterations, displayCurrentBest){
+GeneticAlgorithmProblem.prototype.solveByNumberOfIterations = function(numberOfIterations, displaySolution, displayCurrentBest){
     var i;
     
     for(i = 0; i < numberOfIterations; i++){
         this.population.iterate(displayCurrentBest);
     }
-    this.displayCurrentSolution();
+    if(displaySolution) this.displayCurrentSolution();
+    return Promise.resolve({
+        bestSolution: this.population.bestSolution,
+        iteration: i
+    });
 };
 
-GeneticAlgorithmProblem.prototype.solve = function( numberOfSameResultToStop, displayCurrentBest){
+GeneticAlgorithmProblem.prototype.solve = function( numberOfSameResultToStop, displaySolution, displayCurrentBest){
     var minimumRepetition = numberOfSameResultToStop || defaultNumberOfSameResultToStop;
     var generation = 0;
     var numberOfRepetitions = 0;
@@ -55,8 +59,13 @@ GeneticAlgorithmProblem.prototype.solve = function( numberOfSameResultToStop, di
         if(displayCurrentBest)
             this.displayCurrentSolution();
     }
-    console.log("geração: " + generation);
-    this.displayCurrentSolution();
+    if(displaySolution) console.log("geração: " + generation - minimumRepetition);
+    if(displaySolution) this.displayCurrentSolution();
+
+    return Promise.resolve({
+        bestSolution: this.population.bestSolution,
+        iteration: generation - minimumRepetition
+    });
 };
 
 module.exports = {
