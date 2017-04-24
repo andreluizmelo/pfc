@@ -12,7 +12,7 @@ var resultado = (function(){
         TemplateHelper.Display('#content', 'resultado-espera', {});
     };
 
-    self.ShowSolution = function ShowSolution(idSolucao, geracao, solucao){
+    self.ShowSolution = function ShowSolution(idSolucao, geracao, solucao, tempoExecucao){
         if(!CheckId(idSolucao)){
             console.log("id zumbi");
             return;
@@ -41,7 +41,8 @@ var resultado = (function(){
             solucao: solucao,
             gruposSolucao: gruposSolucao,
             diasDaSemana: diasDaSemana,
-            horarios: horarios
+            horarios: horarios,
+            tempoExecucao: tempoExecucao
         }).then(function(response){
             console.log($("#confirmacao-tabs").length);
             $("#resultado-tabs a").on("click", function(e){

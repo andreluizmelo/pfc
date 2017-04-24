@@ -138,6 +138,8 @@ ipc.on('envio-params', (event, arg) =>{
   var id = arg.id;
   var prob = new cspProblem(professores, materias, grupos);
   var gaProb = new gaProblem(prob, 100,0.4,0.3);
+
+  var start = new Date();
   console.log("starting...");
   gaProb.solveByNumberOfIterations(1000).then((solution) =>{
     console.log("should be wrapping up...");
@@ -145,7 +147,8 @@ ipc.on('envio-params', (event, arg) =>{
     win.webContents.send('resultado', {
       id: id,
       solucao: solution.bestSolution,
-      geracao: solution.iteration
+      geracao: solution.iteration,
+      tempoExecucao: new Date() - start
     });  
   });
 });
