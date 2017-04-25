@@ -1,0 +1,94 @@
+<h2>Configuração</h2>
+
+<div class="content-form col-xs-12">
+      <div class="panel-group col-xs-12" id="conf-accordion"  role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default col-xs-12">
+                  <div class="panel-heading" role="tab" id="conf-geral-header">
+                        <h4 class="panel-title">
+                              <a role="button" data-toggle="collapse" data-parent="#conf-accordion" href="#conf-geral" aria-expanded="true" aria-controls="conf-geral">
+                                    Configurações Gerais
+                              </a>
+                        </h4>
+                  </div>
+                  <div class="panel-collapse collapse in  col-xs-12" role="tabpanel" aria-labelledby="conf-geral" id="conf-geral">
+                        <div class="panel-body  col-xs-12">
+                            <div class="pull-left col-xs-12 csp-form">
+                                <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+                                    <label>Algoritmo:</label>
+                                    <select id="conf-algoritmo-input">
+                                            <option value="ga" selected>Algoritmo Genético</option>
+                                            <option value="pso">Particle Swarm Optmization</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+                                    <label>Tamanho da população:</label>
+                                    <input type="number" id="conf-populacao-input" value="{{populacao}}"/>
+                                </div>
+                                <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+                                    <label>Critério de Parada:</label>
+                                    <select id="conf-parada-input">
+                                            <option value="iteration" selected>Número de iterações fixo</option>
+                                            <option value="estabilization">Número de gerações sem melhora</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+                                    <label>Número de iterações:</label>
+                                    <input type="number" id="conf-iteracoes-input" value="{{iteracoes}}"/>
+                                </div>
+                                <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+                                    <label>Número de gerações sem melhora:</label>
+                                    <input type="number" id="conf-estabilizacao-input" value="{{estabilizacao}}"/>
+                                </div>
+                            </div>
+                        </div>
+                  </div>
+            </div>
+                
+
+            <div class="panel panel-default col-xs-12">
+                  <div class="panel-heading" role="tab" id="conf-ga-header">
+                        <h4 class="panel-title">
+                              <a role="button" data-toggle="collapse" data-parent="#conf-accordion" href="#conf-ga" aria-expanded="true" aria-controls="conf-ga">
+                                    Configurações Algoritmo Genético
+                              </a>
+                        </h4>
+                  </div>
+                  <div class="panel-collapse collapse" role="tabpanel" aria-labelledby="conf-ga" id="conf-ga">
+                        <div class="panel-body col-xs-12">
+                            <div class="pull-left col-xs-12 csp-form">
+                                <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+                                    <label>Fator de Mutação:</label>
+                                    <input type="number" min="0" max="1" id="conf-mutacao-input" value="{{mutacao}}"/>
+                                </div>
+                                <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+                                    <label>Fator de Crossover:</label>
+                                    <input type="number" min="0" max="1" id="conf-mutacao-input" value="{{crossover}}"/>
+                                </div>
+                            </div>
+                        </div>
+                  </div>
+            </div>
+                    
+            <div class="panel panel-default col-xs-12">
+                  <div class="panel-heading" role="tab" id="conf-pso-header">
+                        <h4 class="panel-title">
+                              <a role="button" data-toggle="collapse" data-parent="#conf-accordion" href="#conf-pso" aria-expanded="true" aria-controls="conf-pso">
+                                    Configurações PSO
+                              </a>
+                        </h4>
+                  </div>
+                  <div class="panel-collapse collapse" role="tabpanel" aria-labelledby="conf-pso" id="conf-pso">
+                        <div class="panel-body col-xs-12">
+                        </div>
+                  </div>
+            </div>
+            
+      </div>
+
+      
+</div>
+
+<div class="content-footer col-xs-12">
+    <button class="btn btn-primary pull-left" onclick="escolhaMateria.LoadInterface()"><span class="glyphicon glyphicon-chevron-left"></span>Anterior</button>
+      <button class="btn btn-primary pull-right" onclick="confirmacao.LoadInterface()">Próximo<span class="glyphicon glyphicon-chevron-right"></span></button>
+</div>

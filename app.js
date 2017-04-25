@@ -82,6 +82,12 @@ function createWindow () {
           },
           accelerator: 'CommandOrControl+M'
         },{
+          label: 'Configuração',
+          click: () => {
+            win.webContents.send('configuration', null);
+          },
+          accelerator: 'CommandOrControl+S' // TODO arrumar outro atalho melhor
+        },{
           type: 'separator'
         },{
           label: 'Limpar',

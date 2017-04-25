@@ -42,7 +42,12 @@ $(document).ready(function(){
         if(window.home) showContent();
     });
     ipc.on('subjects', function(event, arg){
-        console.log('TODO materias');
+        escolhaMateria.LoadInterface();
+        if(window.home) showContent();
+    });
+    ipc.on('configuration', function(event, arg){
+        escolhaConfiguracao.LoadInterface();
+        if(window.home) showContent();
     });
     ipc.on('reset', reset);
     ipc.on('resultado',function(evt, arg){
