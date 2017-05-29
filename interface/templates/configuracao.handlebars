@@ -22,7 +22,7 @@
                                 </div>
                                 <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
                                     <label>Tamanho da população:</label>
-                                    <input type="number" id="conf-populacao-input" value="{{populacao}}"/>
+                                    <input type="number" id="conf-populacao-input" value="{{population}}"/>
                                 </div>
                                 <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
                                     <label>Critério de Parada:</label>
@@ -33,17 +33,36 @@
                                 </div>
                                 <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
                                     <label>Número de iterações:</label>
-                                    <input type="number" id="conf-iteracoes-input" value="{{iteracoes}}"/>
+                                    <input type="number" id="conf-iteracoes-input" value="{{iterations}}"/>
                                 </div>
                                 <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
                                     <label>Número de gerações sem melhora:</label>
-                                    <input type="number" id="conf-estabilizacao-input" value="{{estabilizacao}}"/>
+                                    <input type="number" id="conf-estabilizacao-input" value="{{stabilization}}"/>
                                 </div>
                             </div>
                         </div>
                   </div>
             </div>
                 
+            <div class="panel panel-default col-xs-12">
+                  <div class="panel-heading" role="tab" id="conf-ca-header">
+                        <h4 class="panel-title">
+                              <a role="button" data-toggle="collapse" data-parent="#conf-accordion" href="#conf-ca" aria-expanded="true" aria-controls="conf-ca">
+                                    Configurações Restrições Flexíveis
+                              </a>
+                        </h4>
+                  </div>
+                  <div class="panel-collapse collapse" role="tabpanel" aria-labelledby="conf-ca" id="conf-ca">
+                        <div class="panel-body col-xs-12">
+                            <div class="pull-left col-xs-12 csp-form">
+                                <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+                                    <label>Número máximo de aulas seguidas:</label>
+                                    <input type="number" min="0" max="10" id="conf-max-aulas-input" value="{{flexible.maxsequence}}"/>
+                                </div>
+                            </div>
+                        </div>
+                  </div>
+            </div>
 
             <div class="panel panel-default col-xs-12">
                   <div class="panel-heading" role="tab" id="conf-ga-header">
@@ -58,11 +77,11 @@
                             <div class="pull-left col-xs-12 csp-form">
                                 <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
                                     <label>Fator de Mutação:</label>
-                                    <input type="number" min="0" max="1" id="conf-mutacao-input" value="{{mutacao}}"/>
+                                    <input type="number" min="0" max="1" id="conf-mutacao-input" value="{{genetic.mutation}}"/>
                                 </div>
                                 <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
                                     <label>Fator de Crossover:</label>
-                                    <input type="number" min="0" max="1" id="conf-mutacao-input" value="{{crossover}}"/>
+                                    <input type="number" min="0" max="1" id="conf-crossover-input" value="{{genetic.crossover}}"/>
                                 </div>
                             </div>
                         </div>
@@ -79,6 +98,20 @@
                   </div>
                   <div class="panel-collapse collapse" role="tabpanel" aria-labelledby="conf-pso" id="conf-pso">
                         <div class="panel-body col-xs-12">
+                              <div class="pull-left col-xs-12 csp-form">
+                                <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+                                    <label>Fator de Inércia:</label>
+                                    <input type="number" min="0" max="1" id="conf-inertia-input" value="{{pso.inertia}}"/>
+                                </div>
+                                <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+                                    <label>Peso do melhor global:</label>
+                                    <input type="number" min="0" max="1" id="conf-global-input" value="{{pso.global}}"/>
+                                </div>
+                                <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+                                    <label>Peso do melhor local:</label>
+                                    <input type="number" min="0" max="1" id="conf-local-input" value="{{pso.local}}"/>
+                                </div>
+                            </div>
                         </div>
                   </div>
             </div>
