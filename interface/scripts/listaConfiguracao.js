@@ -9,6 +9,7 @@ var listaConfiguracao = (function($){
     };
 
     self.LoadList = function(confs){
+        confs = _.map(confs, (elem) => elem.replace('.json', ''));
         TemplateHelper.Display("#content", 'lista-configuracao', {
             configurations: confs
         });
