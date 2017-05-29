@@ -13,9 +13,11 @@ var escolhaConfiguracao = (function(){
     self.LoadInterface = function(){
         self.GetConfiguration(confName).then((response) =>{
             conf = response;
-            console.log(response);
-        
-            TemplateHelper.Display("#content", 'configuracao', conf).then((response) => {
+            //console.log(response);
+            return Promise.resolve(conf);
+        }).then((configuration) => {
+            return TemplateHelper.Display("#content", 'configuracao', configuration);
+        }).then((response) => {
                 $("#conf-accordion a").on("click", (event) =>{
                     var $elem = $(event.currentTarget);
                     var $target = $($elem.attr("href"));
@@ -25,7 +27,6 @@ var escolhaConfiguracao = (function(){
                         console.log("deu ruim: " + $elem.attr("href"));
                 });
             });
-        });
     };
     return self;
 })();
