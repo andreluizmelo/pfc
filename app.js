@@ -9,6 +9,8 @@ const Professor = require('./class_scheduling_problem/professor').Professor;
 const cspProblem = require('./class_scheduling_problem/cspProblem').CSProblem;
 const gaProblem = require('./genetic/geneticAlgorithmProblem').GeneticAlgorithmProblem;
 
+const fileUtils = require('./utils/fileUtils');
+
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const Menu = electron.Menu;
@@ -157,4 +159,8 @@ ipc.on('envio-params', (event, arg) =>{
       tempoExecucao: new Date() - start
     });  
   });
+});
+
+ipc.on('get-list-confs',function(args){
+  win.webContents.send('lista-configuracao', fileUtils.GetListOfConfs());
 });

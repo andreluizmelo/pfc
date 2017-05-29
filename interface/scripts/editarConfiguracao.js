@@ -1,4 +1,4 @@
-var escolhaConfiguracao = (function(){
+var editarConfiguracao = (function(){
     var self = {};
     var conf = {};
     var confName = null;
@@ -10,7 +10,8 @@ var escolhaConfiguracao = (function(){
             return confHelper.LoadConf(nome);
     };
 
-    self.LoadInterface = function(){
+    self.LoadInterface = function(nome){
+        confName = nome;
         self.GetConfiguration(confName).then((response) =>{
             conf = response;
             //console.log(response);

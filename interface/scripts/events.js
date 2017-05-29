@@ -46,11 +46,15 @@ $(document).ready(function(){
         if(window.home) showContent();
     });
     ipc.on('configuration', function(event, arg){
-        escolhaConfiguracao.LoadInterface();
+        listaConfiguracao.LoadInterface();
         if(window.home) showContent();
     });
     ipc.on('reset', reset);
     ipc.on('resultado',function(evt, arg){
         resultado.ShowSolution(arg.id, arg.geracao, arg.solucao, arg.tempoExecucao);
+    });
+
+    ipc.on('lista-configuracao', function(evt, arg){
+        listaConfiguracao.LoadList(arg);
     });
 });

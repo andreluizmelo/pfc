@@ -1,0 +1,21 @@
+<h3>Lista de Configurações</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Editar</th>
+            <th>Excluir</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each configurations}}
+        <tr>
+            <td>{{this}}</td>
+            <td><span class="glyphicon glyphicon-edit" onclick="editarConfiguracao.LoadInterface({{this}});"></span></td>
+            <td><span class="glyphicon glyphicon-remove" onclick="toastr.warning('not implemented yet');"></span></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<button class="btn btn-primary" onclick="editarConfiguracao.LoadInterface();">
