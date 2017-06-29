@@ -29,5 +29,35 @@ var editarConfiguracao = (function(){
                 });
             });
     };
+
+    self.GetConfigurationFromForm = function(){
+        return {
+            name: $('#conf-algoritmo-input').val(),
+            algorithm: $('#conf-algoritmo-input').val(),
+            population: $('#conf-populacao-input').val(),
+            stopcriteria: $('#conf-parada-input').val(),
+            iterations: $('#conf-iteracoes-input').val(),
+            stabilization: $('#conf-estabilizacao-input').val(),
+            pso:{
+                inertia: $('#conf-inertia-input').val(),
+                local: $('#conf-local-input').val(),
+                global: $('#conf-global-input').val()
+            },
+            genetic:{
+                mutation: $('#conf-mutacao-input').val(),
+                crossover: $('#conf-crossover-input').val()
+            },
+            flexible:{
+                usemaxsequence: true,//$('#').val(),
+                maxsequence: $('#conf-max-aulas-input').val()
+            }
+        };
+    };
+
+    self.Save = function(nome){
+        var conf = self.GetConfigurationFromForm();
+        
+    };
+
     return self;
 })();

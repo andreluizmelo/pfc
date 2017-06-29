@@ -16,8 +16,8 @@
                                 <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
                                     <label>Algoritmo:</label>
                                     <select id="conf-algoritmo-input">
-                                            <option value="ga" selected>Algoritmo Genético</option>
-                                            <option value="pso">Particle Swarm Optmization</option>
+                                            <option value="0" selected>Algoritmo Genético</option>
+                                            <option value="1">Particle Swarm Optmization</option>
                                     </select>
                                 </div>
                                 <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
@@ -27,8 +27,8 @@
                                 <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
                                     <label>Critério de Parada:</label>
                                     <select id="conf-parada-input">
-                                            <option value="iteration" selected>Número de iterações fixo</option>
-                                            <option value="estabilization">Número de gerações sem melhora</option>
+                                            <option value="0" selected>Número de iterações fixo</option>
+                                            <option value="1">Número de gerações sem melhora</option>
                                     </select>
                                 </div>
                                 <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
@@ -104,12 +104,12 @@
                                     <input type="number" min="0" max="1" id="conf-inertia-input" value="{{pso.inertia}}"/>
                                 </div>
                                 <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
-                                    <label>Peso do melhor global:</label>
-                                    <input type="number" min="0" max="1" id="conf-global-input" value="{{pso.global}}"/>
-                                </div>
-                                <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
                                     <label>Peso do melhor local:</label>
                                     <input type="number" min="0" max="1" id="conf-local-input" value="{{pso.local}}"/>
+                                </div>
+                                <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+                                    <label>Peso do melhor global:</label>
+                                    <input type="number" min="0" max="1" id="conf-global-input" value="{{pso.global}}"/>
                                 </div>
                             </div>
                         </div>
