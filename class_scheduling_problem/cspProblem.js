@@ -48,7 +48,7 @@ function cspProblem(teachers, subjects, groups){
         return genome;
     }
 
-    function ClassQuantityPenalty(genome, debug){
+    function classQuantityPenalty(genome, debug){
         var belowLimit = 0
         var aboveLimit = 0;
         var highLimit = 3;
@@ -61,6 +61,26 @@ function cspProblem(teachers, subjects, groups){
             });
         });
         return 2 * aboveLimit + 2 * belowLimit;
+    }
+
+    function classWindowsPenalty(genome, debug){
+        var numberOfWindows = 0;
+        _.each(_.groupBy(genome, 'subjectId'), (classes) => {
+            _.each(_.groupBy(classes, 'day'), (elem) => {
+                var ordered = _.sortBy(elem, ['time']);
+                if( ordered.length > 1){
+                    var i;
+                    for( i = 1; i < ordered.length; i++){
+                        //console.log(ordered[i].time);
+                        if( (ordered[i].time - ordered[i-1].time) > 1) numberOfWindows++;
+                    }
+                }
+                //console.log(ordered + '\n' + 'para cima materia dia');
+            });
+            //console.log('para cima materia apenas')
+        });
+        //console.log(numberOfWindows + '\n');
+        return 2 * numberOfWindows;
     }
 
     function teacherAvailabilityPenalty(genome, debug){
@@ -103,7 +123,8 @@ function cspProblem(teachers, subjects, groups){
         return teacherAvailabilityPenalty(genome, debug) +
             OverlapPenalty(genome, debug) +
             GroupAvailabilityPenalty(genome, debug) +
-            ClassQuantityPenalty(genome,debug);
+            classQuantityPenalty(genome, debug) +
+            classWindowsPenalty(genome, debug);
     }
 
     this.fitnessFunction = function fitness(genome, debug){

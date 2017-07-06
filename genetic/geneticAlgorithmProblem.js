@@ -59,6 +59,11 @@ GeneticAlgorithmProblem.prototype.solve = function( numberOfSameResultToStop, di
         if(displayCurrentBest)
             this.displayCurrentSolution();
     }
+
+    //var orderedSolution = _.sortBy(this.population.bestSolution, ['subjectId', 'groupId', 'day', 'time']);
+    //this.population.bestSolution = orderedSolution;
+    //console.log(orderedSolution);
+
     if(displaySolution) console.log("geração: " + generation - minimumRepetition);
     if(displaySolution) this.displayCurrentSolution();
 
