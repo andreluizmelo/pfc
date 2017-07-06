@@ -48,16 +48,19 @@ function cspProblem(teachers, subjects, groups){
         return genome;
     }
 
-    function tooMuchClassesSameDayPenalty(genome, debug){
+    function ClassQuantityPenalty(genome, debug){
+        var belowLimit = 0
         var aboveLimit = 0;
-        var limit = 3;
+        var highLimit = 3;
+        var lowLimit = 2;
         //console.log(_.groupBy(genome, 'subjectId'));
         _.each(_.groupBy(genome, 'subjectId'), (classes) => {
             _.each(_.groupBy(classes, 'day'), (elem) => {
-                if(elem.length > limit) aboveLimit++;
+                if(elem.length > highLimit) aboveLimit++;
+                if(elem.length < lowLimit) belowLimit++;
             });
         });
-        return 2 * aboveLimit;
+        return 2 * aboveLimit + 2 * belowLimit;
     }
 
     function teacherAvailabilityPenalty(genome, debug){
@@ -100,7 +103,7 @@ function cspProblem(teachers, subjects, groups){
         return teacherAvailabilityPenalty(genome, debug) +
             OverlapPenalty(genome, debug) +
             GroupAvailabilityPenalty(genome, debug) +
-            tooMuchClassesSameDayPenalty(genome,debug);
+            ClassQuantityPenalty(genome,debug);
     }
 
     this.fitnessFunction = function fitness(genome, debug){
