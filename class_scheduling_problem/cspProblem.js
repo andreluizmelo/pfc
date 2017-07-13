@@ -57,7 +57,7 @@ function cspProblem(teachers, subjects, groups, rooms){
         return genome;
     }
 
-    function RoomCapacityPenalty(genome, debug){
+    function roomCapacityPenalty(genome, debug){
         var numberOfProblems = 0;
         _.each(genome, (classe) => {
             if(getRoom(classe.roomId).capacidade < getGroup(classe.groupId).numeroAlunos)
@@ -66,7 +66,7 @@ function cspProblem(teachers, subjects, groups, rooms){
         return numberOfProblems * 10;
     }
 
-    function RoomOverlapPenalty(genome, debug){
+    function roomOverlapPenalty(genome, debug){
         var numberOfOverlaps = 0;
         _.each(genome, function(aula){
             var aulasNaMesmaSala = _.filter(genome, c => c.day == aula.day && c.time == aula.time && c.roomId == aula.roomId);
@@ -75,7 +75,7 @@ function cspProblem(teachers, subjects, groups, rooms){
         return (numberOfOverlaps / 2) * 7;
     }
 
-    function ClassQuantityPenalty(genome, debug){
+    function classQuantityPenalty(genome, debug){
         var belowLimit = 0
         var aboveLimit = 0;
         var highLimit = 3;
@@ -122,7 +122,7 @@ function cspProblem(teachers, subjects, groups, rooms){
         return constants.teacherNotAvailableWeight * numberOfProblematicClasses;
     }
 
-    function OverlapPenalty(genome, debug){
+    function overlapPenalty(genome, debug){
         var numberOfOverlaps = 0;
         _.each(genome, function(aula){
              var eita = _.filter(genome, c => c.day == aula.day && c.time == aula.time && (c.groupId == aula.groupId || c.teacherId == aula.teacherId));
@@ -134,7 +134,7 @@ function cspProblem(teachers, subjects, groups, rooms){
         return constants.overlapWeight * (numberOfOverlaps / 2); // divide por 2 pois cada sobreposição é contada duas vezes
     }
 
-    function GroupAvailabilityPenalty(genome, debug){
+    function groupAvailabilityPenalty(genome, debug){
         var numberOfProblematicClasses = 0;
 
         _.each(genome, function(aula){
@@ -149,10 +149,10 @@ function cspProblem(teachers, subjects, groups, rooms){
 
     function TotalPenalty(genome, debug){
         return teacherAvailabilityPenalty(genome, debug) +
-            OverlapPenalty(genome, debug) +
-            GroupAvailabilityPenalty(genome, debug) +
-            RoomCapacityPenalty(genome, debug) + 
-            RoomOverlapPenalty(genome, debug) +
+            overlapPenalty(genome, debug) +
+            groupAvailabilityPenalty(genome, debug) +
+            roomCapacityPenalty(genome, debug) + 
+            roomOverlapPenalty(genome, debug) +
             classQuantityPenalty(genome, debug) +
             classWindowsPenalty(genome, debug);
     }

@@ -1,6 +1,6 @@
 <div id="resultado-div" class="resultado-div col-xs-12">
     <h4>Número de Gerações: {{geracao}}</h4>
-    <h4>Tempo de Execução: {{tempoExecucao}}s</h4>
+    <h4>Tempo de Execução: {{tempoExecucao}}ms</h4>
     <ul class="nav nav-tabs" role="tablist" id="confirmacao-tabs">
         {{#each gruposSolucao}}
             <li  class="{{#unless @index}}active{{/unless}}">
@@ -24,7 +24,8 @@
                             <button class="btn btn-sm btn-resultado  locked {{#if this}}available{{else}}no-class{{/if}}" >
                                 {{lookup ../../../../horarios @index}}<br>
                                 {{#with (lookupById ../../../../professores teacherId)}}{{nome}}{{/with}}<br>
-                                {{#with (lookupById ../../../../materias subjectId)}}{{nome}}{{/with}}
+                                {{#with (lookupById ../../../../materias subjectId)}}{{nome}}{{/with}}<br>
+                                {{#with (lookupById ../../../../salas roomId)}}{{nome}}{{/with}}
                             </button>
                             {{/each}}
                         {{/with}}

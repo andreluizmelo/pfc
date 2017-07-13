@@ -12,9 +12,21 @@
 </div>
 <hr/>
 <div class="content-form col-xs-12">
-      <div class="pull-left">
-            <input type="text" maxlength="30" id="nome-grupo-input" />
-            <button class="btn btn-primary" onclick="escolhaGrupo.AddGroup();"><span class="glyphicon glyphicon-plus"></span>Adicionar Grupo</button>
+      <div class="pull-left col-xs-12 csp-form">
+            <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+                  <label>Nome:</label>
+                  <input type="text" maxlength="30" id="nome-grupo-input" />
+            </div>
+            <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+                  <label>Número de Alunos:</label>
+                  <input type="number" min="1" id="alunos-grupo-input" />
+            </div>
+            
+      </div>
+      <div class="col-xs-12">
+            <div class="pull-right">
+                  <button class="btn btn-primary" onclick="escolhaGrupo.AddGroup();"><span class="glyphicon glyphicon-plus"></span>Adicionar Grupo</button>
+            </div>
       </div>
       
 </div>

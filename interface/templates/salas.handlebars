@@ -1,0 +1,33 @@
+<h2>Escolha de Salas</h2>
+
+<div id="escolha-sala-div" class="escolha-sala-div col-xs-12">
+      <div class="loading-div">
+            <div class="loading">
+            </div>
+      </div>
+</div>
+<hr/>
+<div class="content-form col-xs-12">
+      <div class="pull-left col-xs-12 csp-form">
+            <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+                  <label>Nome:</label>
+                  <input type="text" maxlength="30" id="nome-sala-input" />
+            </div>
+            <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+                  <label>Capacidade:</label>
+                  <input type="number" min="1" id="capacidade-sala-input" />      
+            </div>
+      </div>
+      <div class="col-xs-12">
+            <div class="pull-right">
+                  <button class="btn" onclick="escolhaSala.LimparMaterias();"><span class="glyphicon glyphicon-remove"></span>Limpar Salas</button>
+                  <button class="btn btn-primary" onclick="escolhaSala.AdicionarSala();"><span class="glyphicon glyphicon-plus"></span>Adicionar Sala</button>
+            </div>
+      
+      <div>
+      
+</div>
+<div class="content-footer col-xs-12">      
+      <button class="btn btn-primary pull-left" onclick="escolhaMateria.LoadInterface()"><span class="glyphicon glyphicon-chevron-left"></span>Anterior</button>
+      <button class="btn btn-primary pull-right" onclick="confirmacao.LoadInterface()">Próximo<span class="glyphicon glyphicon-chevron-right"></span></button>
+</div>

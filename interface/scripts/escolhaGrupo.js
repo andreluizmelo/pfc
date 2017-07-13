@@ -42,6 +42,7 @@ var escolhaGrupo = (function(){
     self.AddGroup = function AddGroup(){
         var id = GetNextIndex();
         var nome = $("#nome-grupo-input").val();
+        var numeroAlunos = $("#alunos-grupo-input").val() * 1;
         if(nome == undefined || nome == null || nome == ""){
             toastr.warning("nome não pode ser vazio");
             return;
@@ -50,7 +51,8 @@ var escolhaGrupo = (function(){
         groups.push({
             id: id,
             nome: nome,
-            disponibilidade: disponibilidade
+            disponibilidade: disponibilidade,
+            capacidade: numeroAlunos
         });
         $("#lista-grupos").append(
             $("<button>").attr("id","grupo-escolhe-" + id)
@@ -59,6 +61,7 @@ var escolhaGrupo = (function(){
                     escolhaGrupo.ActivateGroup(id);
                 }).html(nome));
         $("#nome-grupo-input").val(''); // esvazia
+        $("#alunos-grupo-input").val('');
     };
     self.ChangeDisponibility = function ChangeDisponibility(id, day, time){
         $("#escolha-grupo-tempo-" + day + '-' + time).toggleClass("available");

@@ -56,7 +56,10 @@ var editarConfiguracao = (function(){
 
     self.Save = function(nome){
         var conf = self.GetConfigurationFromForm();
-        
+        ipc.send('save-conf',{
+            fileName: confName,
+            conf: conf
+        });
     };
 
     return self;

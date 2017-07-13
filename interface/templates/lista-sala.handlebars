@@ -1,0 +1,20 @@
+<div id="lista-salas">
+    <table class="csp-table lista-sala-table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Capacidade</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each salas as |sala|}}
+            <tr>
+                <td>{{sala.nome}}</td>
+                <td>{{sala.capacidade}}</td>
+                <td><span class="glyphicon glyphicon-remove" onclick="escolhaSala.RemoveSala({{sala.id}});"></span></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

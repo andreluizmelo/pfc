@@ -6,6 +6,7 @@ const _ = require('lodash');
 const Grupo = require('./class_scheduling_problem/group').Group;
 const Materia = require('./class_scheduling_problem/subject').Subject;
 const Professor = require('./class_scheduling_problem/professor').Professor;
+const Sala = require('./class_scheduling_problem/room');
 const cspProblem = require('./class_scheduling_problem/cspProblem').CSProblem;
 const gaProblem = require('./genetic/geneticAlgorithmProblem').GeneticAlgorithmProblem;
 
@@ -143,8 +144,10 @@ ipc.on('envio-params', (event, arg) =>{
   var grupos = _.map(arg.grupos, (g) => new Grupo(g.id, g.nome, g.disponibilidade));
   var professores = _.map(arg.professores, (t) => new Professor(t.id, t.nome, t.disponibilidade));
   var materias = _.map( arg.materias, (m) => new Materia(m.id, m.nome, m.numClasses, m.grupo, m.professor));
+  var salas = _.map(arg.salas, (s) => new Sala(s.id, s.nome, s.capacidade));
   var id = arg.id;
-  var prob = new cspProblem(professores, materias, grupos);
+  console.log(salas);
+  var prob = new cspProblem(professores, materias, grupos, salas);
   var gaProb = new gaProblem(prob, 100,0.4,0.3);
 
   var start = new Date();
@@ -163,4 +166,11 @@ ipc.on('envio-params', (event, arg) =>{
 
 ipc.on('get-list-confs',function(args){
   win.webContents.send('lista-configuracao', fileUtils.GetListOfConfs());
+});
+
+ipc.on('save-conf', function(args){
+  console.log(args);
+  // fileUtils.SaveConf(args.fileName, args.conf).then(function(result){
+  //   win.webContents.send('save-configuracao', result);
+  // });
 });

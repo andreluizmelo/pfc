@@ -7,6 +7,7 @@ var resultado = (function(){
             grupos: escolhaGrupo.GetGroups(),
             professores: escolhaProfessor.GetTeachers(),
             materias: escolhaMateria.GetMaterias(),
+            salas: escolhaSala.GetSalas(),
             id: id
         });
         TemplateHelper.Display('#content', 'resultado-espera', {});
@@ -37,6 +38,7 @@ var resultado = (function(){
             grupos: escolhaGrupo.GetGroups(),
             professores: escolhaProfessor.GetTeachers(),
             materias: escolhaMateria.GetMaterias(),
+            salas: escolhaSala.GetSalas(),
             geracao: geracao,
             solucao: solucao,
             gruposSolucao: gruposSolucao,

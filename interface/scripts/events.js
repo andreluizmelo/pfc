@@ -6,6 +6,7 @@ function reset(event, arg){
     escolhaGrupo.reset();
     escolhaProfessor.reset();
     escolhaMateria.reset();
+    escolhaSala.reset();
 }
 
 
@@ -47,6 +48,10 @@ $(document).ready(function(){
     });
     ipc.on('configuration', function(event, arg){
         listaConfiguracao.LoadInterface();
+        if(window.home) showContent();
+    });
+    ipc.on('salas', function(event, arg){
+        escolhaSala.LoadInterface();
         if(window.home) showContent();
     });
     ipc.on('reset', reset);
