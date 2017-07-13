@@ -57,6 +57,7 @@ function cspProblem(teachers, subjects, groups, rooms){
         return genome;
     }
 
+<<<<<<< HEAD
     function RoomCapacityPenalty(genome, debug){
         var numberOfProblems = 0;
         _.each(genome, (classe) => {
@@ -76,6 +77,9 @@ function cspProblem(teachers, subjects, groups, rooms){
     }
 
     function ClassQuantityPenalty(genome, debug){
+=======
+    function classQuantityPenalty(genome, debug){
+>>>>>>> 7275ace6590f87195482f87eac092b533a867be9
         var belowLimit = 0
         var aboveLimit = 0;
         var highLimit = 3;
@@ -89,7 +93,31 @@ function cspProblem(teachers, subjects, groups, rooms){
         });
         return 2 * aboveLimit + 2 * belowLimit;
     }
+<<<<<<< HEAD
     
+=======
+
+    function classWindowsPenalty(genome, debug){
+        var numberOfWindows = 0;
+        _.each(_.groupBy(genome, 'subjectId'), (classes) => {
+            _.each(_.groupBy(classes, 'day'), (elem) => {
+                var ordered = _.sortBy(elem, ['time']);
+                if( ordered.length > 1){
+                    var i;
+                    for( i = 1; i < ordered.length; i++){
+                        //console.log(ordered[i].time);
+                        if( (ordered[i].time - ordered[i-1].time) > 1) numberOfWindows++;
+                    }
+                }
+                //console.log(ordered + '\n' + 'para cima materia dia');
+            });
+            //console.log('para cima materia apenas')
+        });
+        //console.log(numberOfWindows + '\n');
+        return 2 * numberOfWindows;
+    }
+
+>>>>>>> 7275ace6590f87195482f87eac092b533a867be9
     function teacherAvailabilityPenalty(genome, debug){
         var numberOfProblematicClasses = 0;
         _.each(genome, function(aula){
@@ -130,9 +158,10 @@ function cspProblem(teachers, subjects, groups, rooms){
         return teacherAvailabilityPenalty(genome, debug) +
             OverlapPenalty(genome, debug) +
             GroupAvailabilityPenalty(genome, debug) +
-            ClassQuantityPenalty(genome,debug) +
             RoomCapacityPenalty(genome, debug) + 
-            RoomOverlapPenalty(genome, debug);
+            RoomOverlapPenalty(genome, debug) +
+            classQuantityPenalty(genome, debug) +
+            classWindowsPenalty(genome, debug);
     }
 
     this.fitnessFunction = function fitness(genome, debug){
