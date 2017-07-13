@@ -3,10 +3,11 @@ var constants = require('./constantes');
 var helper = require('./helpers');
 var Class = require('./class').Class;
 
-function cspProblem(teachers, subjects, groups){
+function cspProblem(teachers, subjects, groups, rooms){
     this.teachers = teachers;
     this.subjects = subjects;
     this.groups = groups;
+    this.rooms = rooms;
 
     function getTeacher(id){
         return _.find(teachers, t => t.id == id);
@@ -18,6 +19,14 @@ function cspProblem(teachers, subjects, groups){
 
     function getGroup(id){
         return _.find(groups, s => s.id == id);
+    }
+
+    function getRoom(id){
+        return _.find(rooms, s => s.id == id);
+    }
+
+    function getRandomRoom(){
+        return rooms[Math.floor(Math.random() * rooms.length)];
     }
 
     function isGroupAvailable(groupId, day, time){
@@ -41,11 +50,20 @@ function cspProblem(teachers, subjects, groups){
 
         for( i = 0; i < subjects.length; i++){
             for( j = 0; j < subjects[i].numClasses; j++){
-                genome.push( new Class(subjects[i].id, subjects[i].idProfessor, subjects[i].idGroup,helper.randomDay(), helper.randomTime()));
+                genome.push( new Class(subjects[i].id, subjects[i].idProfessor, subjects[i].idGroup, getRandomRoom().id, helper.randomDay(), helper.randomTime()));
             }
         }
 
         return genome;
+    }
+
+    function RoomCapacityPenalty(genome, debug){
+        var numberOfProblems = 0;
+        _.each(genome, (classe) => {
+            if(getRoom(classe.roomId).capacidade < getGroup(classe.groupId).numeroAlunos)
+                numberOfProblems++;
+        });
+        return numberOfProblems * 10;
     }
 
     function ClassQuantityPenalty(genome, debug){
@@ -62,7 +80,7 @@ function cspProblem(teachers, subjects, groups){
         });
         return 2 * aboveLimit + 2 * belowLimit;
     }
-
+    
     function teacherAvailabilityPenalty(genome, debug){
         var numberOfProblematicClasses = 0;
         _.each(genome, function(aula){
@@ -103,7 +121,8 @@ function cspProblem(teachers, subjects, groups){
         return teacherAvailabilityPenalty(genome, debug) +
             OverlapPenalty(genome, debug) +
             GroupAvailabilityPenalty(genome, debug) +
-            ClassQuantityPenalty(genome,debug);
+            ClassQuantityPenalty(genome,debug) +
+            RoomCapacityPenalty(genome, debug);
     }
 
     this.fitnessFunction = function fitness(genome, debug){
@@ -113,18 +132,21 @@ function cspProblem(teachers, subjects, groups){
     this.mutateFunction = function mutate(genome){
         var newGenome = _.cloneDeep(genome);
         var index = Math.floor(Math.random() * newGenome.length);
-        if( Math.random() >= 0.5){ // mudar dia
+        var dice = Math.random();
+        if( dice <= 0.33333){ // mudar dia
             // newGenome[index].day = (newGenome[index].day + (Math.random() >= 0.5 ? 1 : -1));
             // if(newGenome[index].day < 0)
             //     newGenome[index].day += constants.maxDay;
             // newGenome[index].day = newGenome[index].day % constants.maxDay;
             newGenome[index].day = helper.randomDay();
-        }else{ // mudar horario
+        }else if(dice <= 0.66666){ // mudar horario
             // newGenome[index].time = (newGenome[index].time + (Math.random() >= 0.5 ? 1 : -1));
             // if(newGenome[index].time < 0)
             //     newGenome[index].time += constants.maxDay;
             // newGenome[index].time = newGenome[index].time % constants.maxTime;
             newGenome[index].time = helper.randomTime();
+        }else{ // troca a sala
+            newGenome[index].roomId = getRandomRoom().id;
         }
         return newGenome;
     };
@@ -162,8 +184,18 @@ function cspProblem(teachers, subjects, groups){
             var result = helper.timeSum(current.day, current.time, local.day, local.time);
             result = helper.timeSum(result.day, result.time, global.day, global.time);
             
+            //room id
+            var dice = Math.random() * (inertiaWeight + bestGlobalPositionWeight + bestLocalPositionWeight);
+            var newRoom;
+            if(dice <= inertiaWeight)
+                newRoom = elem.roomId;
+            else if( dice <= bestGlobalPositionWeight + inertiaWeight)
+                newRoom = global.roomId;
+            else
+                newRoom = local.roomId;
+
             // push into array of classes
-            classes.push(new Class(elem.subjectId,elem.teacherId,elem.groupId, result.day, result.time));
+            classes.push(new Class(elem.subjectId,elem.teacherId,elem.groupId, newRoom, result.day, result.time));
         });
         return classes;
     };

@@ -1,7 +1,8 @@
-function Group( id, nome, disponibilidade){
+function Group( id, nome, disponibilidade, numeroAlunos){
     this.id = id;
     this.nome = nome;
     this.disponibilidade = disponibilidade;
+    this.numeroAlunos = numeroAlunos;
 }
 
 Group.prototype.isAvailable = function(day, time){
