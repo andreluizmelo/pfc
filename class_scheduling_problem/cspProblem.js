@@ -57,7 +57,6 @@ function cspProblem(teachers, subjects, groups, rooms){
         return genome;
     }
 
-<<<<<<< HEAD
     function RoomCapacityPenalty(genome, debug){
         var numberOfProblems = 0;
         _.each(genome, (classe) => {
@@ -77,9 +76,6 @@ function cspProblem(teachers, subjects, groups, rooms){
     }
 
     function ClassQuantityPenalty(genome, debug){
-=======
-    function classQuantityPenalty(genome, debug){
->>>>>>> 7275ace6590f87195482f87eac092b533a867be9
         var belowLimit = 0
         var aboveLimit = 0;
         var highLimit = 3;
@@ -93,9 +89,7 @@ function cspProblem(teachers, subjects, groups, rooms){
         });
         return 2 * aboveLimit + 2 * belowLimit;
     }
-<<<<<<< HEAD
-    
-=======
+
 
     function classWindowsPenalty(genome, debug){
         var numberOfWindows = 0;
@@ -117,7 +111,6 @@ function cspProblem(teachers, subjects, groups, rooms){
         return 2 * numberOfWindows;
     }
 
->>>>>>> 7275ace6590f87195482f87eac092b533a867be9
     function teacherAvailabilityPenalty(genome, debug){
         var numberOfProblematicClasses = 0;
         _.each(genome, function(aula){
