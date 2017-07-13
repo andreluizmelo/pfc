@@ -36,7 +36,8 @@ var escolhaGrupo = (function(){
                 type: 'grupo',
                 typeCapitalized: 'Grupo',
                 'type-plural': 'grupos',
-                editable: editable
+                editable: editable,
+                aditionalText: self.GetGroup(id).numeroAlunos + ' alunos'
             });
     };
     self.AddGroup = function AddGroup(){
@@ -52,7 +53,7 @@ var escolhaGrupo = (function(){
             id: id,
             nome: nome,
             disponibilidade: disponibilidade,
-            capacidade: numeroAlunos
+            numeroAlunos: numeroAlunos
         });
         $("#lista-grupos").append(
             $("<button>").attr("id","grupo-escolhe-" + id)

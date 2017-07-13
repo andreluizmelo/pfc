@@ -141,7 +141,7 @@ app.on('activate', () => {
 
 
 ipc.on('envio-params', (event, arg) =>{
-  var grupos = _.map(arg.grupos, (g) => new Grupo(g.id, g.nome, g.disponibilidade));
+  var grupos = _.map(arg.grupos, (g) => new Grupo(g.id, g.nome, g.disponibilidade, g.numeroAlunos));
   var professores = _.map(arg.professores, (t) => new Professor(t.id, t.nome, t.disponibilidade));
   var materias = _.map( arg.materias, (m) => new Materia(m.id, m.nome, m.numClasses, m.grupo, m.professor));
   var salas = _.map(arg.salas, (s) => new Sala(s.id, s.nome, s.capacidade));

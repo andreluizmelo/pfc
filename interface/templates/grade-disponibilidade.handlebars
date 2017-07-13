@@ -1,4 +1,7 @@
 <h3>{{typeCapitalized}}: {{elem.nome}}</h3>
+{{#if aditionalText}}
+<h4>{{aditionalText}}</h4>
+{{/if}}
 <div class="tabela-horarios">
     {{#each elem.disponibilidade}}
     <div id="escolha-{{../type}}-dia-{{@index}}">
