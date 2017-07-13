@@ -66,6 +66,15 @@ function cspProblem(teachers, subjects, groups, rooms){
         return numberOfProblems * 10;
     }
 
+    function RoomOverlapPenalty(genome, debug){
+        var numberOfOverlaps = 0;
+        _.each(genome, function(aula){
+            var aulasNaMesmaSala = _.filter(genome, c => c.day == aula.day && c.time == aula.time && c.roomId == aula.roomId);
+            numberOfOverlaps += aulasNaMesmaSala.length - 1; // tira ele mesmo
+        });
+        return (numberOfOverlaps / 2) * 7;
+    }
+
     function ClassQuantityPenalty(genome, debug){
         var belowLimit = 0
         var aboveLimit = 0;
@@ -122,7 +131,8 @@ function cspProblem(teachers, subjects, groups, rooms){
             OverlapPenalty(genome, debug) +
             GroupAvailabilityPenalty(genome, debug) +
             ClassQuantityPenalty(genome,debug) +
-            RoomCapacityPenalty(genome, debug);
+            RoomCapacityPenalty(genome, debug) + 
+            RoomOverlapPenalty(genome, debug);
     }
 
     this.fitnessFunction = function fitness(genome, debug){
