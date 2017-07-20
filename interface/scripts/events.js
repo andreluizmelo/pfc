@@ -58,12 +58,19 @@ $(document).ready(function(){
     ipc.on('resultado',function(evt, arg){
         resultado.ShowSolution(arg.id, arg.geracao, arg.solucao, arg.tempoExecucao);
     });
-
+    ipc.on('escolha-configuracao', function(evt, arg){
+        escolhaConfiguracao.LoadInterface(arg);
+        if(window.home) showContent();
+    });
     ipc.on('lista-configuracao', function(evt, arg){
         listaConfiguracao.LoadList(arg);
     });
 
     ipc.on('save-configuracao', function(evt, arg){
         editarConfiguracao.OnSaved(arg);
+    });
+
+    ipc.on('lista-configuracao-escolha', function(evt, arg){
+        escolhaConfiguracao.LoadList(arg);
     });
 });

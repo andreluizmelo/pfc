@@ -18,6 +18,16 @@
                 Matérias
             </a>
         </li>
+        <li  class="">
+            <a href="#confirmacao-salas" aria-controls="confirmacao-salas" role="tab" data-toggle="tab">
+                Salas
+            </a>
+        </li>
+        <li  class="">
+            <a href="#confirmacao-conf" aria-controls="confirmacao-conf" role="tab" data-toggle="tab">
+                Configuração
+            </a>
+        </li>
     </ul>
 
     <div class="tab-content">
@@ -63,10 +73,31 @@
                 </tbody>
             </table>
         </div>
+        <div role="tabpanel" class="tab-pane fade" id="confirmacao-salas">
+            <table class="csp-table lista-sala-table">
+                <thead>
+                    <tr>
+                        <th>Sala</th>
+                        <th>Capacidade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each salas as |sala|}}
+                        <tr>
+                            <td>{{sala.nome}}</td>
+                            <td>{{sala.capacidade}}</td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="confirmacao-conf">
+            {{conf}}
+        </div>
     </div>
 </div>
 
 <div class="content-footer col-xs-12">
-      <button class="btn btn-primary pull-left" onclick="escolhaMateria.LoadInterface();">Cancelar</button>
+      <button class="btn btn-primary pull-left" onclick="escolhaConfiguracao.LoadInterface();">Cancelar</button>
       <button class="btn btn-primary pull-right" onclick="confirmacao.confirm();"><span class="glyphicon glyphicon-ok"></span>Confirmar</button>
 </div>

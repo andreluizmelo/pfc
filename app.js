@@ -167,7 +167,9 @@ ipc.on('envio-params', (event, arg) =>{
 ipc.on('get-list-confs',function(event, args){
   win.webContents.send('lista-configuracao', fileUtils.GetListOfConfs());
 });
-
+ipc.on('get-list-confs-escolha',function(event, args){
+  win.webContents.send('lista-configuracao-escolha', fileUtils.GetListOfConfs());
+});
 ipc.on('save-conf', function(event, args){
   console.log(args);
   fileUtils.SaveConf(args.fileName, args.conf).then(function(result){

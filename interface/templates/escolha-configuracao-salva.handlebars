@@ -1,0 +1,7 @@
+<h3>Configuralções salvas</h3>
+<select id="conf-input-select">
+    {{#each configurations}}
+        <option value="{{this}}">{{this}}</option>
+    {{/each}}
+</select>
+<button class="btn btn-primary" onclick="escolhaConfiguracao.LoadForm();">Carregar Configuração</button>

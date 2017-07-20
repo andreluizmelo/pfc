@@ -6,11 +6,13 @@ var confirmacao = (function(){
         var professores = escolhaProfessor.GetTeachers();
         var materias = escolhaMateria.GetMaterias();
         var salas = escolhaSala.GetSalas();
+        var conf = escolhaConfiguracao.GetConfiguration();
         TemplateHelper.Display("#content", 'confirmacao', { 
             grupos: groups,
             materias: materias,
             professores: professores,
-            salas: salas
+            salas: salas,
+            conf: JSON.stringify(conf, null, 4)
         }).then(function(response){
             $("#confirmacao-tabs a").on("click", function(e){
                 e.preventDefault();
