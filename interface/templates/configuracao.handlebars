@@ -1,5 +1,7 @@
 <h2>Configuração</h2>
-
+<div class="content-form col-xs-12">
+      <input type="text" value="{{nome}}" id="nome-configuracao-input">
+</div>
 <div class="content-form col-xs-12">
       <div class="panel-group col-xs-12" id="conf-accordion"  role="tablist" aria-multiselectable="true">
             <div class="panel panel-default col-xs-12">
@@ -122,6 +124,6 @@
 </div>
 
 <div class="content-footer col-xs-12">
-    <button class="btn btn-primary pull-left" onclick="escolhaMateria.LoadInterface()"><span class="glyphicon glyphicon-chevron-left"></span>Anterior</button>
-      <button class="btn btn-primary pull-right" onclick="confirmacao.LoadInterface()">Próximo<span class="glyphicon glyphicon-chevron-right"></span></button>
+      <button class="btn btn-primary pull-left" onclick="listaConfiguracao.LoadInterface()"><span class="glyphicon glyphicon-chevron-left"></span>Cancelar</button>
+      <button class="btn btn-primary pull-right" onclick="editarConfiguracao.Save()">Salvar<span class="glyphicon glyphicon-chevron-right"></span></button>
 </div>

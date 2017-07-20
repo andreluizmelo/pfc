@@ -1,21 +1,21 @@
 {
-    "name": "default",
-    "algorithm": 1,
-    "population": 1000,
-    "stopcriteria": 0,
-    "iterations": 1000,
-    "stabilization": 150,
-    "pso":{
-        "inertia": 1,
-        "local": 0.5,
-        "global": 0.5
+    "algorithm": "1",
+    "flexible": {
+        "maxsequence": "3",
+        "usemaxsequence": true
     },
-    "genetic":{
-        "mutation": 0.3,
-        "crossover": 0.5
+    "genetic": {
+        "crossover": "0.5",
+        "mutation": "0.3"
     },
-    "flexible":{
-        "usemaxsequence": true,
-        "maxsequence": 3
-    }
+    "iterations": "1000",
+    "name": "1",
+    "population": "1000",
+    "pso": {
+        "global": "0.5",
+        "inertia": "1",
+        "local": "0.5"
+    },
+    "stabilization": "150",
+    "stopcriteria": "1"
 }

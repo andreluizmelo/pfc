@@ -164,13 +164,13 @@ ipc.on('envio-params', (event, arg) =>{
   });
 });
 
-ipc.on('get-list-confs',function(args){
+ipc.on('get-list-confs',function(event, args){
   win.webContents.send('lista-configuracao', fileUtils.GetListOfConfs());
 });
 
-ipc.on('save-conf', function(args){
+ipc.on('save-conf', function(event, args){
   console.log(args);
-  // fileUtils.SaveConf(args.fileName, args.conf).then(function(result){
-  //   win.webContents.send('save-configuracao', result);
-  // });
+  fileUtils.SaveConf(args.fileName, args.conf).then(function(result){
+    win.webContents.send('save-configuracao', result);
+  });
 });

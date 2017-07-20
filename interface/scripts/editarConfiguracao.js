@@ -17,8 +17,12 @@ var editarConfiguracao = (function(){
             //console.log(response);
             return Promise.resolve(conf);
         }).then((configuration) => {
+            configuration.nome = nome;
+            conf = configuration;
             return TemplateHelper.Display("#content", 'configuracao', configuration);
         }).then((response) => {
+                $("#conf-algoritmo-input").val(conf.algorithm);
+                $("#conf-parada-input").val(conf.stopcriteria);
                 $("#conf-accordion a").on("click", (event) =>{
                     var $elem = $(event.currentTarget);
                     var $target = $($elem.attr("href"));
@@ -56,10 +60,21 @@ var editarConfiguracao = (function(){
 
     self.Save = function(nome){
         var conf = self.GetConfigurationFromForm();
+        confName = $("#nome-configuracao-input").val();
+        console.log(conf);
         ipc.send('save-conf',{
             fileName: confName,
             conf: conf
         });
+    };
+
+    self.OnSaved = function(success){
+        if(success){
+            toastr.success("Configuração salva com sucesso");
+            listaConfiguracao.LoadInterface();
+        }else{
+            toastr.error("Erro ao salvar configuração");
+        }
     };
 
     return self;

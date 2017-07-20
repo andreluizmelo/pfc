@@ -14,9 +14,13 @@ var fileUtils = (function(){
     };
 
     self.SaveConf = function(fileName, conf){
+        console.log(fileName);
         return new Promise(function(resolve,reject){
-            fs.writeFile(fileName + '.json', JSON.stringify(conf, null, 4), function(err){
-                if(err) resolve(false);
+            fs.writeFile('configuration/' + fileName + '.json', JSON.stringify(conf, null, 4), function(err){
+                if(err) {
+                    console.log(err);
+                    resolve(false);
+                }
                 else resolve(true);
             });
         });

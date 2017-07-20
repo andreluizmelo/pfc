@@ -62,4 +62,8 @@ $(document).ready(function(){
     ipc.on('lista-configuracao', function(evt, arg){
         listaConfiguracao.LoadList(arg);
     });
+
+    ipc.on('save-configuracao', function(evt, arg){
+        editarConfiguracao.OnSaved(arg);
+    });
 });

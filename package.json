@@ -12,8 +12,10 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "fs.promised": "^3.0.0",
     "handlebars": "^4.0.6",
     "jquery": "^3.2.1",
+    "jquery-ui": "^1.12.1",
     "lodash": "^4.17.4",
     "toastr": "^2.1.2"
   }
