@@ -39,7 +39,7 @@ body {
 .btn{
     border-radius: 10px;
     box-shadow: 1px 1px 3px @shadow;
-    color: @alt-background;
+    color: @secondary-color;
     background-color: @primary-color;
     //height: 35px;
     &:focus{
@@ -52,7 +52,7 @@ body {
         box-shadow: 0.5px 0.5px 2px @shadow;
     }
     &.btn-primary{
-        color: @primary-color;
+        color: @secondary-color;
         background-color: @blue;
     }
     &.locked{
@@ -101,11 +101,11 @@ body {
 
 input[type="text"], input[type="number"] {
     height: 35px;
-    color: @secondary-color;
+    color: @primary-color;
     border-radius: 10px;
     padding: 10px;
     border: solid 1px #fff;
-    box-shadow: inset 1px 1px 2px 0 #707070;
+    box-shadow: inset 1px 1px 2px 0 #404040;
     transition: box-shadow 0.3s;//, border 0.1s;
     text-shadow:0 1px 0 rgba(0,0,0,0.4);
     &:focus, &.focus{
@@ -134,7 +134,7 @@ select{
     border: none;
     border-radius: 10px;
     background-color: white;
-    color: @secondary-color;
+    color: @alt-background;
     text-shadow:0 1px 0 rgba(0,0,0,0.4);
     &:focus, &.focus{
         outline: none;

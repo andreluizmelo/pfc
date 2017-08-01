@@ -1,8 +1,8 @@
 .simple-border {
-  color: #444;
-  background-color: #ccc;
+  color: #ccc;
+  background-color: #444;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid #444;
 }
 body section {
   width: 100%;
@@ -15,10 +15,10 @@ body section .content-form {
   padding: 10px;
 }
 #info {
-  color: #444;
-  background-color: #ccc;
+  color: #ccc;
+  background-color: #444;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid #444;
   width: 30%;
   margin-left: 35%;
   padding: 10px;
@@ -73,7 +73,7 @@ body section .content-form {
   background-color: #191;
 }
 .grade-horarios {
-  border-left: solid #ccc 1px;
+  border-left: solid #444 1px;
   padding-left: 20px;
   min-height: 505px;
 }
@@ -110,7 +110,7 @@ body section .content-form {
 }
 .grade-horarios .tabela-horarios .btn-resultado.no-class {
   background-color: #999;
-  color: #444;
+  color: #ccc;
 }
 .escolha-materia-div {
   text-align: center;

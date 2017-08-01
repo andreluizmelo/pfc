@@ -34,6 +34,13 @@ $(document).ready(function(){
         
     });
 
+    $("#config-btn").click(function(event){
+        window.home = false;
+        showContent();
+        listaConfiguracao.LoadInterface();
+        
+    });
+
     ipc.on('groups', function(event, arg){
         escolhaGrupo.LoadInterface();
         if(window.home) showContent();

@@ -1,0 +1,21 @@
+{
+    "algorithm": "0",
+    "flexible": {
+        "maxsequence": "3",
+        "usemaxsequence": true
+    },
+    "genetic": {
+        "crossover": "0.5",
+        "mutation": "0.3"
+    },
+    "iterations": "1000",
+    "name": "0",
+    "population": "800",
+    "pso": {
+        "global": "0.5",
+        "inertia": "1",
+        "local": "0.5"
+    },
+    "stabilization": "50",
+    "stopcriteria": "0"
+}
