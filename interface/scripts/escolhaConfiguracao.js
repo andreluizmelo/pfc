@@ -36,7 +36,7 @@ var escolhaConfiguracao = (function(){
     };
     self.LoadForm = function(configuracao){
         
-        console.log(configuracao);
+        //console.log(configuracao);
         return TemplateHelper.Display("#escolha-configuracao-form", 'escolha-configuracao-form', configuracao)
             .then((response) => {
                 // console.log("wat");

@@ -15,7 +15,6 @@
         "crossover": 0.5
     },
     "flexible":{
-        "usemaxsequence": true,
         "maxclasses": 3,
         "minclasses": 2,
         "used": [

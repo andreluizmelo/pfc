@@ -7,6 +7,7 @@ var confirmacao = (function(){
         var materias = escolhaMateria.GetMaterias();
         var salas = escolhaSala.GetSalas();
         var conf = escolhaConfiguracao.GetConfiguration();
+        console.log(conf);
         TemplateHelper.Display("#content", 'confirmacao', { 
             grupos: groups,
             materias: materias,

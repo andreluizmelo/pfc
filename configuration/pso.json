@@ -15,7 +15,6 @@
     "stabilization": "150",
     "stopcriteria": "1",
     "flexible":{
-        "usemaxsequence": true,
         "maxclasses": 3,
         "minclasses": 2,
         "used": [

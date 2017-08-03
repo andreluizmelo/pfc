@@ -5,11 +5,11 @@
         "minclasses": "",
         "notused": [
             "Número máximo de aulas por dia",
-            "Evitar buracos entre aulas da mesma matéria",
             "Evitar buracos entre aulas",
             "Deslocamentos entre salas"
         ],
         "used": [
+            "Evitar buracos entre aulas da mesma matéria",
             "Número mínimo de aulas por dia"
         ]
     },

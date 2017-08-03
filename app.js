@@ -149,7 +149,7 @@ ipc.on('envio-params', (event, arg) =>{
   var configuracao = arg.configuracao;
   var id = arg.id;
   
-  var flexiveis = arg.flexible;
+  var flexiveis = configuracao.flexible;
   var minSeq = flexiveis.minclasses;
   var maxSeq = flexiveis.maxclasses;
   var index = 0;
