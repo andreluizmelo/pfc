@@ -3,12 +3,14 @@ var constants = require('./constantes');
 var helper = require('./helpers');
 var Class = require('./class').Class;
 
-function cspProblem(teachers, subjects, groups, rooms){
+function cspProblem(teachers, subjects, groups, rooms, constantesAdicionais){
     this.teachers = teachers;
     this.subjects = subjects;
     this.groups = groups;
     this.rooms = rooms;
-
+    console.log(constantesAdicionais.pesos[constants.restricaoMaximoAulas]);
+    console.log(constantesAdicionais.pesos[constants.restricaoMinimoAulas]);
+    console.log(constantesAdicionais.pesos[constants.restricaoBuracosMesmaMateria]);
     function getTeacher(id){
         return _.find(teachers, t => t.id == id);
     }
@@ -63,7 +65,7 @@ function cspProblem(teachers, subjects, groups, rooms){
             if(getRoom(classe.roomId).capacidade < getGroup(classe.groupId).numeroAlunos)
                 numberOfProblems++;
         });
-        return numberOfProblems * 10;
+        return numberOfProblems * constants.roomCapacityWeight;
     }
 
     function roomOverlapPenalty(genome, debug){
@@ -72,14 +74,16 @@ function cspProblem(teachers, subjects, groups, rooms){
             var aulasNaMesmaSala = _.filter(genome, c => c.day == aula.day && c.time == aula.time && c.roomId == aula.roomId);
             numberOfOverlaps += aulasNaMesmaSala.length - 1; // tira ele mesmo
         });
-        return (numberOfOverlaps / 2) * 7;
+        return (numberOfOverlaps / 2) * constants.roomOverlapWeight;
     }
 
     function classQuantityPenalty(genome, debug){
+        if(constantesAdicionais.pesos[constants.restricaoMaximoAulas] == null && constantesAdicionais.pesos[constants.restricaoMinimoAulas] == null)
+            return 0;
         var belowLimit = 0
         var aboveLimit = 0;
-        var highLimit = 3;
-        var lowLimit = 2;
+        var highLimit = constantesAdicionais.maximoAulas;
+        var lowLimit = constantesAdicionais.minimoAulas;
         //console.log(_.groupBy(genome, 'subjectId'));
         _.each(_.groupBy(genome, 'subjectId'), (classes) => {
             _.each(_.groupBy(classes, 'day'), (elem) => {
@@ -87,11 +91,14 @@ function cspProblem(teachers, subjects, groups, rooms){
                 if(elem.length < lowLimit) belowLimit++;
             });
         });
-        return 2 * aboveLimit + 2 * belowLimit;
+        return constantesAdicionais.pesos[constants.restricaoMaximoAulas] * aboveLimit + 
+            constantesAdicionais.pesos[constants.restricaoMinimoAulas] * belowLimit;
     }
 
 
     function classWindowsPenalty(genome, debug){
+        if(constantesAdicionais.pesos[constants.restricaoBuracosMesmaMateria] == null)
+            return 0;
         var numberOfWindows = 0;
         _.each(_.groupBy(genome, 'subjectId'), (classes) => {
             _.each(_.groupBy(classes, 'day'), (elem) => {
@@ -108,7 +115,7 @@ function cspProblem(teachers, subjects, groups, rooms){
             //console.log('para cima materia apenas')
         });
         //console.log(numberOfWindows + '\n');
-        return 2 * numberOfWindows;
+        return constantesAdicionais.pesos[constants.restricaoBuracosMesmaMateria] * numberOfWindows;
     }
 
     function teacherAvailabilityPenalty(genome, debug){
