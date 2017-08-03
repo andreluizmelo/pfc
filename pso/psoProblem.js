@@ -33,6 +33,11 @@ PsoProblem.prototype.solveByNumberOfIterations = function(numberOfIterations, di
         this.population.iterate(displayCurrentBest);
     }
     this.displayCurrentSolution();
+
+    return Promise.resolve({
+        bestSolution: this.population.bestSolution,
+        iteration: i
+    });
 };
 
 PsoProblem.prototype.solve = function( numberOfSameResultToStop, displayCurrentBest){
@@ -55,6 +60,10 @@ PsoProblem.prototype.solve = function( numberOfSameResultToStop, displayCurrentB
     }
     console.log("geração: " + generation);
     this.displayCurrentSolution();
+    return Promise.resolve({
+        bestSolution: this.population.bestSolution,
+        iteration: generation
+    });
 };
 
 module.exports = {

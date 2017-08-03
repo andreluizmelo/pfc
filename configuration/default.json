@@ -16,6 +16,16 @@
     },
     "flexible":{
         "usemaxsequence": true,
-        "maxsequence": 3
+        "maxclasses": 3,
+        "minclasses": 2,
+        "used": [
+            "Evitar buracos entre aulas da mesma matéria",
+            "Número máximo de aulas por dia",
+            "Número mínimo de aulas por dia"
+        ],
+        "notused": [
+            "Evitar buracos entre aulas",
+            "Deslocamentos entre salas"
+        ]
     }
 }

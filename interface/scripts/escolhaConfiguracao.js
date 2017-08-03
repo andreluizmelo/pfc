@@ -17,22 +17,30 @@ var escolhaConfiguracao = (function(){
         }).then((response) => {
             return TemplateHelper.Display("#escolha-configuracao-salva", 'escolha-configuracao-salva', {configurations: confs});
         }).then((response) => {
-            confHelper.LoadConf('default').then((conf) => {
-                return TemplateHelper.Display("#escolha-configuracao-form", 'escolha-configuracao-form', configuracaoFromForm || conf);
-            });
+            if(configuracaoFromForm == null)
+                return confHelper.LoadConf('default').then((configuracao) => { return self.LoadForm(configuracao);});
+            else
+                return self.LoadForm(configuracaoFromForm);
+            // confHelper.LoadConf('default').then((conf) => 
+            //     return TemplateHelper.Display("#escolha-configuracao-form", 'escolha-configuracao-form', configuracaoFromForm || conf);
+            // });
         }).then((response) => {
             $("#conf-input-select").val('default');
         });
     };
 
-    self.LoadForm = function(){
-        var conf = null;
+    self.LoadForm = function(configuracao){
+        
+        console.log("sou chamado");
         confHelper.LoadConf($("#conf-input-select").val()).then((configuracao) => {
-                conf = configuracao;
-                return TemplateHelper.Display("#escolha-configuracao-form", 'escolha-configuracao-form', conf);
-            }).then((response) => {
-                $("#conf-algoritmo-input").val(conf.algorithm);
-                $("#conf-parada-input").val(conf.stopcriteria);
+                conf = configuracao;});
+        return TemplateHelper.Display("#escolha-configuracao-form", 'escolha-configuracao-form', configuracao)
+            .then((response) => {
+                // console.log("wat");
+                // console.log("alg: " + configuracao.algorithm);
+                // console.log("stopcrit: " + configuracao.stopcriteria);
+                $("#conf-algoritmo-input").val(configuracao.algorithm);
+                $("#conf-parada-input").val(configuracao.stopcriteria);
                 $("#conf-accordion a").on("click", (event) =>{
                     var $elem = $(event.currentTarget);
                     var $target = $($elem.attr("href"));
@@ -41,6 +49,9 @@ var escolhaConfiguracao = (function(){
                     else
                         console.log("deu ruim: " + $elem.attr("href"));
                 });
+                $( "#sortable1, #sortable2" ).sortable({
+                  connectWith: ".connectedSortable"
+                });//.disableSelection();
                 $('#escolha-configuracao-form input, #escolha-configuracao-form input').change((evt) => {
                     self.SaveConfigurationFromForm();
                 });

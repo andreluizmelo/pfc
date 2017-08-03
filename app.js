@@ -9,6 +9,7 @@ const Professor = require('./class_scheduling_problem/professor').Professor;
 const Sala = require('./class_scheduling_problem/room');
 const cspProblem = require('./class_scheduling_problem/cspProblem').CSProblem;
 const gaProblem = require('./genetic/geneticAlgorithmProblem').GeneticAlgorithmProblem;
+const psoProblem = require('./pso/psoProblem').PsoProblem;
 
 const fileUtils = require('./utils/fileUtils');
 
@@ -145,23 +146,55 @@ ipc.on('envio-params', (event, arg) =>{
   var professores = _.map(arg.professores, (t) => new Professor(t.id, t.nome, t.disponibilidade));
   var materias = _.map( arg.materias, (m) => new Materia(m.id, m.nome, m.numClasses, m.grupo, m.professor));
   var salas = _.map(arg.salas, (s) => new Sala(s.id, s.nome, s.capacidade));
+  var configuracao = arg.configuracao;
   var id = arg.id;
-  console.log(salas);
+  
   var prob = new cspProblem(professores, materias, grupos, salas);
-  var gaProb = new gaProblem(prob, 100,0.4,0.3);
+  //var gaProb = new gaProblem(prob, configuracao.population, 0.4, 0.3);
 
+  var problema;
+
+  console.log("algoritmo: " + configuracao.algorithm);
+  console.log("populacao: " + configuracao.population);
+  if(configuracao.algorithm == 0){
+    console.log("mutacao: " + configuracao.genetic.mutation);
+    console.log("crossover: " + configuracao.genetic.crossover);
+    problema = new gaProblem(prob, configuracao.population, configuracao.genetic.mutation, configuracao.genetic.crossover);
+  }
+  else{
+    console.log("inertia: " + configuracao.pso.inertia);
+    console.log("local: " + configuracao.pso.local);
+    console.log("global: " + configuracao.pso.global);
+    problema = new psoProblem(prob, configuracao.population, configuracao.pso.inertia, configuracao.pso.local, configuracao.pso.global);
+  }
   var start = new Date();
   console.log("starting...");
-  gaProb.solveByNumberOfIterations(1000).then((solution) =>{
-    console.log("should be wrapping up...");
-    console.log(JSON.stringify(solution.bestSolution, null, 4));
-    win.webContents.send('resultado', {
-      id: id,
-      solucao: solution.bestSolution,
-      geracao: solution.iteration,
-      tempoExecucao: new Date() - start
-    });  
-  });
+  console.log("criterio de parada: " + configuracao.stopcriteria);
+  if(configuracao.stopcriteria == 0){ // numero de iteracoes
+    console.log("iteracoes: " + configuracao.iterations);
+    problema.solveByNumberOfIterations(1000).then((solution) =>{
+      console.log("should be wrapping up...");
+      console.log(JSON.stringify(solution.bestSolution, null, 4));
+      win.webContents.send('resultado', {
+        id: id,
+        solucao: solution.bestSolution,
+        geracao: solution.iteration,
+        tempoExecucao: new Date() - start
+      });  
+    });
+  }else{ // ate repetir x vezes
+    console.log("iteracoes sem melhora: " + configuracao.stabilization);
+    problema.solve(1000).then((solution) =>{
+      console.log("should be wrapping up...");
+      console.log(JSON.stringify(solution.bestSolution, null, 4));
+      win.webContents.send('resultado', {
+        id: id,
+        solucao: solution.bestSolution,
+        geracao: solution.iteration,
+        tempoExecucao: new Date() - start
+      });
+    });
+  }
 });
 
 ipc.on('get-list-confs',function(event, args){

@@ -8,6 +8,7 @@ var resultado = (function(){
             professores: escolhaProfessor.GetTeachers(),
             materias: escolhaMateria.GetMaterias(),
             salas: escolhaSala.GetSalas(),
+            configuracao: escolhaConfiguracao.GetConfiguration(),
             id: id
         });
         TemplateHelper.Display('#content', 'resultado-espera', {});
