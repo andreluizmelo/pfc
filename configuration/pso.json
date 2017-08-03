@@ -1,9 +1,5 @@
 {
     "algorithm": "1",
-    "flexible": {
-        "maxsequence": "3",
-        "usemaxsequence": true
-    },
     "genetic": {
         "crossover": "0.5",
         "mutation": "0.3"
@@ -17,5 +13,19 @@
         "local": "0.5"
     },
     "stabilization": "150",
-    "stopcriteria": "1"
+    "stopcriteria": "1",
+    "flexible":{
+        "usemaxsequence": true,
+        "maxclasses": 3,
+        "minclasses": 2,
+        "used": [
+            "Evitar buracos entre aulas da mesma matéria",
+            "Número máximo de aulas por dia",
+            "Número mínimo de aulas por dia"
+        ],
+        "notused": [
+            "Evitar buracos entre aulas",
+            "Deslocamentos entre salas"
+        ]
+    }
 }

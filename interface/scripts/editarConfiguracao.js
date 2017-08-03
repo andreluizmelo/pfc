@@ -23,6 +23,9 @@ var editarConfiguracao = (function(){
         }).then((response) => {
                 $("#conf-algoritmo-input").val(conf.algorithm);
                 $("#conf-parada-input").val(conf.stopcriteria);
+                $( "#sortable1, #sortable2" ).sortable({
+                  connectWith: ".connectedSortable"
+                });
                 $("#conf-accordion a").on("click", (event) =>{
                     var $elem = $(event.currentTarget);
                     var $target = $($elem.attr("href"));
@@ -35,6 +38,14 @@ var editarConfiguracao = (function(){
     };
 
     self.GetConfigurationFromForm = function(){
+        var used = [];
+        var notused = [];
+        $("#sortable1 li").each(function(index){
+            notused.push($(this).attr('value'));
+        });
+        $("#sortable2 li").each(function(index){
+            used.push($(this).attr('value'));
+        });
         return {
             name: $('#conf-algoritmo-input').val(),
             algorithm: $('#conf-algoritmo-input').val(),
@@ -52,8 +63,10 @@ var editarConfiguracao = (function(){
                 crossover: $('#conf-crossover-input').val()
             },
             flexible:{
-                usemaxsequence: true,//$('#').val(),
-                maxsequence: $('#conf-max-aulas-input').val()
+                maxclasses: $('#conf-max-aulas-input').val(),
+                minclasses : $('#conf-min-aulas-input').val(),
+                used: used,
+                notused: notused
             }
         };
     };

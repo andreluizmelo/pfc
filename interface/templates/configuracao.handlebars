@@ -61,6 +61,23 @@
                                     <label>Número máximo de aulas seguidas:</label>
                                     <input type="number" min="0" max="10" id="conf-max-aulas-input" value="{{flexible.maxsequence}}"/>
                                 </div>
+                                <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+                                    <label>Número mínimo de aulas seguidas:</label>
+                                    <input type="number" min="0" max="10" id="conf-min-aulas-input" value="{{flexible.maxsequence}}"/>
+                                </div>
+                                <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6">
+                                    <ul id="sortable1" class="connectedSortable">
+                                          {{#each flexible.notused as |restricao|}}
+                                          <li class="ui-state-default" value="{{restricao}}">{{restricao}}</li>
+                                          {{/each}}
+                                    </ul>
+                                          
+                                    <ul id="sortable2" class="connectedSortable">
+                                          {{#each flexible.used as |restricao|}}
+                                          <li class="ui-state-highlight" value="{{restricao}}">{{restricao}}</li>
+                                          {{/each}}
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                   </div>

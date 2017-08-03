@@ -61,6 +61,14 @@ var escolhaConfiguracao = (function(){
         configuracaoFromForm = self.GetConfigurationFromForm();
     };
     self.GetConfigurationFromForm = function(){
+        var used = [];
+        var notused = [];
+        $("#sortable1 li").each(function(index){
+            notused.push($(this).attr('value'));
+        });
+        $("#sortable2 li").each(function(index){
+            used.push($(this).attr('value'));
+        });
         return {
             //name: $('#conf-algoritmo-input').val(),
             algorithm: $('#conf-algoritmo-input').val(),
@@ -78,8 +86,10 @@ var escolhaConfiguracao = (function(){
                 crossover: $('#conf-crossover-input').val()
             },
             flexible:{
-                usemaxsequence: true,//$('#').val(),
-                maxsequence: $('#conf-max-aulas-input').val()
+                maxclasses: $('#conf-max-aulas-input').val(),
+                minclasses : $('#conf-min-aulas-input').val(),
+                used: used,
+                notused: notused
             }
         };
     };

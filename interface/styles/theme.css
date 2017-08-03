@@ -214,6 +214,7 @@ select option:active {
   padding: 5px 0 0 0;
   float: left;
   margin-right: 10px;
+  border-radius: 2px;
 }
 #sortable1 li,
 #sortable2 li {
@@ -221,4 +222,13 @@ select option:active {
   padding: 5px;
   font-size: 1.2em;
   width: 120px;
+}
+li.ui-state-highlight {
+  color: #454545;
+  border-color: #c5c5c5;
+  background: #f6f6f6;
+}
+#sortable2 li {
+  background: #a6a6a6;
+  color: #353535;
 }

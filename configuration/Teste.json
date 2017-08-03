@@ -1,8 +1,17 @@
 {
     "algorithm": "0",
     "flexible": {
-        "maxsequence": "3",
-        "usemaxsequence": true
+        "maxclasses": "",
+        "minclasses": "",
+        "notused": [
+            "Número máximo de aulas por dia",
+            "Evitar buracos entre aulas da mesma matéria",
+            "Evitar buracos entre aulas",
+            "Deslocamentos entre salas"
+        ],
+        "used": [
+            "Número mínimo de aulas por dia"
+        ]
     },
     "genetic": {
         "crossover": "0.5",
@@ -10,12 +19,12 @@
     },
     "iterations": "1000",
     "name": "0",
-    "population": "800",
+    "population": "1000",
     "pso": {
         "global": "0.5",
         "inertia": "1",
         "local": "0.5"
     },
-    "stabilization": "50",
+    "stabilization": "150",
     "stopcriteria": "0"
 }
