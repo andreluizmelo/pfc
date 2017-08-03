@@ -29,11 +29,14 @@ var escolhaConfiguracao = (function(){
         });
     };
 
+    self.LoadSavedConfiguration = function(){
+        confHelper.LoadConf($("#conf-input-select").val())
+            .then((configuracao) => { return self.LoadForm(configuracao);})
+            .then((response) => { toastr.success("cofiguração carregada com sucesso"); });
+    };
     self.LoadForm = function(configuracao){
         
-        console.log("sou chamado");
-        confHelper.LoadConf($("#conf-input-select").val()).then((configuracao) => {
-                conf = configuracao;});
+        console.log(configuracao);
         return TemplateHelper.Display("#escolha-configuracao-form", 'escolha-configuracao-form', configuracao)
             .then((response) => {
                 // console.log("wat");

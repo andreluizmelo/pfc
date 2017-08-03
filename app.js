@@ -149,7 +149,21 @@ ipc.on('envio-params', (event, arg) =>{
   var configuracao = arg.configuracao;
   var id = arg.id;
   
-  var prob = new cspProblem(professores, materias, grupos, salas);
+  var flexiveis = arg.flexible;
+  var minSeq = flexiveis.minclasses;
+  var maxSeq = flexiveis.maxclasses;
+  var index = 0;
+  var pesosPadrao = [10, 8, 7, 5, 4, 3, 2, 1,1,1,1,1,1,1,1,1];
+  var pesos = {};
+  _.forEach(flexiveis.used, (elem) => {
+    pesos[elem] = pesosPadrao[index++];
+  });
+  console.log(pesos);
+  var prob = new cspProblem(professores, materias, grupos, salas,{
+    pesos: pesos,
+    maximoAulas: maxSeq,
+    minimoAulas: minSeq
+  });
   //var gaProb = new gaProblem(prob, configuracao.population, 0.4, 0.3);
 
   var problema;
