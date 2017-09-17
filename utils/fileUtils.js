@@ -38,6 +38,7 @@ var fileUtils = (function(){
             var date = new Date();
             fileName = "historico_" + (date / 1000);
         }
+        prob.nome = fileName;
         return new Promise(function(resolve,reject){
             fs.writeFile('historico/' + fileName + '.json', JSON.stringify(prob, null, 4), function(err){
                 if(err) {

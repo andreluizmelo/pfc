@@ -192,6 +192,12 @@ ipc.on('envio-params', (event, arg) =>{
       console.log(JSON.stringify(solution.bestSolution, null, 4));
       fileUtils.SaveProblem(nomeSolucao || null, {
         configuracao: configuracao,
+        info: {
+          grupos: grupos,
+          professores: professores,
+          materias: materias,
+          salas: salas,
+        },
         solucoes: [{
             solucao: solution.bestSolution,
             geracao: solution.iteration,
@@ -213,6 +219,12 @@ ipc.on('envio-params', (event, arg) =>{
       console.log(JSON.stringify(solution.bestSolution, null, 4));
       fileUtils.SaveProblem(nomeSolucao || null, {
         configuracao: configuracao,
+        info: {
+          grupos: grupos,
+          professores: professores,
+          materias: materias,
+          salas: salas,
+        },
         solucoes: [{
             solucao: solution.bestSolution,
             geracao: solution.iteration,
