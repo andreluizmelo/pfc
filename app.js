@@ -147,6 +147,7 @@ ipc.on('envio-params', (event, arg) =>{
   var materias = _.map( arg.materias, (m) => new Materia(m.id, m.nome, m.numClasses, m.grupo, m.professor));
   var salas = _.map(arg.salas, (s) => new Sala(s.id, s.nome, s.capacidade));
   var configuracao = arg.configuracao;
+  var nomeSolucao = arg.nome;
   var id = arg.id;
   
   var flexiveis = configuracao.flexible;
@@ -189,23 +190,41 @@ ipc.on('envio-params', (event, arg) =>{
     problema.solveByNumberOfIterations(1000).then((solution) =>{
       console.log("should be wrapping up...");
       console.log(JSON.stringify(solution.bestSolution, null, 4));
-      win.webContents.send('resultado', {
-        id: id,
-        solucao: solution.bestSolution,
-        geracao: solution.iteration,
-        tempoExecucao: new Date() - start
-      });  
+      fileUtils.SaveProblem(nomeSolucao || null, {
+        configuracao: configuracao,
+        solucoes: [{
+            solucao: solution.bestSolution,
+            geracao: solution.iteration,
+          },
+        ]
+      }).then((promessa) =>{
+        win.webContents.send('resultado', {
+          id: id,
+          solucao: solution.bestSolution,
+          geracao: solution.iteration,
+          tempoExecucao: new Date() - start
+        });  
+      });
     });
   }else{ // ate repetir x vezes
     console.log("iteracoes sem melhora: " + configuracao.stabilization);
     problema.solve(1000).then((solution) =>{
       console.log("should be wrapping up...");
       console.log(JSON.stringify(solution.bestSolution, null, 4));
-      win.webContents.send('resultado', {
-        id: id,
-        solucao: solution.bestSolution,
-        geracao: solution.iteration,
-        tempoExecucao: new Date() - start
+      fileUtils.SaveProblem(nomeSolucao || null, {
+        configuracao: configuracao,
+        solucoes: [{
+            solucao: solution.bestSolution,
+            geracao: solution.iteration,
+          },
+        ]
+      }).then((promessa) =>{
+        win.webContents.send('resultado', {
+          id: id,
+          solucao: solution.bestSolution,
+          geracao: solution.iteration,
+          tempoExecucao: new Date() - start
+        });
       });
     });
   }
@@ -222,4 +241,11 @@ ipc.on('save-conf', function(event, args){
   fileUtils.SaveConf(args.fileName, args.conf).then(function(result){
     win.webContents.send('save-configuracao', result);
   });
+
+});
+
+ipc.on('get-list-hist', function(event, args){
+  //console.log(args);
+  console.log('pedido de lista dos historicos');
+  win.webContents.send('lista-historicos', fileUtils.GetListOfHistoricos());
 });

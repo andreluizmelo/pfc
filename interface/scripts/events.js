@@ -41,6 +41,13 @@ $(document).ready(function(){
         
     });
 
+    $("#historico-btn").click(function(event){
+        window.home = false;
+        showContent();
+        listaHistoricos.LoadInterface();
+        
+    });
+
     ipc.on('groups', function(event, arg){
         escolhaGrupo.LoadInterface();
         if(window.home) showContent();
@@ -79,5 +86,11 @@ $(document).ready(function(){
 
     ipc.on('lista-configuracao-escolha', function(evt, arg){
         escolhaConfiguracao.LoadList(arg);
+    });
+
+    ipc.on('lista-historicos', function(evt, arg){
+        console.log('historicos recebidos:');
+        console.log(arg);
+        listaHistoricos.LoadList(arg);
     });
 });
