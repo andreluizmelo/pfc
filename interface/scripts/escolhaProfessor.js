@@ -7,6 +7,10 @@ var escolhaProfessor = (function(){
         return max !== undefined ? max.id + 1 : 1;
     }
 
+    self.set = function(profs){
+        teachers = profs;
+    };
+
     self.GetTeachers = function GetTeachers(){
         return teachers;
     };

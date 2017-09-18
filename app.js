@@ -159,7 +159,7 @@ ipc.on('envio-params', (event, arg) =>{
   _.forEach(flexiveis.used, (elem) => {
     pesos[elem] = pesosPadrao[index++];
   });
-  console.log(pesos);
+  console.log("pesos: " + pesos);
   var prob = new cspProblem(professores, materias, grupos, salas,{
     pesos: pesos,
     maximoAulas: maxSeq,
@@ -187,16 +187,16 @@ ipc.on('envio-params', (event, arg) =>{
   console.log("criterio de parada: " + configuracao.stopcriteria);
   if(configuracao.stopcriteria == 0){ // numero de iteracoes
     console.log("iteracoes: " + configuracao.iterations);
-    problema.solveByNumberOfIterations(1000).then((solution) =>{
+    problema.solveByNumberOfIterations(1000, true).then((solution) =>{
       console.log("should be wrapping up...");
       console.log(JSON.stringify(solution.bestSolution, null, 4));
       fileUtils.SaveProblem(nomeSolucao || null, {
-        configuracao: configuracao,
+        configuracao: arg.configuracao,
         info: {
-          grupos: grupos,
-          professores: professores,
-          materias: materias,
-          salas: salas,
+          grupos: arg.grupos,
+          professores: arg.professores,
+          materias: arg.materias,
+          salas: arg.salas,
         },
         solucoes: [{
             solucao: solution.bestSolution,
@@ -218,12 +218,12 @@ ipc.on('envio-params', (event, arg) =>{
       console.log("should be wrapping up...");
       console.log(JSON.stringify(solution.bestSolution, null, 4));
       fileUtils.SaveProblem(nomeSolucao || null, {
-        configuracao: configuracao,
+        configuracao: arg.configuracao,
         info: {
-          grupos: grupos,
-          professores: professores,
-          materias: materias,
-          salas: salas,
+          grupos: arg.grupos,
+          professores: arg.professores,
+          materias: arg.materias,
+          salas: arg.salas,
         },
         solucoes: [{
             solucao: solution.bestSolution,

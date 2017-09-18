@@ -1,5 +1,8 @@
 <ul>
     {{#each historicos}}
-        <li onclick="listaHistoricos.LoadHistorico('{{this}}');">{{this}}</li>
+        <li>
+            <span  onclick="listaHistoricos.LoadHistorico('{{this}}');">{{this}}</span>
+            <span class="glyphicon glyphicon-edit" onclick="detalhesHistorico.EditarHistorico('{{this}}')"></span>
+        </li>
     {{/each}}
 </ul>

@@ -7,6 +7,10 @@ var escolhaGrupo = (function(){
         return max !== undefined ? max.id + 1 : 1;
     }
 
+    self.set = function(grupos){
+        groups = grupos;
+    };
+
     self.GetGroups = function GetGroups(){
         return groups;
     };

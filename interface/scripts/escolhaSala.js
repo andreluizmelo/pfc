@@ -8,6 +8,10 @@ var escolhaSala = (function(){
         return max !== undefined ? max.id + 1 : 1;
     }
 
+    self.set = function(rooms){
+        salas = rooms;
+    };
+
     self.GetSalas = function(){
         return salas;
     };

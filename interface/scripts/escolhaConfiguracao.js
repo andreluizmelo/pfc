@@ -97,5 +97,10 @@ var escolhaConfiguracao = (function(){
         };
     };
 
+    self.set = function(conf){
+        console.log(conf);
+        configuracaoFromForm = conf;
+    };
+
     return self;
 })();

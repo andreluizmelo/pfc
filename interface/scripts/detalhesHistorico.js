@@ -15,7 +15,14 @@ var detalhesHistorico = (function($){
     };
 
     self.EditarHistorico = function(nome){
-        toastr.warning('not implemented yet');
+        historicoHelper.getHistorico(nome).then((hist) =>{
+            escolhaGrupo.set(hist.info.grupos);
+            escolhaMateria.set(hist.info.materias);
+            escolhaProfessor.set(hist.info.professores);
+            escolhaSala.set(hist.info.salas);
+            escolhaConfiguracao.set(hist.configuracao);
+            escolhaGrupo.LoadInterface();
+        });
     };
 
     return self;

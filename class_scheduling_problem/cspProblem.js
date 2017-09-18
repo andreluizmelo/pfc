@@ -8,9 +8,9 @@ function cspProblem(teachers, subjects, groups, rooms, constantesAdicionais){
     this.subjects = subjects;
     this.groups = groups;
     this.rooms = rooms;
-    console.log(constantesAdicionais.pesos[constants.restricaoMaximoAulas]);
-    console.log(constantesAdicionais.pesos[constants.restricaoMinimoAulas]);
-    console.log(constantesAdicionais.pesos[constants.restricaoBuracosMesmaMateria]);
+    console.log("peso max aulas" + constantesAdicionais.pesos[constants.restricaoMaximoAulas]);
+    console.log("peso min aulas" + constantesAdicionais.pesos[constants.restricaoMinimoAulas]);
+    console.log("peso buracos mesma materia: " + constantesAdicionais.pesos[constants.restricaoBuracosMesmaMateria]);
     function getTeacher(id){
         return _.find(teachers, t => t.id == id);
     }
@@ -82,8 +82,8 @@ function cspProblem(teachers, subjects, groups, rooms, constantesAdicionais){
             return 0;
         var belowLimit = 0
         var aboveLimit = 0;
-        var highLimit = constantesAdicionais.maximoAulas;
-        var lowLimit = constantesAdicionais.minimoAulas;
+        var highLimit = constantesAdicionais.maximoAulas || 100000;
+        var lowLimit = constantesAdicionais.minimoAulas || -1;
         //console.log(_.groupBy(genome, 'subjectId'));
         _.each(_.groupBy(genome, 'subjectId'), (classes) => {
             _.each(_.groupBy(classes, 'day'), (elem) => {
@@ -91,8 +91,8 @@ function cspProblem(teachers, subjects, groups, rooms, constantesAdicionais){
                 if(elem.length < lowLimit) belowLimit++;
             });
         });
-        return constantesAdicionais.pesos[constants.restricaoMaximoAulas] * aboveLimit + 
-            constantesAdicionais.pesos[constants.restricaoMinimoAulas] * belowLimit;
+        return (constantesAdicionais.pesos[constants.restricaoMaximoAulas] != null ? constantesAdicionais.pesos[constants.restricaoMaximoAulas] : 0) * aboveLimit + 
+            (constantesAdicionais.pesos[constants.restricaoMinimoAulas] != null ? constantesAdicionais.pesos[constants.restricaoMinimoAulas] : 0) * belowLimit;
     }
 
 

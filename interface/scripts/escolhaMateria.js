@@ -7,6 +7,10 @@ var escolhaMateria = (function(){
         return max !== undefined ? max.id + 1 : 1;
     }
 
+    self.set = function(mats){
+        materias = mats;
+    };
+
     self.GetMateria = function GetMateria(id){
         return _.find(materias, x => x.id == id);
     };
