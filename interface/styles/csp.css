@@ -31,6 +31,7 @@ body section .content-form {
 .start-div {
   margin-top: 25px;
   text-align: center;
+  align-content: center;
   vertical-align: middle;
 }
 .start-div button {

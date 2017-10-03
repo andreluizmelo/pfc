@@ -1,143 +1,89 @@
-<h2>Configuração</h2>
-<div class="content-form col-xs-12">
-      <input type="text" value="{{nome}}" id="nome-configuracao-input">
-</div>
-<div class="content-form col-xs-12">
-      <div class="panel-group col-xs-12" id="conf-accordion"  role="tablist" aria-multiselectable="true">
-            <div class="panel panel-default col-xs-12">
-                  <div class="panel-heading" role="tab" id="conf-geral-header">
-                        <h4 class="panel-title">
-                              <a role="button" data-toggle="collapse" data-parent="#conf-accordion" href="#conf-geral" aria-expanded="true" aria-controls="conf-geral">
-                                    Configurações Gerais
-                              </a>
-                        </h4>
-                  </div>
-                  <div class="panel-collapse collapse in  col-xs-12" role="tabpanel" aria-labelledby="conf-geral" id="conf-geral">
-                        <div class="panel-body  col-xs-12">
-                            <div class="pull-left col-xs-12 csp-form">
-                                <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
-                                    <label>Algoritmo:</label>
-                                    <select id="conf-algoritmo-input">
-                                            <option value="0" selected>Algoritmo Genético</option>
-                                            <option value="1">Particle Swarm Optmization</option>
-                                    </select>
-                                </div>
-                                <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
-                                    <label>Tamanho da população:</label>
-                                    <input type="number" id="conf-populacao-input" value="{{population}}"/>
-                                </div>
-                                <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
-                                    <label>Critério de Parada:</label>
-                                    <select id="conf-parada-input">
-                                            <option value="0" selected>Número de iterações fixo</option>
-                                            <option value="1">Número de gerações sem melhora</option>
-                                    </select>
-                                </div>
-                                <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
-                                    <label>Número de iterações:</label>
-                                    <input type="number" id="conf-iteracoes-input" value="{{iterations}}"/>
-                                </div>
-                                <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
-                                    <label>Número de gerações sem melhora:</label>
-                                    <input type="number" id="conf-estabilizacao-input" value="{{stabilization}}"/>
-                                </div>
-                            </div>
-                        </div>
-                  </div>
-            </div>
-                
-            <div class="panel panel-default col-xs-12">
-                  <div class="panel-heading" role="tab" id="conf-ca-header">
-                        <h4 class="panel-title">
-                              <a role="button" data-toggle="collapse" data-parent="#conf-accordion" href="#conf-ca" aria-expanded="true" aria-controls="conf-ca">
-                                    Configurações Restrições Flexíveis
-                              </a>
-                        </h4>
-                  </div>
-                  <div class="panel-collapse collapse" role="tabpanel" aria-labelledby="conf-ca" id="conf-ca">
-                        <div class="panel-body col-xs-12">
-                            <div class="pull-left col-xs-12 csp-form">
-                                <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
-                                    <label>Número máximo de aulas seguidas:</label>
-                                    <input type="number" min="0" max="10" id="conf-max-aulas-input" value="{{flexible.maxsequence}}"/>
-                                </div>
-                                <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
-                                    <label>Número mínimo de aulas seguidas:</label>
-                                    <input type="number" min="0" max="10" id="conf-min-aulas-input" value="{{flexible.maxsequence}}"/>
-                                </div>
-                                <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6">
-                                    <ul id="sortable1" class="connectedSortable">
-                                          {{#each flexible.notused as |restricao|}}
-                                          <li class="ui-state-default" value="{{restricao}}">{{restricao}}</li>
-                                          {{/each}}
-                                    </ul>
-                                          
-                                    <ul id="sortable2" class="connectedSortable">
-                                          {{#each flexible.used as |restricao|}}
-                                          <li class="ui-state-highlight" value="{{restricao}}">{{restricao}}</li>
-                                          {{/each}}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                  </div>
-            </div>
-
-            <div class="panel panel-default col-xs-12">
-                  <div class="panel-heading" role="tab" id="conf-ga-header">
-                        <h4 class="panel-title">
-                              <a role="button" data-toggle="collapse" data-parent="#conf-accordion" href="#conf-ga" aria-expanded="true" aria-controls="conf-ga">
-                                    Configurações Algoritmo Genético
-                              </a>
-                        </h4>
-                  </div>
-                  <div class="panel-collapse collapse" role="tabpanel" aria-labelledby="conf-ga" id="conf-ga">
-                        <div class="panel-body col-xs-12">
-                            <div class="pull-left col-xs-12 csp-form">
-                                <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
-                                    <label>Fator de Mutação:</label>
-                                    <input type="number" min="0" max="1" id="conf-mutacao-input" value="{{genetic.mutation}}"/>
-                                </div>
-                                <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
-                                    <label>Fator de Crossover:</label>
-                                    <input type="number" min="0" max="1" id="conf-crossover-input" value="{{genetic.crossover}}"/>
-                                </div>
-                            </div>
-                        </div>
-                  </div>
-            </div>
-                    
-            <div class="panel panel-default col-xs-12">
-                  <div class="panel-heading" role="tab" id="conf-pso-header">
-                        <h4 class="panel-title">
-                              <a role="button" data-toggle="collapse" data-parent="#conf-accordion" href="#conf-pso" aria-expanded="true" aria-controls="conf-pso">
-                                    Configurações PSO
-                              </a>
-                        </h4>
-                  </div>
-                  <div class="panel-collapse collapse" role="tabpanel" aria-labelledby="conf-pso" id="conf-pso">
-                        <div class="panel-body col-xs-12">
-                              <div class="pull-left col-xs-12 csp-form">
-                                <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
-                                    <label>Fator de Inércia:</label>
-                                    <input type="number" min="0" max="1" id="conf-inertia-input" value="{{pso.inertia}}"/>
-                                </div>
-                                <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
-                                    <label>Peso do melhor local:</label>
-                                    <input type="number" min="0" max="1" id="conf-local-input" value="{{pso.local}}"/>
-                                </div>
-                                <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
-                                    <label>Peso do melhor global:</label>
-                                    <input type="number" min="0" max="1" id="conf-global-input" value="{{pso.global}}"/>
-                                </div>
-                            </div>
-                        </div>
-                  </div>
-            </div>
-            
+<h4>Configurações Gerais</h4>
+<div class="pull-left col-xs-12 csp-form">
+      <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+            <label>Algoritmo:</label>
+            <select id="conf-algoritmo-input">
+                  <option value="0" selected>Algoritmo Genético</option>
+                  <option value="1">Particle Swarm Optmization</option>
+            </select>
       </div>
+      <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+            <label>Tamanho da população:</label>
+            <input type="number" id="conf-populacao-input" value="{{population}}"/>
+      </div>
+      <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+            <label>Critério de Parada:</label>
+            <select id="conf-parada-input">
+                  <option value="0" selected>Número de iterações fixo</option>
+                  <option value="1">Número de gerações sem melhora</option>
+            </select>
+      </div>
+      <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+            <label>Número de iterações:</label>
+            <input type="number" id="conf-iteracoes-input" value="{{iterations}}"/>
+      </div>
+      <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+            <label>Número de gerações sem melhora:</label>
+            <input type="number" id="conf-estabilizacao-input" value="{{stabilization}}"/>
+      </div>
+</div>
 
-      
+<h4>Configurações Algoritmo Genético</h4>
+<div class="pull-left col-xs-12 csp-form">
+      <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+            <label>Fator de Mutação:</label>
+            <input type="number" min="0" max="1" id="conf-mutacao-input" value="{{genetic.mutation}}"/>
+      </div>
+      <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+            <label>Fator de Crossover:</label>
+            <input type="number" min="0" max="1" id="conf-crossover-input" value="{{genetic.crossover}}"/>
+      </div>
+</div>
+                        
+<h4>Configurações PSO</h4>
+<div class="pull-left col-xs-12 csp-form">
+      <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+            <label>Fator de Inércia:</label>
+            <input type="number" min="0" max="1" id="conf-inertia-input" value="{{pso.inertia}}"/>
+      </div>
+      <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+            <label>Peso do melhor local:</label>
+            <input type="number" min="0" max="1" id="conf-local-input" value="{{pso.local}}"/>
+      </div>
+      <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+            <label>Peso do melhor global:</label>
+            <input type="number" min="0" max="1" id="conf-global-input" value="{{pso.global}}"/>
+      </div>
+</div>
+
+<h4>Configurações Restrições Flexíveis</h4>
+<div class="pull-left col-xs-12 csp-form" style="min-height: 400px;">
+      <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+            <label>Número máximo de aulas seguidas:</label>
+            <input type="number" min="0" max="10" id="conf-max-aulas-input" value="{{flexible.maxsequence}}"/>
+      </div>
+      <div class="col-xs-12 col-sm-10 col-md-6 col-lg-3">
+            <label>Número mínimo de aulas seguidas:</label>
+            <input type="number" min="0" max="10" id="conf-min-aulas-input" value="{{flexible.maxsequence}}"/>
+      </div>
+      <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6">
+            <div style="position: absolute; width: 50%;">
+                  <label>Restrições não utilizadas</label>
+                  <ul id="sortable1" class="connectedSortable">
+                        {{#each flexible.notused as |restricao|}}
+                        <li class="ui-state-default" value="{{restricao}}">{{restricao}}</li>
+                        {{/each}}
+                  </ul>
+            </div>
+            <div style="position: absolute; width: 50%; left:50%;">
+                  <label>Restrições utilizadas por ordem de prioridade</label>
+                  <ul id="sortable2" class="connectedSortable">
+                        {{#each flexible.used as |restricao|}}
+                        <li class="ui-state-highlight" value="{{restricao}}">{{restricao}}</li>
+                        {{/each}}
+                  </ul>
+            </div>
+      </div>
 </div>
 
 <div class="content-footer col-xs-12">
