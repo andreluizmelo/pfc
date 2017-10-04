@@ -30,10 +30,24 @@ var fileUtils = (function(){
         });
     };
 
+    function checkIfHistoricoExists(){
+        try{
+            fs.lstatSync("historico").isDirectory()
+       }catch(e){
+          // Handle error
+          if(e.code == 'ENOENT'){
+            //no such file or directory
+            fs.mkdirSync('historico');
+          }else {
+            //do something else
+          }
+       }
+    }
 
     self.SaveProblem = function( fileName, prob){
-        console.log(fileName);
-        console.log(prob);
+        //console.log(fileName);
+        //console.log(prob);
+        //checkIfHistoricoExists();
         if(fileName == null || fileName == ""){
             var date = new Date();
             fileName = "historico_" + (date / 1000);

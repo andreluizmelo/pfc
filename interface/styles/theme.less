@@ -54,9 +54,18 @@ body {
     &.btn-primary{
         color: @secondary-color;
         background-color: @blue;
+        &:hover{
+            background-color: darken(@blue, 7%);
+        }
     }
     &.locked{
         cursor: default!important;
+    }
+    &.btn-info{
+        border: none;
+        &:hover{
+            background-color: #666;
+        }
     }
 }
 

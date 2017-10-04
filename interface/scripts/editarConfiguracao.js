@@ -26,14 +26,14 @@ var editarConfiguracao = (function(){
                 $( "#sortable1, #sortable2" ).sortable({
                   connectWith: ".connectedSortable"
                 });
-                $("#conf-accordion a").on("click", (event) =>{
-                    var $elem = $(event.currentTarget);
-                    var $target = $($elem.attr("href"));
-                    if($target)
-                        $target.collapse("toggle");
-                    else
-                        console.log("deu ruim: " + $elem.attr("href"));
-                });
+                // $("#conf-accordion a").on("click", (event) =>{
+                //     var $elem = $(event.currentTarget);
+                //     var $target = $($elem.attr("href"));
+                //     if($target)
+                //         $target.collapse("toggle");
+                //     else
+                //         console.log("deu ruim: " + $elem.attr("href"));
+                // });
             });
     };
 
@@ -47,7 +47,7 @@ var editarConfiguracao = (function(){
             used.push($(this).attr('value'));
         });
         return {
-            name: $('#conf-algoritmo-input').val(),
+            name: $('#nome-configuracao-input').val(),
             algorithm: $('#conf-algoritmo-input').val(),
             population: $('#conf-populacao-input').val(),
             stopcriteria: $('#conf-parada-input').val(),

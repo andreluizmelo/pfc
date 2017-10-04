@@ -1,21 +1,24 @@
+
 <h3>Lista de Configurações</h3>
+<div style="margin-bottom: 12px;">
 <table>
     <thead>
         <tr>
-            <th>Nome</th>
-            <th>Editar</th>
-            <th>Excluir</th>
+            <th style="min-width: 100px;">Nome</th>
+            <th style="min-width: 55px;">Editar</th>
+            <th style="min-width: 55px;">Excluir</th>
         </tr>
     </thead>
     <tbody>
         {{#each configurations}}
         <tr>
             <td>{{this}}</td>
-            <td><span class="glyphicon glyphicon-edit" onclick="editarConfiguracao.LoadInterface('{{this}}');"></span></td>
-            <td><span class="glyphicon glyphicon-remove" onclick="toastr.warning('not implemented yet');"></span></td>
+            <td><span class="clickable glyphicon glyphicon-edit" onclick="editarConfiguracao.LoadInterface('{{this}}');"></span></td>
+            <td><span class="clickable glyphicon glyphicon-remove" onclick="toastr.warning('not implemented yet');"></span></td>
         </tr>
         {{/each}}
     </tbody>
 </table>
-
+</div>
+<button class="btn btn-info" onclick="reset()">Voltar</button>
 <button class="btn btn-primary" onclick="editarConfiguracao.LoadInterface();">Nova configuração</button>

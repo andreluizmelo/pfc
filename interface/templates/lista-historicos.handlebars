@@ -1,8 +1,31 @@
-<ul>
+<!--<ul>
     {{#each historicos}}
         <li>
             <span  onclick="listaHistoricos.LoadHistorico('{{this}}');">{{this}}</span>
             <span class="glyphicon glyphicon-edit" onclick="detalhesHistorico.EditarHistorico('{{this}}')"></span>
         </li>
     {{/each}}
-</ul>
+</ul>-->
+
+<h3>Histórico</h3>
+<div style="margin-bottom: 12px;">
+<table>
+    <thead>
+        <tr>
+            <th style="min-width: 250px;">Nome</th>
+            <th style="min-width: 70px;">Editar</th>
+            <th style="min-width: 70px;">Excluir</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each historicos}}
+        <tr>
+            <td><span class="clickable" onclick="listaHistoricos.LoadHistorico('{{this}}');">{{this}}</span></td>
+            <td><span class="clickable glyphicon glyphicon-edit" onclick="detalhesHistorico.EditarHistorico('{{this}}')"></span></td>
+            <td><span class="clickable glyphicon glyphicon-remove" onclick="toastr.warning('not implemented yet');"></span></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+</div>
+<button class="btn btn-info" onclick="reset()">Voltar</button>

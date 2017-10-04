@@ -13,7 +13,7 @@ var confirmacao = (function(){
             materias: materias,
             professores: professores,
             salas: salas,
-            conf: JSON.stringify(conf, null, 4)
+            conf: conf
         }).then(function(response){
             $("#confirmacao-tabs a").on("click", function(e){
                 e.preventDefault();
