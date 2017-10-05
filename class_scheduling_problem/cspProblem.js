@@ -208,20 +208,24 @@ function cspProblem(teachers, subjects, groups, rooms, constantesAdicionais){
             var global = bestGlobalPosition[index];
             
             // apply diffs
-            local = helper.timeDiff(local.day, local.time, current.day, current.time);
-            global = helper.timeDiff(global.day, global.time, current.day, current.time);
+            var currentTime = {
+                day: current.day,
+                time: current.time
+            };
+            var localTime = helper.timeDiff(local.day, local.time, currentTime.day, currentTime.time);
+            var globalTime = helper.timeDiff(global.day, global.time, currentTime.day, currentTime.time);
 
             // apply weights
-            current = helper.timeMultiply(current.day, current.time, inertiaWeight);
-            local = helper.timeMultiply(local.day, local.time, bestLocalPositionWeight);
-            global = helper.timeMultiply(global.day, global.time, bestGlobalPositionWeight);
+            currentTime = helper.timeMultiply(currentTime.day, currentTime.time, inertiaWeight);
+            localTime = helper.timeMultiply(localTime.day, localTime.time, bestLocalPositionWeight);
+            globalTime = helper.timeMultiply(globalTime.day, globalTime.time, bestGlobalPositionWeight);
             // apply random weights
-            local = helper.timeMultiply(local.day, local.time, Math.random());
-            global = helper.timeMultiply(global.day, global.time, Math.random());
+            localTime = helper.timeMultiply(localTime.day, localTime.time, Math.random());
+            globalTime = helper.timeMultiply(globalTime.day, globalTime.time, Math.random());
 
             // sum weighted to get results
-            var result = helper.timeSum(current.day, current.time, local.day, local.time);
-            result = helper.timeSum(result.day, result.time, global.day, global.time);
+            var result = helper.timeSum(currentTime.day, currentTime.time, local.day, local.time);
+            result = helper.timeSum(result.day, result.time, globalTime.day, globalTime.time);
             
             //room id
             var dice = Math.random() * (inertiaWeight + bestGlobalPositionWeight + bestLocalPositionWeight);
@@ -232,7 +236,11 @@ function cspProblem(teachers, subjects, groups, rooms, constantesAdicionais){
                 newRoom = global.roomId;
             else
                 newRoom = local.roomId;
-
+            console.log(elem.roomId);
+            console.log(global.roomId);
+            console.log(local.roomId);
+            console.log(newRoom);
+            console.log("**************");
             // push into array of classes
             classes.push(new Class(elem.subjectId,elem.teacherId,elem.groupId, newRoom, result.day, result.time));
         });

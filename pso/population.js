@@ -14,6 +14,7 @@ function Population( populationSize, populationGenerationFunction, walkFunction,
 
     this.sortByFitness();
     this.bestSolution = this.individuals[0];
+    console.log(this.bestSolution);
     this.iterate = function(displayBest){
         var best = this.bestSolution;
         _.each(this.individuals, function(elem){
