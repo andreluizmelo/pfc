@@ -83,7 +83,7 @@ var escolhaProfessor = (function(){
     };
 
     self.reset = function reset(){
-        this.teachers = [];
+        teachers = [];
     };
 
     return self;

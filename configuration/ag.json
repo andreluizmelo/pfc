@@ -1,0 +1,30 @@
+{
+    "algorithm": "0",
+    "flexible": {
+        "maxclasses": "3",
+        "minclasses": "1",
+        "notused": [
+            "Deslocamentos entre salas"
+        ],
+        "used": [
+            "Evitar buracos entre aulas",
+            "Evitar buracos entre aulas da mesma matéria",
+            "Número máximo de aulas por dia",
+            "Número mínimo de aulas por dia"
+        ]
+    },
+    "genetic": {
+        "crossover": "0.4",
+        "mutation": "0.03"
+    },
+    "iterations": "10000",
+    "name": "ag",
+    "population": "1000",
+    "pso": {
+        "global": "0.5",
+        "inertia": "1",
+        "local": "0.5"
+    },
+    "stabilization": "150",
+    "stopcriteria": "0"
+}

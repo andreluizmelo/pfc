@@ -1,11 +1,24 @@
 {
     "algorithm": "1",
+    "flexible": {
+        "maxclasses": "4",
+        "minclasses": "2",
+        "notused": [
+            "Deslocamentos entre salas"
+        ],
+        "used": [
+            "Evitar buracos entre aulas da mesma matéria",
+            "Evitar buracos entre aulas",
+            "Número mínimo de aulas por dia",
+            "Número máximo de aulas por dia"
+        ]
+    },
     "genetic": {
         "crossover": "0.5",
         "mutation": "0.3"
     },
     "iterations": "1000",
-    "name": "1",
+    "name": "pso",
     "population": "1000",
     "pso": {
         "global": "0.5",
@@ -13,18 +26,5 @@
         "local": "0.5"
     },
     "stabilization": "150",
-    "stopcriteria": "1",
-    "flexible":{
-        "maxclasses": 3,
-        "minclasses": 2,
-        "used": [
-            "Evitar buracos entre aulas da mesma matéria",
-            "Número máximo de aulas por dia",
-            "Número mínimo de aulas por dia"
-        ],
-        "notused": [
-            "Evitar buracos entre aulas",
-            "Deslocamentos entre salas"
-        ]
-    }
+    "stopcriteria": "1"
 }

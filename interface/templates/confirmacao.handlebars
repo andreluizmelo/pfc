@@ -109,7 +109,7 @@
                 <label>População: </label>
                 <span>{{population}}</span>
             </div>
-            {{#if stopcriteria}}
+            {{#unless stopcriteria}}
             <div class="col-xs-12 col-sm-10 col-md-4 col-lg-3">
                 <label>Iterações sem melhora: </label>
                 <span>{{stabilization}}</span>
@@ -119,7 +119,7 @@
                 <label>Número de iterações: </label>
                 <span>{{iterations}}</span>
             </div>
-            {{/if}}
+            {{/unless}}
             </div>
             <hr/>
             <div class="col-xs-12">
@@ -154,6 +154,23 @@
             {{/cmp}}
             </div>
             <hr/>
+            <h4>Restrições Flexíveis</h4>
+            <div class="col-xs-12">
+                {{#with flexible}}
+                <div class="col-xs-12 col-sm-10 col-md-4 col-lg-3">
+                    <label>Mínimo de aulas em um dia: </label>
+                    <span>{{minclasses}}</span>
+                </div>
+                <div class="col-xs-12 col-sm-10 col-md-4 col-lg-3">
+                    <label>Máximo de aulas em um dia: </label>
+                    <span>{{maxclasses}}</span>
+                </div>
+                <div class="col-xs-12 col-sm-10 col-md-4 col-lg-3">
+                    <label>Máximo de aulas em um dia: </label>
+                    <ul>{{#each used}}<li>{{this}}</li>{{/each}}</ul>
+                </div>
+                {{/with}}
+            </div>
             {{/with}}
         </div>
     </div>
