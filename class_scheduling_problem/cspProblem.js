@@ -202,15 +202,15 @@ function cspProblem(teachers, subjects, groups, rooms, constantesAdicionais){
 
     this.walkFunction = function walk(currentPosition, currentVelocity, bestLocalPosition, bestGlobalPosition, inertiaWeight, bestLocalPositionWeight, bestGlobalPositionWeight){
          var classes = [];
-         var velocity = [];
+         var newVelocity = [];
          //console.log("velocidade atual: " + currentVelocity);
         _.each(currentPosition, function(elem, index){ // iterates through classes
             var current = elem;
             var local = bestLocalPosition[index];
             var global = bestGlobalPosition[index];
             var vi = currentVelocity[index];
-            // console.log("index: " + index);
-            // console.log("v atual: " + vi);
+            console.log("index: " + index);
+            console.log("v atual: " + vi);
             // apply diffs
             var currentTime = {
                 day: current.day,
@@ -220,7 +220,7 @@ function cspProblem(teachers, subjects, groups, rooms, constantesAdicionais){
             var globalTimeDiff = helper.timeDiff(global.day, global.time, currentTime.day, currentTime.time);
 
             // apply weights
-            velocity = helper.timeMultiply(vi.day, vi.time, inertiaWeight);
+            var velocity = helper.timeMultiply(vi.day, vi.time, inertiaWeight);
             localTimeDiff = helper.timeMultiply(localTimeDiff.day, localTimeDiff.time, bestLocalPositionWeight);
             globalTimeDiff = helper.timeMultiply(globalTimeDiff.day, globalTimeDiff.time, bestGlobalPositionWeight);
             // apply random weights
@@ -245,9 +245,9 @@ function cspProblem(teachers, subjects, groups, rooms, constantesAdicionais){
             
             // push into array of classes
             classes.push(new Class(elem.subjectId,elem.teacherId,elem.groupId, newRoom, result.day, result.time));
-            velocity.push(vi_next);
+            newVelocity.push(vi_next);
         });
-        return {genome: classes, velocity: velocity};
+        return {genome: classes, velocity: newVelocity};
     };
 
     this.generatePopulation = function(size){
