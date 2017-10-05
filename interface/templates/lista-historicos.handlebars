@@ -14,7 +14,7 @@
         <tr>
             <th style="min-width: 250px;">Nome</th>
             <th style="min-width: 70px;">Editar</th>
-            <th style="min-width: 70px;">Excluir</th>
+            <!--<th style="min-width: 70px;">Exibir</th>-->
         </tr>
     </thead>
     <tbody>
@@ -22,7 +22,7 @@
         <tr>
             <td><span class="clickable" onclick="listaHistoricos.LoadHistorico('{{this}}');">{{this}}</span></td>
             <td><span class="clickable glyphicon glyphicon-edit" onclick="detalhesHistorico.EditarHistorico('{{this}}')"></span></td>
-            <td><span class="clickable glyphicon glyphicon-remove" onclick="toastr.warning('not implemented yet');"></span></td>
+            <!--<td><span class="clickable glyphicon glyphicon-search" onclick="toastr.warning('not implemented yet');"></span></td>-->
         </tr>
         {{/each}}
     </tbody>

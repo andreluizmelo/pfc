@@ -17,11 +17,10 @@ var listaHistoricos = (function($){
     };
 
     self.LoadHistorico = function(nome){
-        historicoHelper.getHistorico(nome).then((h) => {console.log(h);});
-    };
-
-    self.DetalhesHistorico = function(nome){
+        //historicoHelper.getHistorico(nome).then((h) => {console.log(h);});
         detalhesHistorico.LoadInterface(nome);
     };
+
+    
     return self;
 })(jQuery);

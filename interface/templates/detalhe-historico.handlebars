@@ -1,0 +1,193 @@
+<h2>Experimento - {{nome}}</h2>
+
+<div id="confirmacao-div" class="confirmacao-div col-xs-12" >
+    
+    <ul class="nav nav-tabs" role="tablist" id="confirmacao-tabs">
+        <li  class="active">
+            <a href="#confirmacao-grupos" aria-controls="confirmacao-grupos" role="tab" data-toggle="tab">
+                Grupos
+            </a>
+        </li>
+        <li  class="">
+            <a href="#confirmacao-professores" aria-controls="confirmacao-professores" role="tab" data-toggle="tab">
+                Professores
+            </a>
+        </li>
+        <li  class="">
+            <a href="#confirmacao-materias" aria-controls="confirmacao-materias" role="tab" data-toggle="tab">
+                Matérias
+            </a>
+        </li>
+        <li  class="">
+            <a href="#confirmacao-salas" aria-controls="confirmacao-salas" role="tab" data-toggle="tab">
+                Salas
+            </a>
+        </li>
+        <li  class="">
+            <a href="#confirmacao-conf" aria-controls="confirmacao-conf" role="tab" data-toggle="tab">
+                Configuração
+            </a>
+        </li>
+        <li  class="">
+            <a href="#confirmacao-sol" aria-controls="confirmacao-sol" role="tab" data-toggle="tab">
+                Solução
+            </a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade in active" id="confirmacao-grupos">
+            <div class="lista-grupos" id="lista-grupos">
+                {{#each grupos}}
+                <button id="grupo-escolhe-{{id}}" class="btn btn-sm btn-escolha-grupo" onclick="detalhesHistorico.ActivateGroup({{id}}, true);">{{nome}}</button>
+                {{/each}}
+            </div>
+            <div class="grade-horarios" id="grade-horario-escolha-grupos">
+                    <div>Escolha um dos grupos</div>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="confirmacao-professores">
+            <div class="lista-professores" id="lista-professores">
+                {{#each professores}}
+                <button id="teacher-escolhe-{{id}}" class="btn btn-sm btn-escolha-professor" onclick="detalhesHistorico.ActivateTeacher({{id}}, true);">{{nome}}</button>
+                {{/each}}
+            </div>
+            <div class="grade-horarios" id="grade-horario-escolha-professores">
+                    <div>Escolha um dos professores</div>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="confirmacao-materias">
+            <table class="csp-table lista-materia-table">
+                <thead>
+                    <tr>
+                        <th>Matéria</th>
+                        <th>Aulas por Semana</th>
+                        <th>Grupo</th>
+                        <th>Professor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each materias as |materia|}}
+                    <tr>
+                        <td>{{materia.nome}}</td>
+                        <td>{{materia.numClasses}}</td>
+                        <td>{{#with (lookupById ../grupos materia.grupo) as |grupo|}}{{grupo.nome}}{{/with}}</td>
+                        <td>{{#with (lookupById ../professores materia.professor) as |professor|}}{{professor.nome}}{{/with}}</td>
+                    {{/each}}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="confirmacao-salas">
+            <table class="csp-table lista-sala-table">
+                <thead>
+                    <tr>
+                        <th>Sala</th>
+                        <th>Capacidade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each salas as |sala|}}
+                        <tr>
+                            <td>{{sala.nome}}</td>
+                            <td>{{sala.capacidade}}</td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="confirmacao-conf">
+            {{#with conf}}
+            <h4>Configurações Gerais</h4>
+            <div class="col-xs-12 col-sm-10 col-md-4 col-lg-3">
+                <label>Algoritmo:</label>
+                <span>
+                    {{#cmp algorithm '==' 0}}
+                    Algoritmo Genético
+                    {{else}}
+                    PSO
+                    {{/cmp}}
+                </span>
+            </div>
+            <div class="col-xs-12 col-sm-10 col-md-4 col-lg-3">
+                <label>População: </label>
+                <span>{{population}}</span>
+            </div>
+            {{#if stopcriteria}}
+            <div class="col-xs-12 col-sm-10 col-md-4 col-lg-3">
+                <label>Iterações sem melhora: </label>
+                <span>{{stabilization}}</span>
+            </div>
+            {{else}}
+            <div class="col-xs-12 col-sm-10 col-md-4 col-lg-3">
+                <label>Número de iterações: </label>
+                <span>{{iterations}}</span>
+            </div>
+            {{/if}}
+            {{#cmp algorithm '==' 0}}
+            {{else}}
+                <h4>Configurações PSO</h4>
+                {{#with pso}}
+                <div class="col-xs-12 col-sm-10 col-md-4 col-lg-3">
+                    <label>Fator de Inércio: </label>
+                    <span>{{intertia}}</span>
+                </div>
+                <div class="col-xs-12 col-sm-10 col-md-4 col-lg-3">
+                    <label>Peso melhor local: </label>
+                    <span>{{local}}</span>
+                </div>
+                <div class="col-xs-12 col-sm-10 col-md-4 col-lg-3">
+                    <label>Peso melhor global: </label>
+                    <span>{{global}}</span>
+                </div>
+                {{/with}}
+            {{/cmp}}
+            {{/with}}
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="confirmacao-sol">
+            <div id="resultado-div" class="resultado-div col-xs-12">
+                <!--<h4>Número de Gerações: {{geracao}}</h4>-->
+                <h4>Tempo de Execução: {{tempoExecucao}}ms</h4>
+                <ul class="nav nav-tabs" role="tablist" id="grupos-tabs">
+                    {{#each gruposSolucao}}
+                        <li  class="{{#unless @index}}active{{/unless}}">
+                            <a href="#resultado-grupo-{{id}}" aria-controls="resultado-grupo-{{id}}" role="tab" data-toggle="tab">
+                                {{#with (lookupById ../grupos id) as |grupo|}}{{grupo.nome}}{{/with}}
+                            </a>
+                        </li>
+                    {{/each}}
+                </ul>
+                <div class="tab-content">
+                    {{#each gruposSolucao}}
+                        <div role="tabpanel" class="tab-pane {{#unless @index}}in active{{/unless}} fade " id="resultado-grupo-{{id}}">
+                            <div class="grade-horarios"><div class="tabela-horarios">
+                                {{#each ../diasDaSemana as |dia|}}
+                                <div>
+                                    <button class="btn btn-sm dia-semana locked">
+                                        {{#with (lookup ../../diasDaSemana @index)}} {{this}} {{/with}}
+                                    </button>
+                                    {{#with (lookup ../aulasPordia @index) as |aulasDia|}}
+                                        {{#each aulasDia}}
+                                        <button class="btn btn-sm btn-resultado  locked {{#if this}}available{{else}}no-class{{/if}}" >
+                                            {{lookup ../../../../horarios @index}}<br>
+                                            {{#with (lookupById ../../../../professores teacherId)}}{{nome}}{{/with}}<br>
+                                            {{#with (lookupById ../../../../materias subjectId)}}{{nome}}{{/with}}<br>
+                                            {{#with (lookupById ../../../../salas roomId)}}{{nome}}{{/with}}
+                                        </button>
+                                        {{/each}}
+                                    {{/with}}
+                                </div>
+                                {{/each}}
+                            </div></div>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <button class="btn btn-info" onclick="detalhesHistorico.Voltar();">Voltar</button>
+    <button class="btn btn-primary" onclick="detalhesHistorico.EditarHistorico('{{nome}}');">Editar</button>
+</div>
