@@ -99,6 +99,7 @@
         <div role="tabpanel" class="tab-pane fade" id="confirmacao-conf">
             {{#with conf}}
             <h4>Configurações Gerais</h4>
+            <div class="col-xs-12">
             <div class="col-xs-12 col-sm-10 col-md-4 col-lg-3">
                 <label>Algoritmo:</label>
                 <span>
@@ -124,13 +125,27 @@
                 <span>{{iterations}}</span>
             </div>
             {{/if}}
-            {{#cmp algorithm '==' 0}}
+            </div>
+            <hr/>
+            <div class="col-xs-12">
+            {{#cmp algorithm '==' '0'}}
+                <h4>Configurações Algoritmo Genético</h4>
+                {{#with genetic}}
+                <div class="col-xs-12 col-sm-10 col-md-4 col-lg-3">
+                    <label>Fator de mutação: </label>
+                    <span>{{mutation}}</span>
+                </div>
+                <div class="col-xs-12 col-sm-10 col-md-4 col-lg-3">
+                    <label>Fator de crossover: </label>
+                    <span>{{crossover}}</span>
+                </div>
+                {{/with}}
             {{else}}
                 <h4>Configurações PSO</h4>
                 {{#with pso}}
                 <div class="col-xs-12 col-sm-10 col-md-4 col-lg-3">
-                    <label>Fator de Inércio: </label>
-                    <span>{{intertia}}</span>
+                    <label>Fator de Inércia: </label>
+                    <span>{{inertia}}</span>
                 </div>
                 <div class="col-xs-12 col-sm-10 col-md-4 col-lg-3">
                     <label>Peso melhor local: </label>
@@ -142,6 +157,8 @@
                 </div>
                 {{/with}}
             {{/cmp}}
+            </div>
+            <hr/>
             {{/with}}
         </div>
         <div role="tabpanel" class="tab-pane fade" id="confirmacao-sol">
