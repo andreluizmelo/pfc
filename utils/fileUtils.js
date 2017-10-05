@@ -50,7 +50,7 @@ var fileUtils = (function(){
         //checkIfHistoricoExists();
         if(fileName == null || fileName == ""){
             var date = new Date();
-            fileName = "historico_" + (date);
+            fileName = "historico_" + (date / 1);
         }
         prob.nome = fileName;
         return new Promise(function(resolve,reject){

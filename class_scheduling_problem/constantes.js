@@ -3,8 +3,8 @@ module.exports = {
     //maxTime: 3, // apenas 4 tempos para teste
     maxDay: 4, // seg = 0, sex = 4
     maxTime: 9, // 7:30 = 0, 8:25, 9:20, 10:25, 11:15, 12:10, 13:.., 14:.., 15:.. 16:.. = 10
-    teacherNotAvailableWeight: 400,
-    groupNotAvailableWeight: 300,
+    teacherNotAvailableWeight: 1000,
+    groupNotAvailableWeight: 500,
     overlapWeight: 500,
     roomOverlapWeight: 100,
     roomCapacityWeight: 70,

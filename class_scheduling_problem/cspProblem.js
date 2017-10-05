@@ -118,6 +118,28 @@ function cspProblem(teachers, subjects, groups, rooms, constantesAdicionais){
         return constantesAdicionais.pesos[constants.restricaoBuracosMesmaMateria] * numberOfWindows;
     }
 
+    function classWindowsByGroupPenalty(genome, debug){
+        if(constantesAdicionais.pesos[constants.restricaoBuracos] == null)
+            return 0;
+        var numberOfWindows = 0;
+        _.each(_.groupBy(genome, 'groupId'), (classes) => {
+            _.each(_.groupBy(classes, 'day'), (elem) => {
+                var ordered = _.sortBy(elem, ['time']);
+                if( ordered.length > 1){
+                    var i;
+                    for( i = 1; i < ordered.length; i++){
+                        //console.log(ordered[i].time);
+                        if( (ordered[i].time - ordered[i-1].time) > 1) numberOfWindows++;
+                    }
+                }
+                //console.log(ordered + '\n' + 'para cima materia dia');
+            });
+            //console.log('para cima materia apenas')
+        });
+        //console.log(numberOfWindows + '\n');
+        return constantesAdicionais.pesos[constants.restricaoBuracos] * numberOfWindows;
+    }
+
     function teacherAvailabilityPenalty(genome, debug){
         var numberOfProblematicClasses = 0;
         _.each(genome, function(aula){
@@ -154,6 +176,29 @@ function cspProblem(teachers, subjects, groups, rooms, constantesAdicionais){
         return constants.groupNotAvailableWeight * numberOfProblematicClasses;
     }
 
+    function roomChangePenalty(genome, debug){
+        var numberOfChanges = 0;
+        
+        if(constantesAdicionais.pesos[constants.restricaoDescolamentos] == null)
+            return 0;
+        _.each(_.groupBy(genome, 'groupId'), (classes) => {
+            _.each(_.groupBy(classes, 'day'), (elem) => {
+                var ordered = _.sortBy(elem, ['time']);
+                if( ordered.length > 1){
+                    var i;
+                    var n = 0;
+                    for( i = 1; i < ordered.length; i++){
+                        //console.log(ordered[i].time);
+                        if( ordered[i].roomId != ordered[i-1].roomId) n++;
+                    }
+                    if(n > 1) numberOfChanges++;
+                }
+                //console.log(ordered + '\n' + 'para cima materia dia');
+            });
+        });
+        return numberOfChanges * constantesAdicionais.pesos[constants.restricaoDescolamentos];
+    }
+
     function TotalPenalty(genome, debug){
         return teacherAvailabilityPenalty(genome, debug) +
             overlapPenalty(genome, debug) +
@@ -161,7 +206,9 @@ function cspProblem(teachers, subjects, groups, rooms, constantesAdicionais){
             roomCapacityPenalty(genome, debug) + 
             roomOverlapPenalty(genome, debug) +
             classQuantityPenalty(genome, debug) +
-            classWindowsPenalty(genome, debug);
+            classWindowsPenalty(genome, debug) +
+            roomChangePenalty(genome,debug) +
+            classWindowsByGroupPenalty(genome, debug);
     }
 
     this.fitnessFunction = function fitness(genome, debug){
