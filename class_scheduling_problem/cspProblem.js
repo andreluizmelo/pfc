@@ -256,8 +256,7 @@ function cspProblem(teachers, subjects, groups, rooms, constantesAdicionais){
             var local = bestLocalPosition[index];
             var global = bestGlobalPosition[index];
             var vi = currentVelocity[index];
-            console.log("index: " + index);
-            console.log("v atual: " + vi);
+
             // apply diffs
             var currentTime = {
                 day: current.day,
