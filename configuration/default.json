@@ -1,30 +1,30 @@
 {
-    "name": "default",
-    "algorithm": 0,
-    "population": 1000,
-    "stopcriteria": 0,
-    "iterations": 1000,
-    "stabilization": 150,
-    "pso":{
-        "inertia": 1,
-        "local": 0.5,
-        "global": 0.5
-    },
-    "genetic":{
-        "mutation": 0.3,
-        "crossover": 0.5
-    },
-    "flexible":{
-        "maxclasses": 3,
-        "minclasses": 2,
+    "algorithm": "0",
+    "flexible": {
+        "maxclasses": "",
+        "minclasses": "",
+        "notused": [
+            "Evitar buracos entre aulas",
+            "Deslocamentos entre salas"
+        ],
         "used": [
             "Evitar buracos entre aulas da mesma matéria",
             "Número máximo de aulas por dia",
             "Número mínimo de aulas por dia"
-        ],
-        "notused": [
-            "Evitar buracos entre aulas",
-            "Deslocamentos entre salas"
         ]
-    }
+    },
+    "genetic": {
+        "crossover": "0.4",
+        "mutation": "0.03"
+    },
+    "iterations": "1000",
+    "name": "default",
+    "population": "1000",
+    "pso": {
+        "global": "0.5",
+        "inertia": "1",
+        "local": "0.5"
+    },
+    "stabilization": "150",
+    "stopcriteria": "0"
 }
